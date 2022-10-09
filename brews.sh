@@ -27,6 +27,7 @@ brew $command node
 brew $command hugo
 
 # Developer Tools
+brew $command git
 brew $command font-jetbrains-mono-nerd-font
 brew $command nvim
 brew $command lazygit
