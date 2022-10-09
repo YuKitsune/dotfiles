@@ -16,6 +16,7 @@ brew $command lolcat
 brew $command youtube-dl
 brew $command watch
 brew $command neofetch
+brew $command dockutil # Broken
 
 # Terminal
 brew $command --cask hyper
@@ -24,6 +25,7 @@ brew $command --cask hyper
 brew $command go
 brew $command --cask dotnet-sdk
 brew $command node
+brew $command python
 brew $command hugo
 
 # Developer Tools
@@ -49,10 +51,16 @@ brew $command kubernetes-cli
 brew $command helm
 
 # Other programs
+brew $command stats
+brew $command --cask spotify
+brew $command --cask discord
+brew $command --cask bitwarden
+brew $command --cask parallels
 brew $command --cask raycast
 brew $command --cask firefox
 brew $command --cask onyx
 brew $command --cask lulu
+brew $command --cask mos
 brew $command --cask ableton-live-suite
 
 echo "✅ Done!"
