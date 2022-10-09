@@ -12,6 +12,10 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # General UI/UX
 
+# Automatically switch between Light and Dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle Dark
+defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
@@ -27,7 +31,19 @@ defaults write com.apple.dock "magnification" -int "1"
 # Set the magnification size
 defaults write com.apple.dock "largesize" -int "98"
 
-# Todo: Use https://github.com/kcrawford/dockutil
+# Setup the dock icons
+dockutil --remove all --no-restart
+dockutil --add /Applications/Safari.app --no-restart
+dockutil --add /Applications/Mail.app --no-restart
+dockutil --add /Applications/Calendar.app --no-restart
+dockutil --add /Applications/Notes.app --no-restart
+dockutil --add /Applications/Reminders.app --no-restart
+dockutil --add /Applications/Messages.app --no-restart
+dockutil --add /Applications/Discord.app --no-restart
+dockutil --add /Applications/Spotify.app --no-restart
+dockutil --add /Applications/Hyper.app --no-restart
+
+# Todo: Configure menu bar icons
 
 # Finder
 
@@ -190,6 +206,7 @@ for app in "Activity Monitor" \
 	"SizeUp" \
 	"Spectacle" \
 	"SystemUIServer" \
+	"WindowServer" \
 	"Terminal" \
 	"iCal"; do
 	killall "${app}" &> /dev/null
