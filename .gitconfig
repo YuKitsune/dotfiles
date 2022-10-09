@@ -1,0 +1,12 @@
+[user]
+	name = Eoin Motherway
+	email = 25342760+YuKitsune@users.noreply.github.com
+
+[core]
+	excludesfile = ~/.gitignore
+
+[init]
+	defaultBranch = main
+
+[push]
+	autoSetupRemote = true
