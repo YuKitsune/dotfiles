@@ -23,6 +23,10 @@ git clone https://github.com/yukitsune/dotfiles <wherever you wanna store the re
 ## 4. Install
 
 ```sh
+# Mark all scripts as executable 
+find . -type f -name "*.sh" | xargs chmod +x
+
+# Run the install script
 ./install.sh
 ```
 
