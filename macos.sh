@@ -20,16 +20,19 @@ defaults write NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool tru
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+# Keyboard
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
+
 # Dock
 
 # Set the size of the dock
-defaults write com.apple.dock "tilesize" -int "46"
+defaults write com.apple.dock "tilesize" -int "40"
 
 # Enable magnification
-defaults write com.apple.dock "magnification" -int "1"
+defaults write com.apple.dock "magnification" -bool true
 
 # Set the magnification size
-defaults write com.apple.dock "largesize" -int "98"
+defaults write com.apple.dock "largesize" -int "80"
 
 # Setup the dock icons
 dockutil --remove all --no-restart
@@ -58,11 +61,26 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
+# Sidebar sections
+defaults write com.apple.finder SidebarDevicesSectionDisclosedState -bool true
+defaults write com.apple.finder SidebarPlacesSectionDisclosedState -bool true
+defaults write com.apple.finder SidebarShowingSignedIntoiCloud -bool true
+defaults write com.apple.finder SidebarShowingiCloudDesktop -bool true
+defaults write com.apple.finder SidebarTagsSctionDisclosedState -bool false
+
 # Show hidden files by default
 defaults write com.apple.finder AppleShowAllFiles -bool true
 
 # Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Remove trash items after 30 days
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+
+# View Options
+
+# Show preview (Nested key StandardViewOptions.ColumnViewOptions.ColumnShowIcons)
+# defaults write com.apple.finder ColumnShowIcons -bool true
 
 # Show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
@@ -72,6 +90,9 @@ defaults write com.apple.finder ShowPathbar -bool true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Tab Bar
+# Show icon and text "NSToolbar Configuration Browser"."TB Display Mode" = 2;
 
 # Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -93,7 +114,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	General -bool true \
 	OpenWith -bool true \
 	Privileges -bool true
-
 
 # Safari & WebKit
 
@@ -187,6 +207,11 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
+# 3rd Party Applications
+./rectangle.sh
+./stats.sh
+./mos.sh
+
 # Kill affected applications
 
 for app in "Activity Monitor" \
@@ -196,19 +221,14 @@ for app in "Activity Monitor" \
 	"Contacts" \
 	"Dock" \
 	"Finder" \
-	"Google Chrome Canary" \
-	"Google Chrome" \
 	"Mail" \
 	"Messages" \
-	"Opera" \
 	"Photos" \
 	"Safari" \
 	"SizeUp" \
-	"Spectacle" \
 	"SystemUIServer" \
 	"WindowServer" \
-	"Terminal" \
-	"iCal"; do
+	"Terminal"; do
 	killall "${app}" &> /dev/null
 done
 echo "Done. Note that some of these changes require a logout/restart to take effect."
