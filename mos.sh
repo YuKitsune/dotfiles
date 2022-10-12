@@ -5,6 +5,7 @@ open /Applications/Mos.app
 
 echo "⌨️ Setting defaults..."
 
+# Hide menu bar icon
 defaults write com.caldis.Mos hideStatusItem -bool true
 
 # Restart Mos

@@ -11,3 +11,6 @@ defaults write com.knollsoft.Rectangle hideMenubarIcon -bool true
 
 # Automatic updates
 defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
+
+# Reopen Rectangle
+open /Applications/Stats.app
