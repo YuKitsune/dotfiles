@@ -3,6 +3,7 @@
 	email = 25342760+YuKitsune@users.noreply.github.com
 
 [core]
+	editor = nvim
 	excludesfile = ~/.gitignore
 
 [init]
@@ -10,3 +11,15 @@
 
 [push]
 	autoSetupRemote = true
+
+[diff]
+	tool = vscode
+
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+
+[merge]
+	tool = vscode
+
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
