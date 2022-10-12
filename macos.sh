@@ -31,6 +31,16 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
+# Trackpad: Tracking speed
+defaults write .GlobalPreferences com.apple.trackpad.scaling 1
+
+# Siri
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+
+# Search engine
+/usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo" $HOME/Library/Preferences/.GlobalPreferences.plist
+/usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo\"" $HOME/Library/Preferences/.GlobalPreferences.plist
+
 # Audio
 
 # Increase sound quality for Bluetooth headphones/headsets
