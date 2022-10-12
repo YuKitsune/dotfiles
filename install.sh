@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
+# Ask for the administrator password upfront
+echo "👮‍♀️ Before we can start, we need sudo..."
+sudo -v
+
 echo "🍺 Installing brews..."
-sh ./brews.sh install
+./brews.sh install
 
 echo "🖥 Setting up terminal..."
-sh ./terminal.sh install
+./terminal.sh install
 
 echo "🔗 Creating symlinks..."
-sh ./symlinks.sh install
+./symlinks.sh install
 
 echo "🍎 Configuring macOS..."
-sh ./macos.sh
+./macos.sh
 
-echo "✅ Done!"
+echo "✅ Done! Note that some of these changes require a logout/restart to take effect."

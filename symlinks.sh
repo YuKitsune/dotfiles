@@ -93,5 +93,3 @@ run $HOME/.p10k.zsh .p10k.zsh
 
 # Hyper
 run $HOME/.hyper.js .hyper.js
-
-echo "✅ Done!"
