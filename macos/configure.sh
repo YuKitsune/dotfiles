@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+wd=$(dirname "$0")
+
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
@@ -52,16 +54,19 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-# Dock
-./dock.sh
-
 # Todo: Configure menu bar icons
 
+# Dock
+gum spin --show-output --title "Configuring Dock" -- $wd/dock.sh
+writeResult Dock
+
 # Finder
-./finder.sh
+gum spin --show-output --title "Configuring Finder" -- $wd/finder.sh
+writeResult Finder
 
 # Safari & WebKit
-./safari.sh
+gum spin --show-output --title "Configuring Safari" -- $wd/safari.sh
+writeResult Safari
 
 # Activity Monitor
 
@@ -72,16 +77,7 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
 defaults write com.apple.ActivityMonitor SortDirection -int 0
 
-# Address Book, Dashboard, iCal, and Disk Utility
-
-# Enable the debug menu in Address Book
-defaults write com.apple.addressbook ABShowDebugMenu -bool true
-
-# Enable Dashboard dev mode (allows keeping widgets on the desktop)
-defaults write com.apple.dashboard devmode -bool true
-
-# Enable the debug menu in iCal (pre-10.8)
-defaults write com.apple.iCal IncludeDebugMenu -bool true
+# Disk Utility
 
 # Enable the debug menu in Disk Utility
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
@@ -113,28 +109,23 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 1
 # Turn on app auto-update
 defaults write com.apple.commerce AutoUpdate -bool true
 
+
 # 3rd Party Applications
-./rectangle.sh
-./stats.sh
-./mos.sh
+gum spin --show-output --title "Configuring Rectangle" -- sh $wd/rectangle.sh
+writeResult Rectangle
+
+gum spin --show-output --title "Configuring Stats" -- sh $wd/stats.sh
+writeResult Stats
+
+gum spin --show-output --title "Configuring Mos" -- sh $wd/mos.sh
+writeResult Mos
 
 # Kill affected applications
-
 for app in "Activity Monitor" \
-	"Address Book" \
-	"Calendar" \
-	"cfprefsd" \
-	"Contacts" \
 	"Dock" \
+	"Disk Utility" \
 	"Finder" \
-	"Mail" \
-	"Messages" \
-	"Photos" \
-	"Safari" \
 	"SystemUIServer" \
-	"WindowServer" \
-	"Terminal"; do
+	"WindowServer"; do
 	killall "${app}" &> /dev/null
 done
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."

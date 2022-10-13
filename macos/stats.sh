@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 # Open stats so that it populates the defaults
-echo "🚪 Opening stats..."
 open /Applications/Stats.app
-
-echo "⌨️ Setting defaults..."
 
 # Run on login
 defaults write eu.exelban.Stats runAtLoginInitialized -bool true
@@ -71,6 +68,5 @@ defaults write eu.exelban.Stats "Network_state_position" -int "3"
 defaults write eu.exelban.Stats "Network_widget" -string "network_chart"
 
 # Restart stats
-echo "♻️ Restarting Stats.app"
 killall "Stats"
 open /Applications/Stats.app
