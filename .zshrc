@@ -98,17 +98,24 @@ export EDITOR="nvim"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# nvim
-alias vi="nvim"
-alias vim="nvim"
+# Aliases
+## Create the private alias file if it doesn't exist
+if [ ! -e "~/.aliases.zsh.private" ]
+then
+    touch ~/.aliases.zsh.private
+fi
 
-# kubectl
-alias k="kubectl"
-alias kgp="kubectl get pods -A"
-alias kdp="kubectl describe pod"
-alias kl="kubectl logs"
+source ~/.aliases.zsh
+source ~/.aliases.zsh.private
 
-alias yeet="git add . && git commit -m 'yeet' && git push"
+# Environment Variables
+if [ ! -e "~/.environment.zsh" ]
+then
+    touch ~/.environment.zsh
+fi
+
+source ~/.environment.zsh
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

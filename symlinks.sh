@@ -38,6 +38,11 @@ restore_backup() {
     mv $backup_file $target
 }
 
+if [[ $# -eq 0 ]] ; then
+    echo "🛑 Requires at least one argument. Can be either 'install' or 'uninstall'."
+    exit 0
+fi
+
 command="$1"
 
 # Sanity check first
@@ -90,6 +95,7 @@ run $HOME/.gitignore .gitignore
 # ZSH
 run $HOME/.zshrc .zshrc
 run $HOME/.p10k.zsh .p10k.zsh
+run $HOME/.aliases.zsh .aliases.zsh
 
 # Hyper
 run $HOME/.hyper.js .hyper.js
