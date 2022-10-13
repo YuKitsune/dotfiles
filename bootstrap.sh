@@ -2,7 +2,7 @@
 
 # Brew and Gum are necessary before running any other scripts
 
-which bash
+which bash > /dev/null
 brewExists=$?
 
 if [ $brewExists -ne 0 ]
@@ -13,7 +13,7 @@ else
     echo "🍺 ✅ Brew installed"
 fi
 
-which gum
+which gum > /dev/null
 gumExists=$?
 
 if [ $gumExists -ne 0 ]
