@@ -19,6 +19,7 @@ brew $command neofetch
 
 # Broken, needs manual download
 # brew $command dockutil
+# Todo: Use curl
 wget -P $HOME/Downloads https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
 installer -pkg $HOME/Downloads/dockutil-3.0.2.pkg -target /
 
