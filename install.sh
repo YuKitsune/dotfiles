@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sh ./bootstrap.sh
+
 # Ask for the administrator password upfront
 echo "👮‍♀️ Before we can start, we need sudo..."
 sudo -v
