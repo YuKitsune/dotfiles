@@ -26,5 +26,6 @@ dockutil --add /Applications/Messages.app --no-restart
 dockutil --add /Applications/Discord.app --no-restart
 dockutil --add /Applications/Spotify.app --no-restart
 dockutil --add /Applications/Hyper.app --no-restart
+dockutil --add ~/Downloads --no-restart
 
 killall "Dock"
