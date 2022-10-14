@@ -1,15 +1,15 @@
 write_default() {
-
-    
-    defaults write $*
-}
-
-write_value() {
     domain=$1
     key=$2
-    value=$3
+    type=$3
+    value=$4
 
-    echo "writing $key $value"
+    emoji="📝"
+    if [ -n "$default_command_prefix" ]
+    then
+        emoji="$default_command_prefix 📝"
+    fi
 
-    /usr/libexec/PlistBuddy -c "Set $key $value" $HOME/Library/Preferences/$domain.plist
+    echo "$emoji [$domain] $key $value" > /dev/tty
+    defaults write $domain "$key" $type $value
 }
