@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
+source $PWD/utils.sh
+
 backup_dir="$HOME/.dotfile_backup/"
+
+command=$(get_command "$1" "install" "uninstall")
 
 create_symlink() {
     target="$1"
     source="$2"
 
     echo "🔗 Linking '$target' to '$source'"
-    ln -s $source $target
+    res="$(ln -s $source $target)"
+    print_result_if_failed $? "Failed to create link: $res"
 }
 
 remove_symlink() {
@@ -38,20 +43,6 @@ restore_backup() {
     mv $backup_file $target
 }
 
-if [[ $# -eq 0 ]] ; then
-    echo "🛑 Requires at least one argument. Can be either 'install' or 'uninstall'."
-    exit 0
-fi
-
-command="$1"
-
-# Sanity check first
-if [ $command != "install" ] && [ $command != "uninstall" ]
-then
-    echo "unsupported argument: '$command'"
-    exit 1
-fi
-
 run() {
     target="$1"
     file_name="$2"
@@ -59,11 +50,10 @@ run() {
 
     if [ $command == "install" ]
     then
-
         # If the destination is already a symlink, skip
         if [ -L $target ]
         then
-            echo "⏭ $target is already a symlink, skipping..."
+            echo "⏭ $target is already a symlink, skipping"
             return 0
         fi
 
@@ -87,6 +77,13 @@ run() {
 }
 
 # Todo: Support backing up multiple files with the same name
+action="Creating"
+if [ $command == "uninstall" ]
+then
+    action="Removing"
+fi
+
+echo "🔗 $action symlinks"
 
 # Git
 run $HOME/.gitconfig .gitconfig

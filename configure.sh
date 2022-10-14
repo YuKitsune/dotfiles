@@ -9,10 +9,7 @@ sh ./bootstrap.sh
 echo "👮‍♀️ Before we can start, we need sudo..."
 gum input --password | sudo -vnS
 
-echo "🔗 Creating symlinks..."
 ./symlinks.sh install
-
-echo "🍎 Configuring macOS..."
 ./macos/configure.sh
 
 echo "🎉 All done!"

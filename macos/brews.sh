@@ -1,17 +1,8 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 0 ]] ; then
-    echo "🛑 Requires at least one argument. Can be either 'install' or 'uninstall'."
-    exit 0
-fi
+source $PWD/utils.sh
 
-command="$1"
-
-if [ $command != "install" ] && [ $command != "uninstall" ]
-then
-    echo "unsupported argument: '$command'"
-    exit 1
-fi
+command=$(get_command "$1" "install" "uninstall")
 
 action="Installing"
 past_tense="installed"
@@ -21,11 +12,19 @@ then
     past_tense="uninstalled"
 fi
 
+echo "🍺 $action brews"
+default_command_prefix="🍺"
+
+brew_versions=$(brew list --versions)
+home_applications=$(find $HOME/Applications -path '*.app' -maxdepth 5 -print)
+applications=$(find /Applications -path '*.app' -maxdepth 5 -print)
+all_applications=$home_applications\n$applications
+
 exists() {
     name=$1
 
     # Check the brew list first
-    brew list --versions | cut -d " " -f 1 | grep -w $name > /dev/null
+    echo $brew_versions | cut -d " " -f 1 | grep -w $name > /dev/null
     thing_exists=$?
     if [ $thing_exists -eq 0 ]
     then 
@@ -41,14 +40,7 @@ exists() {
     fi
 
     # Fallback to applications
-    find $HOME/Applications -path '*.app' -maxdepth 5 -print | grep -i $name > /dev/null
-    thing_exists=$?
-    if [ $thing_exists -eq 0 ]
-    then 
-        return 0
-    fi
-
-    find /Applications -path '*.app' -maxdepth 5 -print | grep -i $name > /dev/null
+    echo $all_applications | grep -i $name > /dev/null
     thing_exists=$?
     if [ $thing_exists -eq 0 ]
     then 
@@ -74,19 +66,16 @@ install() {
     fi
 
     gum spin --spinner="globe" --show-output --title "Downloading $name" -- curl --output $HOME/Downloads/$fileName $url
-    if [ $? -ne 0 ]
+    print_result $? "$name downloaded" "Failed to download $name"
+    if [ $? -neq 0 ]
     then
-        echo "❌ Failed to download $name"
         return 1
     fi
 
     gum spin --show-output --title "Installing $name" -- installer -pkg $HOME/Downloads/$fileName -target /
-
-    if [ $? -eq 0 ]
+    print_result $? "$name installed" "Failed to install $name"
+    if [ $? -neq 0 ]
     then
-        echo "✅ $name installed"
-    else
-        echo "❌ Failed to install $name"
         return 1
     fi
 }
@@ -114,13 +103,8 @@ brew_run() {
     else
         gum spin --show-output --title "🍺 $action $name" -- brew $command --cask $name
     fi
-
-    if [ $? -eq 0 ]
-    then
-        echo "✅ $name $past_tense"
-    else
-        echo "❌ Failed to $command $name"
-    fi
+    
+    print_result $? "$name $past_tense" "Failed to $command $name"
 }
 
 # Useful commands
@@ -148,7 +132,6 @@ brew_run hugo
 
 # Developer Tools
 brew_run git
-brew_run font-jetbrains-mono-nerd-font
 brew_run nvim
 brew_run lazygit
 brew_run fork
@@ -176,11 +159,21 @@ brew_run onyx 1
 brew_run lulu 1
 brew_run mos 1
 brew_run bitwarden 1
-brew_run parallels 1
 
 # Media
 brew_run spotify 1
 brew_run discord 1
 
 # Optional
-gum choose --no-limit "affinity-photo" "affinity-designer" "ableton-live-suite" | xargs -I % brew_run % 1
+# BSD the BSD implementation of xargs doesn't have the -r flag (--no-run-if-empty).
+# https://stackoverflow.com/a/17411766
+optional_brews=(
+    "affinity-photo"
+    "affinity-designer"
+    "ableton-live-suite"
+    "slack"
+    "zoom"
+    "parallels"
+)
+
+gum choose --no-limit ${optional_brews[*]} | xargs -I % brew_run % 1

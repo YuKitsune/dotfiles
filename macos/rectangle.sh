@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 
+source $PWD/utils.sh
+source $PWD/macos/defaults.sh
+
+echo "🖥 Configuring Rectangle"
+default_command_prefix="🖥"
+
 # Prevent the rectangle settings from messing this up
-killall "Rectangle"
+kill_process "Rectangle"
 
 # Launch at startup
-defaults write com.knollsoft.Rectangle launchOnLogin -bool true
+write_default com.knollsoft.Rectangle launchOnLogin -bool true
 
 # Hide menu bar icon
-defaults write com.knollsoft.Rectangle hideMenubarIcon -bool true
+write_default com.knollsoft.Rectangle hideMenubarIcon -bool true
 
 # Automatic updates
-defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
+write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
 
 # Reopen Rectangle
 open /Applications/Stats.app

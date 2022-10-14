@@ -7,16 +7,9 @@ sh ./bootstrap.sh
 echo "👮 Before we can start, we need sudo..."
 gum input --password | sudo -vnS
 
-echo "🍺 Installing brews"
 sh ./macos/brews.sh install
-
-echo "🖥 Setting up terminal"
 sh ./terminal.sh install
-
-echo "🔗 Creating symlinks..."
 sh ./symlinks.sh install
-
-echo "🍎 Configuring macOS..."
 sh ./macos/configure.sh
 
 echo "🎉 All done!"
