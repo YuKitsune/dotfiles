@@ -1,4 +1,10 @@
+dbaeumer.vscode-eslint
+golang.go
 ms-azuretools.vscode-docker
+ms-dotnettools.csharp
 ms-kubernetes-tools.vscode-kubernetes-tools
 redhat.vscode-yaml
+rust-lang.rust-analyzer
+rvest.vs-code-prettier-eslint
 vscode-icons-team.vscode-icons
+zhuangtongfa.material-theme

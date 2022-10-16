@@ -71,7 +71,7 @@ update() {
     brew bundle dump --force
 
     # Dump VSCode plugins to file
-    sh ./scripts/vscode.sh Update
+    sh ./scripts/vscode.sh update
 
     echo "👋 All done!"
 }
