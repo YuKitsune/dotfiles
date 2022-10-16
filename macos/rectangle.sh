@@ -6,6 +6,12 @@ source $PWD/macos/defaults.sh
 echo "🖥 Configuring Rectangle"
 default_command_prefix="🖥"
 
+ensure_onboarding_completed com.knollsoft.Rectangle Rectangle /Applications/Rectangle.app
+if [ $? == 1 ]
+then
+    exit 1
+fi
+
 # Prevent the rectangle settings from messing this up
 kill_process "Rectangle"
 
@@ -17,6 +23,3 @@ write_default com.knollsoft.Rectangle hideMenubarIcon -bool true
 
 # Automatic updates
 write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
-
-# Reopen Rectangle
-open /Applications/Stats.app

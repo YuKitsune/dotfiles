@@ -61,6 +61,9 @@ write_default com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 
 write_default com.apple.screensaver askForPassword -int 1
 write_default com.apple.screensaver askForPasswordDelay -int 0
 
+# Disable auto-correct
+write_default NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
 # Todo: Configure menu bar icons
 
 # Dock

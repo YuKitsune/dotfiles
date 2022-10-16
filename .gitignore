@@ -12,3 +12,6 @@ Thumbs.db
 
 # JetBrains
 .idea/
+
+# Brewfile lock
+Brewfile.lock.json

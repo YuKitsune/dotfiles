@@ -6,8 +6,14 @@ source $PWD/macos/defaults.sh
 echo "📈 Configuring Stats"
 default_command_prefix="📈"
 
-# Open stats so that it populates the defaults
-open /Applications/Stats.app
+ensure_onboarding_completed eu.exelban.Stats Stats /Applications/Stats.app
+if [ $? == 1 ]
+then
+    exit 1
+fi
+
+# Prevent the stats settings from messing this up
+kill_process "Stats"
 
 # Run on login
 write_default eu.exelban.Stats runAtLoginInitialized -bool true
@@ -72,7 +78,3 @@ write_default eu.exelban.Stats "Network_network_chart_label" -bool true
 write_default eu.exelban.Stats "Network_speed_position" -int "2"
 write_default eu.exelban.Stats "Network_state_position" -int "3"
 write_default eu.exelban.Stats "Network_widget" -string "network_chart"
-
-# Restart stats
-kill_process "Stats"
-open /Applications/Stats.app

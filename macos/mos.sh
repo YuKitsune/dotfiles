@@ -6,12 +6,14 @@ source $PWD/macos/defaults.sh
 echo "🖱 Configuring Mos"
 default_command_prefix="🖱"
 
-# Open Mos so that it populates the defaults
-open /Applications/Mos.app
+ensure_onboarding_completed com.caldis.Mos Mos /Applications/Mos.app
+if [ $? == 1 ]
+then
+    exit 1
+fi
+
+# Prevent the mos settings from messing this up
+kill_process "Mos"
 
 # Hide menu bar icon
 write_default com.caldis.Mos hideStatusItem -bool true
-
-# Restart Mos
-kill_process "Mos"
-open /Applications/Mos.app
