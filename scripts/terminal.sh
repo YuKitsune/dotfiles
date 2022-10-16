@@ -34,12 +34,14 @@ uninstall() {
     gum confirm "⚠️ Powerlevel10k needs to be uninstalled manually: https://github.com/romkatv/powerlevel10k#how-do-i-uninstall-powerlevel10k" --affirmative="Done" --negative="Skip"
 }
 
-command=$(get_command "$1" "install" "uninstall")
+install_command="install"
+uninstall_command="uninstall"
+command=$(get_command "$1" $install_command $uninstall_command)
 
-if [ $command == "install" ]
+if [ $command == "$install_command" ]
 then
     install
-elif [ $command == "uninstall" ]
+elif [ $command == "$uninstall_command" ]
 then
     uninstall
 fi

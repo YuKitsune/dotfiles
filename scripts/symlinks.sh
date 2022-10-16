@@ -4,7 +4,9 @@ source $PWD/scripts/utils.sh
 
 backup_dir="$HOME/.dotfile_backup/"
 
-command=$(get_command "$1" "install" "uninstall")
+install_command="install"
+uninstall_command="uninstall"
+command=$(get_command "$1" $install_command $install_command)
 
 create_symlink() {
     target="$1"
@@ -49,7 +51,7 @@ run() {
     file_name="$2"
     link_to="$PWD/$2"
 
-    if [ $command == "install" ]
+    if [ $command == "$install_command" ]
     then
         # If the destination is already a symlink, skip
         if [ -L "$target" ]
@@ -67,7 +69,7 @@ run() {
         # Create the symlink
         create_symlink "$target" "$link_to"
         
-    elif [ $command == "uninstall" ]
+    elif [ $command == "$uninstall_command" ]
     then
         # Remove the symlink
         remove_symlink "$target"
@@ -79,7 +81,7 @@ run() {
 
 # Todo: Support backing up multiple files with the same name
 action="Creating"
-if [ $command == "uninstall" ]
+if [ $command == "$uninstall_command" ]
 then
     action="Removing"
 fi
@@ -94,6 +96,7 @@ run $HOME/.gitignore .gitignore
 run $HOME/.zshrc .zshrc
 run $HOME/.p10k.zsh .p10k.zsh
 run $HOME/.aliases.zsh .aliases.zsh
+run $HOME/.functions.zsh .functions.zsh
 
 # Hyper
 run $HOME/.hyper.js .hyper.js
