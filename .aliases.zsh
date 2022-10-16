@@ -19,6 +19,7 @@ alias ld="lazydocker"
 # git
 alias gc="git checkout"
 alias ga="git add ."
+alias gcm="git commit -m"
 alias gp="git push"
 alias yeet="git add . && git commit -m 'yeet' && git push"
 alias lg="lazygit"
