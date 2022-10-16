@@ -9,8 +9,8 @@ bootstrap() {
     then
         echo "🍺 Downloading and Installig Brew"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        echo '# Set PATH, MANPATH, etc., for Homebrew.' >> /Users/eoinmotherway/.zprofile
-        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> /Users/eoinmotherway/.zprofile
+        echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zprofile
+        echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
     else
         echo "🍺 ✅ Brew installed"

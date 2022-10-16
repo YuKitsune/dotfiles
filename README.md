@@ -18,14 +18,19 @@ cd dotfiles
 ## 3. Install
 
 ```sh
-# Run the install script
-./install.sh
+./dotfiles.sh install
 ```
 
-# Reapplying configurations
+# Available commands
 
-Running `./configure.sh` should reapply most configurations and ensure all symlinks are created. Running `./install.sh` may be necessary after making changes to configuration files.
+## `install`
+`install` will download, install, and configure everything
 
-# Uninstalling
+## `update`
+`update` will update the Brewfile and VSCode extensions based on what's installed on the current system.
 
-`./uninstall.sh` should do the trick. I don't guarantee that it works...
+## `sync`
+`sync` will re-apply any configurations, ensure all symlinks are created, re-sync brews and VSCode plugins.
+
+## `uninstall`
+`uninstall` _should_ revert as many changes as possible made by these scripts. Some things need to be undone manually.
