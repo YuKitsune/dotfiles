@@ -1,3 +1,6 @@
+# General
+alias c="clear"
+
 # nvims
 alias vi="nvim"
 alias vim="nvim"
