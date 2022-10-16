@@ -33,3 +33,10 @@ check-dotfile-updates() {
 
     popd > /dev/null
 }
+
+qc() {
+    git add .
+    commit_message=$(gum input --placeholder "Commit message")
+    git commit -m "$commit_message"
+    gum spin --title="Pushing" --show-output -- git push
+}
