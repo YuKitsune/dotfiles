@@ -66,8 +66,10 @@ Sample:
     if [ $result_code -eq 0 ]
     then
         echo "✅ $success" > /dev/tty
+        return 0
     else
         echo "❌ $fail" > /dev/tty
+        return 1
     fi
 }
 
@@ -96,14 +98,3 @@ Sample:
 }
 
 export -f print_result_if_failed
-
-kill_process() {
-    name=$1
-    if [ `pgrep $1` ]
-    then
-        echo "🔫 Killing $name" > /dev/tty
-        killall "$name"
-    fi
-}
-
-export -f kill_process

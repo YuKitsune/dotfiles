@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $PWD/utils.sh
+source $PWD/scripts/utils.sh
 
 install() {
     echo "🖥 Setting up terminal"
@@ -18,6 +18,7 @@ install() {
     print_result $? "MesloLGS NerdFonts installed" "Failed to install MesloLGS NerdFonts"
 
     # Install Powerlevel10k with OhMyZsh
+    # Todo: Check if we can install using brew
     gum spin --show-output --title "Installing Powerlevel10k" -- git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     print_result $? "Powerlevel10k installed" "Failed to install Powerlevel10k"
 }
@@ -30,7 +31,7 @@ uninstall() {
     echo "🗑 OhMyZsh uninstalled"
 
     # Uninstall Powerlevel10k (Requires manual intervention)
-    echo "⚠️ Powerlevel10k needs to be uninstalled manually: https://github.com/romkatv/powerlevel10k#how-do-i-uninstall-powerlevel10k"
+    gum confirm "⚠️ Powerlevel10k needs to be uninstalled manually: https://github.com/romkatv/powerlevel10k#how-do-i-uninstall-powerlevel10k" --affirmative="Done" --negative="Skip"
 }
 
 command=$(get_command "$1" "install" "uninstall")
