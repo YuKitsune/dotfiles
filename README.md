@@ -1,6 +1,5 @@
 # Steps to bootstrap a new Mac
 
-
 ## 1. Install Apple Command Line Tools
 
 These are pre-requisites for git and brew.
