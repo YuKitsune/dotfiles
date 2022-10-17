@@ -93,23 +93,23 @@ export EDITOR="nvim"
 
 # Aliases
 ## Create the private alias file if it doesn't exist
-if [ ! -e "~/.aliases.zsh.private" ]
+if [ ! -e "~/.aliases.private.zsh" ]
 then
-    touch ~/.aliases.zsh.private
+    touch ~/.aliases.private.zsh
 fi
 
 source ~/.aliases.zsh
-source ~/.aliases.zsh.private
+source ~/.aliases.private.zsh
 
 # Functions
 ## Create the private functions file if it doesn't exist
-if [ ! -e "~/.functions.zsh.private" ]
+if [ ! -e "~/.functions.private.zsh" ]
 then
-    touch ~/.functions.zsh.private
+    touch ~/.functions.private.zsh
 fi
 
 source ~/.functions.zsh
-source ~/.functions.zsh.private
+source ~/.functions.private.zsh
 
 # Environment Variables
 if [ ! -e "~/.environment.zsh" ]
