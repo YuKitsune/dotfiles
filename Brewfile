@@ -21,6 +21,7 @@ brew "minikube"
 brew "neofetch"
 brew "neovim"
 brew "node"
+brew "pnpm"
 brew "python@3.10"
 brew "watch"
 brew "wget"
@@ -53,3 +54,5 @@ mas "Bitwarden", id: 1352778147
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "Yubico Authenticator", id: 1497506650
