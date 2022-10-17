@@ -40,3 +40,7 @@ qc() {
     git commit -m "$commit_message"
     gum spin --title="Pushing" --show-output -- git push
 }
+
+dockerstop() {
+	docker ps --format "{{.Names}}" | gum choose --no-limit | xargs docker stop
+}

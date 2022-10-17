@@ -1,0 +1,53 @@
+tap "derailed/k9s"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "teamookla/speedtest"
+brew "act"
+brew "bash"
+brew "cmake"
+brew "cowsay"
+brew "dust"
+brew "fortune"
+brew "gh"
+brew "git"
+brew "go"
+brew "gum"
+brew "helm"
+brew "htop"
+brew "hugo"
+brew "hyperkit", link: false
+brew "icu4c"
+brew "kubernetes-cli", link: false
+brew "lazydocker"
+brew "lazygit"
+brew "lolcat"
+brew "mas"
+brew "minikube"
+brew "neofetch"
+brew "neovim"
+brew "openssl@3"
+brew "pkg-config"
+brew "python@3.10"
+brew "python@3.9"
+brew "ragel"
+brew "thefuck"
+brew "tmux"
+brew "wget"
+cask "insomnia"
+cask "keycastr"
+cask "mos"
+cask "notion"
+cask "onyx"
+cask "powershell"
+mas "Dashlane", id: 552383089
+mas "Dashlane for Safari", id: 1505779553
+mas "Grammarly for Safari", id: 1462114288
+mas "iStat Menus", id: 1319778037
+mas "Keynote", id: 409183694
+mas "LastPass", id: 926036361
+mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Slack", id: 803453959
+mas "Xcode", id: 497799835
