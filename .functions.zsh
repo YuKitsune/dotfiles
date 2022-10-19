@@ -1,7 +1,10 @@
 check-dotfile-updates() {
     pushd $HOME/Developer/github.com/yukitsune/dotfiles > /dev/null
 
-    output=$(git fetch --dry-run 2>&1)
+	temp_file=$(mktemp)
+	gum spin --title="Checking for updated to dotfiles..." -- git fetch --dry-run > $temp_file
+    output=$(cat $temp_file)
+
     if [ -n "$output" ]
     then
         gum confirm "🆕 Updated dotfiles available! Do you want to clone and update now?"
