@@ -126,4 +126,5 @@ source ~/.environment.zsh
 check-dotfile-updates
 
 # lmao
+neofetch
 fortune | cowsay | lolcat
