@@ -6,7 +6,7 @@ backup_dir="$HOME/.dotfile_backup/"
 
 install_command="install"
 uninstall_command="uninstall"
-command=$(get_command "$1" $install_command $install_command)
+command=$(get_command "$1" $install_command $uninstall_command)
 
 create_symlink() {
     target="$1"
