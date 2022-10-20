@@ -1,3 +1,5 @@
+
+# Todo: Move this somewhere else so we don't mess up the other functions
 check-dotfile-updates() {
     pushd $HOME/Developer/github.com/yukitsune/dotfiles > /dev/null
 
@@ -39,11 +41,8 @@ check-dotfile-updates() {
 
 qc() {
     git add .
+    git status
     commit_message=$(gum input --placeholder "Commit message")
     git commit -m "$commit_message"
     gum spin --title="Pushing" --show-output -- git push
-}
-
-dockerstop() {
-	docker ps --format "{{.Names}}" | gum choose --no-limit | xargs docker stop
 }

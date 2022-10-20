@@ -14,12 +14,15 @@ alias kl="kubectl logs"
 # docker
 alias dp="docker ps"
 alias ds="docker start"
+alias dq="docker ps --format \"{{.Names}}\" | gum choose --no-limit | xargs docker stop"
 alias ld="lazydocker"
 
 # git
+alias g="git"
 alias gc="git checkout"
 alias ga="git add ."
 alias gcm="git commit -m"
-alias gp="git push"
+alias gpl="git pull"
+alias gpu="git push"
 alias yeet="git add . && git commit -m 'yeet' && git push"
 alias lg="lazygit"
