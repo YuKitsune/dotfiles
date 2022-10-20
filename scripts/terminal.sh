@@ -2,6 +2,11 @@
 
 source $PWD/scripts/utils.sh
 
+install_zsh_plugins() {
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+}
+
 install() {
     echo "🖥 Setting up terminal"
 
@@ -21,6 +26,9 @@ install() {
     # Todo: Check if we can install using brew
     gum spin --show-output --title "Installing Powerlevel10k" -- git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     print_result $? "Powerlevel10k installed" "Failed to install Powerlevel10k"
+
+    # Install plugins
+    gum spin --title="Installing ZSH plugins" -- install_zsh_plugins
 }
 
 uninstall() {
@@ -35,12 +43,16 @@ uninstall() {
 }
 
 install_command="install"
+install_plugins_command="install_plugins"
 uninstall_command="uninstall"
-command=$(get_command "$1" $install_command $uninstall_command)
+command=$(get_command "$1" $install_command $install_plugins_command $uninstall_command)
 
 if [ $command == "$install_command" ]
 then
     install
+elif [ $command == "$install_plugins_command" ]
+then
+    install_zsh_plugins
 elif [ $command == "$uninstall_command" ]
 then
     uninstall
