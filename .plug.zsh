@@ -7,9 +7,9 @@ export ZSH_PLUGINS="$HOME/.zsh_plugins"
 _install() {
     local usage="\
 Usage:
-  ${funcstack[1]} <url>
+    ${funcstack[1]} <url>
 Sample:
-  ${funcstack[1]} \"https://github.com/marlonrichert/zsh-autocomplete.git\""
+    ${funcstack[1]} \"https://github.com/marlonrichert/zsh-autocomplete.git\""
 
     if [[ ${#} -lt 1 ]]
     then
@@ -28,9 +28,9 @@ Sample:
 _update() {
     local usage="\
 Usage:
-  ${funcstack[1]} <plugin>
+    ${funcstack[1]} <plugin>
 Sample:
-  ${funcstack[1]} \"zsh-autocomplete\""
+    ${funcstack[1]} \"zsh-autocomplete\""
 
     if [[ ${#} -lt 1 ]]
     then
@@ -52,9 +52,9 @@ Sample:
 _uninstall() {
     local usage="\
 Usage:
-  ${funcstack[1]} <plugin>
+    ${funcstack[1]} <plugin>
 Sample:
-  ${funcstack[1]} \"zsh-autocomplete\""
+    ${funcstack[1]} \"zsh-autocomplete\""
 
     if [[ ${#} -lt 1 ]]
     then
@@ -67,14 +67,20 @@ Sample:
 
     echo "🗑 Deleting $path"
     rm -rf $path
+    if [ $? -eq 0 ]
+    then
+        echo "✅ $plugin has been removed. Don't forget to remove it from your .zshrc file."
+    else
+        echo "❌ failed to remove $plugin"
+    fi
 }
 
 _plugin() {
     local usage="\
 Usage:
-  ${funcstack[1]} <url> <source_file>
+    ${funcstack[1]} <url> <source_file>
 Sample:
-  ${funcstack[1]} \"https://github.com/marlonrichert/zsh-autocomplete.git\" \"zsh-autocomplete.plugin.zsh\""
+    ${funcstack[1]} \"https://github.com/marlonrichert/zsh-autocomplete.git\" \"zsh-autocomplete.plugin.zsh\""
 
     if [[ ${#} -lt 2 ]]
     then
@@ -99,22 +105,24 @@ Sample:
         fi
     fi
 
+    # Todo: Check for updates
+
     source "$source_path"
 }
 
 plugin() {
     local usage="\
-Usage:
-  # Install or source a plugin, for use within a .zshrc file
-  ${funcstack[1]} <url> <source_file>
+Usage:    
+    # For use from the command line
+    ${funcstack[1]} <command>
 
-  # For use from the command line
-  ${funcstack[1]} <command>
+    # Install or source a plugin, for use within a .zshrc file
+    ${funcstack[1]} <url> <source_file>
 
 Commands:
-  install
-  update
-  uninstall"
+    install
+    update
+    uninstall"
 
     if [[ ${#} -lt 1 ]]
     then
