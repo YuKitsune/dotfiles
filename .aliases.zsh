@@ -2,7 +2,6 @@
 alias c="clear"
 
 # Enable ls colors
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
 alias l="ls -lah --color"
 alias diff="diff --color"
 
