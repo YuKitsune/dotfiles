@@ -93,6 +93,7 @@ run $HOME/.gitconfig .gitconfig
 run $HOME/.gitignore .gitignore
 
 # ZSH
+run $HOME/.plug.zsh .plug.zsh
 run $HOME/.zshrc .zshrc
 run $HOME/.p10k.zsh .p10k.zsh
 run $HOME/.aliases.zsh .aliases.zsh
