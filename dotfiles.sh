@@ -46,7 +46,7 @@ install() {
 
     # Todo: Move this into a more generic script once there are more
     echo "🚀 🔧 Installing dockutil"
-    sh ./scripts/dockutil
+    sh ./scripts/dockutil.sh
 
     # Install VSCode plugins
     sh ./scripts/vscode.sh sync

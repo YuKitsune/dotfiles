@@ -39,7 +39,7 @@ is_installed() {
 install() {
     name=$1
     url=$2
-    fileName=$3
+    file_name=$(basename $url)
 
     is_installed $name > /dev/null
     thing_exists=$?
@@ -47,9 +47,10 @@ install() {
     if [ $thing_exists -eq 0 ]
     then
         echo "⏭ $name already installed"
-        return 1
+        return 0
     fi
 
+    # Todo: Download to temp dir
     gum spin --spinner="globe" --show-output --title "Downloading $name" -- wget -P $HOME/Downloads $url
     print_result $? "$name downloaded" "Failed to download $name"
     if [ $? -ne 0 ]
@@ -57,7 +58,7 @@ install() {
         return 1
     fi
 
-    gum spin --show-output --title "Installing $name" -- installer -pkg $HOME/Downloads/$fileName -target /
+    gum spin --show-output --title "Installing $name" -- installer -pkg $HOME/Downloads/$file_name -target /
     print_result $? "$name installed" "Failed to install $name"
     if [ $? -ne 0 ]
     then
@@ -65,4 +66,4 @@ install() {
     fi
 }
 
-install dockutil https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg dockutil-3.0.2.pkg
+install dockutil https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
