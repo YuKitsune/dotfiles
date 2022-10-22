@@ -51,9 +51,6 @@ install() {
     # Install VSCode plugins
     sh ./scripts/vscode.sh sync
 
-    # Install and configure the terminal
-    sh ./scripts/terminal.sh install
-
     # Configure macOS defaults
     sh ./scripts/macos.sh
 
@@ -98,9 +95,6 @@ uninstall() {
 
     # Revert symlinks
     sh ./scripts/symlinks.sh uninstall
-
-    # Uninstall terminal stuff
-    sh ./scripts/terminal.sh uninstall
 
     # Todo: Uninstall brews
     echo "⚠️ Cannot uninstall brews. Please uninstall them manually."
