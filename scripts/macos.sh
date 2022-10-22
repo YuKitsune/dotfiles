@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+source $PWD/scripts/utils.sh
+
 write_default() {
     local usage="\
 Usage:
@@ -136,47 +138,6 @@ write_default NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Todo: Configure menu bar icons
 
-# Dock
-
-# Set the size of the dock
-write_default com.apple.dock "tilesize" -int "40"
-
-# Enable magnification
-write_default com.apple.dock "magnification" -bool true
-
-# Set the magnification size
-write_default com.apple.dock "largesize" -int "80"
-
-# Show indicator lights for open applications in the Dock
-write_default com.apple.dock show-process-indicators -bool true
-
-# Make Dock icons of hidden applications translucent
-write_default com.apple.dock showhidden -bool true
-
-add_dock_item() {
-    path=$1
-    echo "📝 Adding $path to dock" > /dev/tty
-
-    dockutil --add $path --no-restart > /dev/null
-    print_result_if_failed $? "Failed to set dock item"
-}
-
-# Setup the dock icons
-echo "📝 Clearing dock" > /dev/tty
-dockutil --remove all --no-restart
-add_dock_item /Applications/Safari.app
-add_dock_item /System/Applications/Mail.app
-add_dock_item /System/Applications/Calendar.app
-add_dock_item /System/Applications/Notes.app
-add_dock_item /System/Applications/Reminders.app
-add_dock_item /System/Applications/Messages.app
-add_dock_item /Applications/Discord.app
-add_dock_item /Applications/Spotify.app
-add_dock_item /Applications/Hyper.app
-add_dock_item ~/Downloads
-
-kill_process "Dock"
-
 # Finder
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
@@ -226,10 +187,6 @@ write_default com.apple.finder ShowStatusBar -bool true
 # Show path bar
 write_default com.apple.finder ShowPathbar -bool true
 
-# Show preview pane
-/usr/libexec/PlistBuddy -c "Set :StandardViewOptions:ColumnViewOptions:ColumnShowIcons 1" $HOME/Library/Preferences/com.apple.finder.plist
-write_default com.apple.finder ShowPreviewPane -bool true
-
 # Tab Bar
 # Show icon and text in the tab bar
 /usr/libexec/PlistBuddy -c "Set :\"NSToolbar Configuration Browser\":\"TB Display Mode\" 1" $HOME/Library/Preferences/com.apple.finder.plist
@@ -257,74 +214,6 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 
 kill_process "Finder"
 
-# Safari & WebKit
-
-# Privacy: don’t send search queries to Apple
-write_default com.apple.Safari UniversalSearchEnabled -bool false
-write_default com.apple.Safari SuppressSearchSuggestions -bool true
-
-# Show the full URL in the address bar (note: this still hides the scheme)
-write_default com.apple.Safari ShowFullURLInSmartSearchField -bool true
-
-# Prevent Safari from opening ‘safe’ files automatically after downloading
-write_default com.apple.Safari AutoOpenSafeDownloads -bool false
-
-# Hide Safari’s bookmarks bar by default
-write_default com.apple.Safari ShowFavoritesBar -bool false
-
-# Hide Safari’s sidebar in Top Sites
-write_default com.apple.Safari ShowSidebarInTopSites -bool false
-
-# Disable Safari’s thumbnail cache for History and Top Sites
-write_default com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
-
-# Enable Safari’s debug menu
-write_default com.apple.Safari IncludeInternalDebugMenu -bool true
-
-# Make Safari’s search banners default to Contains instead of Starts With
-write_default com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
-
-# Remove useless icons from Safari’s bookmarks bar
-write_default com.apple.Safari ProxiesInBookmarksBar -string "()"
-
-# Enable the Develop menu and the Web Inspector in Safari
-write_default com.apple.Safari IncludeDevelopMenu -bool true
-write_default com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
-
-# Add a context menu item for showing the Web Inspector in web views
-write_default NSGlobalDomain WebKitDeveloperExtras -bool true
-
-# Disable AutoFill
-write_default com.apple.Safari AutoFillFromAddressBook -bool false
-write_default com.apple.Safari AutoFillPasswords -bool false
-write_default com.apple.Safari AutoFillCreditCardData -bool false
-write_default com.apple.Safari AutoFillMiscellaneousForms -bool false
-
-# Warn about fraudulent websites
-write_default com.apple.Safari WarnAboutFraudulentWebsites -bool true
-
-# Disable plug-ins
-write_default com.apple.Safari WebKitPluginsEnabled -bool false
-write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
-
-# Disable Java
-write_default com.apple.Safari WebKitJavaEnabled -bool false
-write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
-write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
-
-# Block pop-up windows
-write_default com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
-write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
-
-# Enable “Do Not Track”
-write_default com.apple.Safari SendDoNotTrackHTTPHeader -bool true
-
-# Update extensions automatically
-write_default com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
-
-kill_process "Safari"
-
 # Activity Monitor
 
 # Show all processes in Activity Monitor
@@ -340,145 +229,301 @@ write_default com.apple.ActivityMonitor SortDirection -int 0
 write_default com.apple.DiskUtility DUDebugMenuEnabled -bool true
 write_default com.apple.DiskUtility advanced-image-options -bool true
 
+# Dock
+
+add_dock_item() {
+    path=$1
+    echo "📝 Adding $path to dock" > /dev/tty
+
+    dockutil --add $path --no-restart > /dev/null
+    print_result_if_failed $? "Failed to set dock item"
+}
+
+configure_dock() {
+    # Set the size of the dock
+    write_default com.apple.dock "tilesize" -int "40"
+
+    # Enable magnification
+    write_default com.apple.dock "magnification" -bool true
+
+    # Set the magnification size
+    write_default com.apple.dock "largesize" -int "80"
+
+    # Show indicator lights for open applications in the Dock
+    write_default com.apple.dock show-process-indicators -bool true
+
+    # Make Dock icons of hidden applications translucent
+    write_default com.apple.dock showhidden -bool true
+
+    # Setup the dock icons
+    echo "📝 Clearing dock" > /dev/tty
+    dockutil --remove all --no-restart
+    add_dock_item /Applications/Safari.app
+    add_dock_item /System/Applications/Mail.app
+    add_dock_item /System/Applications/Calendar.app
+    add_dock_item /System/Applications/Notes.app
+    add_dock_item /System/Applications/Reminders.app
+    add_dock_item /System/Applications/Messages.app
+    add_dock_item /Applications/Discord.app
+    add_dock_item /Applications/Spotify.app
+    add_dock_item /Applications/Hyper.app
+    add_dock_item ~/Downloads
+
+    kill_process "Dock"
+}
+
+# Safari & WebKit
+configure_safari() {
+    # Privacy: don’t send search queries to Apple
+    write_default com.apple.Safari UniversalSearchEnabled -bool false
+    write_default com.apple.Safari SuppressSearchSuggestions -bool true
+
+    # Show the full URL in the address bar (note: this still hides the scheme)
+    write_default com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+    # Prevent Safari from opening ‘safe’ files automatically after downloading
+    write_default com.apple.Safari AutoOpenSafeDownloads -bool false
+
+    # Hide Safari’s bookmarks bar by default
+    write_default com.apple.Safari ShowFavoritesBar -bool false
+
+    # Hide Safari’s sidebar in Top Sites
+    write_default com.apple.Safari ShowSidebarInTopSites -bool false
+
+    # Disable Safari’s thumbnail cache for History and Top Sites
+    write_default com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+    # Enable Safari’s debug menu
+    write_default com.apple.Safari IncludeInternalDebugMenu -bool true
+
+    # Make Safari’s search banners default to Contains instead of Starts With
+    write_default com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+    # Remove useless icons from Safari’s bookmarks bar
+    write_default com.apple.Safari ProxiesInBookmarksBar -string "()"
+
+    # Enable the Develop menu and the Web Inspector in Safari
+    write_default com.apple.Safari IncludeDevelopMenu -bool true
+    write_default com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+    write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+    # Add a context menu item for showing the Web Inspector in web views
+    write_default NSGlobalDomain WebKitDeveloperExtras -bool true
+
+    # Disable AutoFill
+    write_default com.apple.Safari AutoFillFromAddressBook -bool false
+    write_default com.apple.Safari AutoFillPasswords -bool false
+    write_default com.apple.Safari AutoFillCreditCardData -bool false
+    write_default com.apple.Safari AutoFillMiscellaneousForms -bool false
+
+    # Warn about fraudulent websites
+    write_default com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
+    # Disable plug-ins
+    write_default com.apple.Safari WebKitPluginsEnabled -bool false
+    write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
+
+    # Disable Java
+    write_default com.apple.Safari WebKitJavaEnabled -bool false
+    write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+    write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles -bool false
+
+    # Block pop-up windows
+    write_default com.apple.Safari WebKitJavaScriptCanOpenWindowsAutomatically -bool false
+    write_default com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaScriptCanOpenWindowsAutomatically -bool false
+
+    # Enable “Do Not Track”
+    write_default com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+    # Update extensions automatically
+    write_default com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
+    kill_process "Safari"
+}
+
 # Mac App Store
+configure_app_store() {
+    # Enable the WebKit Developer Tools in the Mac App Store
+    write_default com.apple.appstore WebKitDeveloperExtras -bool true
 
-# Enable the WebKit Developer Tools in the Mac App Store
-write_default com.apple.appstore WebKitDeveloperExtras -bool true
+    # Enable Debug Menu in the Mac App Store
+    write_default com.apple.appstore ShowDebugMenu -bool true
 
-# Enable Debug Menu in the Mac App Store
-write_default com.apple.appstore ShowDebugMenu -bool true
+    # Enable the automatic update check
+    write_default com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
-# Enable the automatic update check
-write_default com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+    # Check for software updates daily, not just once per week
+    write_default com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
-# Check for software updates daily, not just once per week
-write_default com.apple.SoftwareUpdate ScheduleFrequency -int 1
+    # Download newly available updates in background
+    write_default com.apple.SoftwareUpdate AutomaticDownload -bool true
 
-# Download newly available updates in background
-write_default com.apple.SoftwareUpdate AutomaticDownload -bool true
+    # Install System data files & security updates
+    write_default com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
 
-# Install System data files & security updates
-write_default com.apple.SoftwareUpdate CriticalUpdateInstall -bool true
+    # Automatically download apps purchased on other Macs
+    write_default com.apple.SoftwareUpdate ConfigDataInstall -int 1
 
-# Automatically download apps purchased on other Macs
-write_default com.apple.SoftwareUpdate ConfigDataInstall -int 1
-
-# Turn on app auto-update
-write_default com.apple.commerce AutoUpdate -bool true
+    # Turn on app auto-update
+    write_default com.apple.commerce AutoUpdate -bool true
+}
 
 # 3rd Party Applications
 
 # Mos
+configure_mos() {
+    # Ensure onboarding has been completed before writing defaults
+    ensure_onboarding_completed com.caldis.Mos Mos /Applications/Mos.app
+    if [ $? == 1 ]
+    then
+        exit 1
+    fi
 
-# Ensure onboarding has been completed before writing defaults
-ensure_onboarding_completed com.caldis.Mos Mos /Applications/Mos.app
-if [ $? == 1 ]
-then
-    exit 1
-fi
+    # Prevent the mos settings from messing this up
+    kill_process "Mos"
 
-# Prevent the mos settings from messing this up
-kill_process "Mos"
-
-# Hide menu bar icon
-write_default com.caldis.Mos hideStatusItem -bool true
+    # Hide menu bar icon
+    write_default com.caldis.Mos hideStatusItem -bool true
+}
 
 # Stats
+configure_stats() {
+    # Ensure onboarding has been completed before writing defaults
+    ensure_onboarding_completed eu.exelban.Stats Stats /Applications/Stats.app
+    if [ $? == 1 ]
+    then
+        exit 1
+    fi
 
-# Ensure onboarding has been completed before writing defaults
-ensure_onboarding_completed eu.exelban.Stats Stats /Applications/Stats.app
-if [ $? == 1 ]
-then
-    exit 1
-fi
+    # Prevent the stats settings from messing this up
+    kill_process "Stats"
 
-# Prevent the stats settings from messing this up
-kill_process "Stats"
+    # Run on login
+    write_default eu.exelban.Stats runAtLoginInitialized -bool true
 
-# Run on login
-write_default eu.exelban.Stats runAtLoginInitialized -bool true
+    # Don't show in the dock
+    write_default eu.exelban.Stats dockIcon -bool false
 
-# Don't show in the dock
-write_default eu.exelban.Stats dockIcon -bool false
+    # Only show relevant stats
+    write_default eu.exelban.Stats CPU_state -bool true
+    write_default eu.exelban.Stats GPU_state -bool true
+    write_default eu.exelban.Stats RAM_state -bool true
+    write_default eu.exelban.Stats Network_state -bool true
+    write_default eu.exelban.Stats Sensors_state -bool false
+    write_default eu.exelban.Stats Disk_state -bool false
+    write_default eu.exelban.Stats Battery_state -bool false
 
-# Only show relevant stats
-write_default eu.exelban.Stats CPU_state -bool true
-write_default eu.exelban.Stats GPU_state -bool true
-write_default eu.exelban.Stats RAM_state -bool true
-write_default eu.exelban.Stats Network_state -bool true
-write_default eu.exelban.Stats Sensors_state -bool false
-write_default eu.exelban.Stats Disk_state -bool false
-write_default eu.exelban.Stats Battery_state -bool false
+    # Configure CPU stats
+    write_default eu.exelban.Stats "CPU_barChart_position" -int "3"
+    write_default eu.exelban.Stats "CPU_label_position" -int "1"
+    write_default eu.exelban.Stats "CPU_lineChart_position" -int "0"
+    write_default eu.exelban.Stats "CPU_line_chart_box" -bool false
+    write_default eu.exelban.Stats "CPU_line_chart_frame" -bool true
+    write_default eu.exelban.Stats "CPU_line_chart_label" -bool true
+    write_default eu.exelban.Stats "CPU_line_chart_value" -bool false
+    write_default eu.exelban.Stats "CPU_line_chart_valueColor" -bool false
+    write_default eu.exelban.Stats "CPU_mini_position" -int "2"
+    write_default eu.exelban.Stats "CPU_oneView" -bool false
+    write_default eu.exelban.Stats "CPU_pieChart_position" -int "4"
+    write_default eu.exelban.Stats "CPU_tachometer_position" -int "5"
+    write_default eu.exelban.Stats "CPU_widget" -string "line_chart"
 
-# Configure CPU stats
-write_default eu.exelban.Stats "CPU_barChart_position" -int "3"
-write_default eu.exelban.Stats "CPU_label_position" -int "1"
-write_default eu.exelban.Stats "CPU_lineChart_position" -int "0"
-write_default eu.exelban.Stats "CPU_line_chart_box" -bool false
-write_default eu.exelban.Stats "CPU_line_chart_frame" -bool true
-write_default eu.exelban.Stats "CPU_line_chart_label" -bool true
-write_default eu.exelban.Stats "CPU_line_chart_value" -bool false
-write_default eu.exelban.Stats "CPU_line_chart_valueColor" -bool false
-write_default eu.exelban.Stats "CPU_mini_position" -int "2"
-write_default eu.exelban.Stats "CPU_oneView" -bool false
-write_default eu.exelban.Stats "CPU_pieChart_position" -int "4"
-write_default eu.exelban.Stats "CPU_tachometer_position" -int "5"
-write_default eu.exelban.Stats "CPU_widget" -string "line_chart"
+    # Configure GPU stats
+    write_default eu.exelban.Stats "GPU_barChart_position" -int "0"
+    write_default eu.exelban.Stats "GPU_bar_chart_box" -bool false
+    write_default eu.exelban.Stats "GPU_bar_chart_frame" -bool false
+    write_default eu.exelban.Stats "GPU_bar_chart_label" -bool true
+    write_default eu.exelban.Stats "GPU_label_position" -int "1"
+    write_default eu.exelban.Stats "GPU_lineChart_position" -int "3"
+    write_default eu.exelban.Stats "GPU_mini_position" -int "2"
+    write_default eu.exelban.Stats "GPU_tachometer_position" -int "4"
+    write_default eu.exelban.Stats "GPU_widget" -string "bar_chart"
 
-# Configure GPU stats
-write_default eu.exelban.Stats "GPU_barChart_position" -int "0"
-write_default eu.exelban.Stats "GPU_bar_chart_box" -bool false
-write_default eu.exelban.Stats "GPU_bar_chart_frame" -bool false
-write_default eu.exelban.Stats "GPU_bar_chart_label" -bool true
-write_default eu.exelban.Stats "GPU_label_position" -int "1"
-write_default eu.exelban.Stats "GPU_lineChart_position" -int "3"
-write_default eu.exelban.Stats "GPU_mini_position" -int "2"
-write_default eu.exelban.Stats "GPU_tachometer_position" -int "4"
-write_default eu.exelban.Stats "GPU_widget" -string "bar_chart"
+    # Configure RAM stats
+    write_default eu.exelban.Stats "RAM_barChart_position" -int "3"
+    write_default eu.exelban.Stats "RAM_label_position" -int "1"
+    write_default eu.exelban.Stats "RAM_lineChart_position" -int "0"
+    write_default eu.exelban.Stats "RAM_line_chart_box" -bool false
+    write_default eu.exelban.Stats "RAM_line_chart_frame" -bool true
+    write_default eu.exelban.Stats "RAM_line_chart_label" -bool true
+    write_default eu.exelban.Stats "RAM_line_chart_valueColor" -bool false
+    write_default eu.exelban.Stats "RAM_memory_position" -int "5"
+    write_default eu.exelban.Stats "RAM_mini_position" -int "2"
+    write_default eu.exelban.Stats "RAM_pieChart_position" -int "4"
+    write_default eu.exelban.Stats "RAM_tachometer_position" -int "6"
+    write_default eu.exelban.Stats "RAM_widget" -string "line_chart"
 
-# Configure RAM stats
-write_default eu.exelban.Stats "RAM_barChart_position" -int "3"
-write_default eu.exelban.Stats "RAM_label_position" -int "1"
-write_default eu.exelban.Stats "RAM_lineChart_position" -int "0"
-write_default eu.exelban.Stats "RAM_line_chart_box" -bool false
-write_default eu.exelban.Stats "RAM_line_chart_frame" -bool true
-write_default eu.exelban.Stats "RAM_line_chart_label" -bool true
-write_default eu.exelban.Stats "RAM_line_chart_valueColor" -bool false
-write_default eu.exelban.Stats "RAM_memory_position" -int "5"
-write_default eu.exelban.Stats "RAM_mini_position" -int "2"
-write_default eu.exelban.Stats "RAM_pieChart_position" -int "4"
-write_default eu.exelban.Stats "RAM_tachometer_position" -int "6"
-write_default eu.exelban.Stats "RAM_widget" -string "line_chart"
-
-# Configure Network stats
-write_default eu.exelban.Stats "Network_label_position" -int "1"
-write_default eu.exelban.Stats "Network_networkChart_position" -int "0"
-write_default eu.exelban.Stats "Network_network_chart_frame" -bool true
-write_default eu.exelban.Stats "Network_network_chart_label" -bool true
-write_default eu.exelban.Stats "Network_speed_position" -int "2"
-write_default eu.exelban.Stats "Network_state_position" -int "3"
-write_default eu.exelban.Stats "Network_widget" -string "network_chart"
+    # Configure Network stats
+    write_default eu.exelban.Stats "Network_label_position" -int "1"
+    write_default eu.exelban.Stats "Network_networkChart_position" -int "0"
+    write_default eu.exelban.Stats "Network_network_chart_frame" -bool true
+    write_default eu.exelban.Stats "Network_network_chart_label" -bool true
+    write_default eu.exelban.Stats "Network_speed_position" -int "2"
+    write_default eu.exelban.Stats "Network_state_position" -int "3"
+    write_default eu.exelban.Stats "Network_widget" -string "network_chart"
+}
 
 # Rectangle
 
-# Ensure onboarding has been completed before writing defaults
-ensure_onboarding_completed com.knollsoft.Rectangle Rectangle /Applications/Rectangle.app
-if [ $? == 1 ]
+configure_rectangle() {
+    # Ensure onboarding has been completed before writing defaults
+    ensure_onboarding_completed com.knollsoft.Rectangle Rectangle /Applications/Rectangle.app
+    if [ $? == 1 ]
+    then
+        exit 1
+    fi
+
+    # Prevent the rectangle settings from messing this up
+    kill_process "Rectangle"
+
+    # Launch at startup
+    write_default com.knollsoft.Rectangle launchOnLogin -bool true
+
+    # Hide menu bar icon
+    write_default com.knollsoft.Rectangle hideMenubarIcon -bool true
+
+    # Automatic updates
+    write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
+}
+
+echo "🤔 Which of these apps do you want to configure?"
+apps=$(gum choose --no-limit "dock" "safari" "app store" "mos" "stats" "rectangle")
+
+element_exists_in_array "dock" ${apps[*]}
+if [ $? -eq 0 ]
 then
-    exit 1
+    configure_dock
 fi
 
-# Prevent the rectangle settings from messing this up
-kill_process "Rectangle"
+element_exists_in_array "safari" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_safari
+fi
 
-# Launch at startup
-write_default com.knollsoft.Rectangle launchOnLogin -bool true
+element_exists_in_array "app store" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_app_store
+fi
 
-# Hide menu bar icon
-write_default com.knollsoft.Rectangle hideMenubarIcon -bool true
+element_exists_in_array "mos" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_mos
+fi
 
-# Automatic updates
-write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
+element_exists_in_array "stats" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_stats
+fi
+
+element_exists_in_array "rectangle" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_rectangle
+fi
 
 # Kill affected applications
 for app in "Activity Monitor" \
