@@ -48,6 +48,7 @@ cask "spotify"
 cask "stats"
 cask "visual-studio-code"
 cask "webstorm"
+cask "zoom"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Bitwarden", id: 1352778147
