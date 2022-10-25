@@ -1,4 +1,5 @@
 # General
+alias reload="source ~/.zshrc"
 alias c="clear"
 
 # Enable ls colors
