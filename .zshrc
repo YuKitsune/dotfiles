@@ -3,8 +3,7 @@ source $HOME/.plug.zsh
 # Plugins
 plugin "https://github.com/romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
-plugin "https://github.com/marlonrichert/zsh-autocomplete" "zsh-autocomplete.plugin.zsh"
-plugin "https://github.com/zdharma-continuum/fast-syntax-highlighting" "fast-syntax-highlighting.plugin.zsh"
+plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
 # Preferred editor for local and remote sessions
 export EDITOR="nvim"
