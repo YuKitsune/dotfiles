@@ -44,9 +44,8 @@ install() {
     echo "🍺 🧹 Cleaning up brews"
     brew bundle cleanup --force
 
-    # Todo: Move this into a more generic script once there are more
-    echo "🚀 🔧 Installing dockutil"
-    sh ./scripts/dockutil.sh
+    echo "📦 🌏 Installing packages"
+    sudo sh ./scripts/packages.sh
 
     # Install VSCode plugins
     sh ./scripts/vscode.sh sync

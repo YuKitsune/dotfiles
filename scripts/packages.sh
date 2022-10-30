@@ -5,6 +5,8 @@ source $PWD/scripts/utils.sh
 brew_versions=$(brew list --versions)
 applications=$(find /Applications -path '*.app' -maxdepth 5 -print)
 
+# Todo: Ask for sudo. It's required to install packages
+
 is_installed() {
     for name in "$@"; do
 
@@ -67,3 +69,4 @@ install() {
 }
 
 install dockutil https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+install yubikey-manager-qt-latest-mac https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-mac.pkg
