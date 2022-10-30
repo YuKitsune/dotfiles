@@ -5,6 +5,16 @@ plugin "https://github.com/romkatv/powerlevel10k" "powerlevel10k.zsh-theme"
 plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
 
+# Case-insensitive completeions
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+# Updated wordchars
+# What's different?
+# - Removed `/`
+# Default: *?_-.[]~=/&;!#$%^(){}<>
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 # Preferred editor for local and remote sessions
 export EDITOR="nvim"
 
