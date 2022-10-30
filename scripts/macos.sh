@@ -431,7 +431,7 @@ configure_stats() {
     # Configure GPU stats
     write_default eu.exelban.Stats "GPU_barChart_position" -int "0"
     write_default eu.exelban.Stats "GPU_bar_chart_box" -bool false
-    write_default eu.exelban.Stats "GPU_bar_chart_frame" -bool false
+    write_default eu.exelban.Stats "GPU_bar_chart_frame" -bool true
     write_default eu.exelban.Stats "GPU_bar_chart_label" -bool true
     write_default eu.exelban.Stats "GPU_label_position" -int "1"
     write_default eu.exelban.Stats "GPU_lineChart_position" -int "3"
