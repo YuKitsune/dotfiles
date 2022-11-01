@@ -47,6 +47,9 @@ install() {
     echo "📦 🌏 Installing packages"
     sudo sh ./scripts/packages.sh
 
+    echo "🔑 🔧 Configuring SSH keys"
+    sh ./scripts/ssh.sh
+
     # Install VSCode plugins
     sh ./scripts/vscode.sh sync
 
