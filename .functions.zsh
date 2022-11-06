@@ -39,10 +39,30 @@ check-dotfile-updates() {
     popd > /dev/null
 }
 
+# Git
+## Quick commit: 
+## 1. Stage all changes
+## 2. Print the status for a sanity check
+## 3. Commit with a message
+## 4. Push to the remote
 qc() {
     git add .
     git status
     commit_message=$(gum input --placeholder "Commit message")
     git commit -m "$commit_message"
     gum spin --title="Pushing" --show-output -- git push
+}
+
+# Kubectl
+## Change context
+kc() {
+    local context=$(kubectl config get-contexts | awk '{print $2}' | tail +2 | gum choose)
+    kubectl config use-context $context
+}
+
+## Change namespace
+kn() {
+    # List all namespaces, take the first column, skip the header, feed them to gum
+    local namespace=$(kubectl get namespace | awk '{print $1}' | tail +2 | gum choose)
+    kubectl config set-context --current --namespace=$namespace
 }

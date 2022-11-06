@@ -13,7 +13,7 @@ alias vim="nvim"
 
 # kubectl
 alias k="kubectl"
-alias kgp="kubectl get pods -A"
+alias kgp="kubectl get pods"
 alias kdp="kubectl describe pod"
 alias kl="kubectl logs"
 
