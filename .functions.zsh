@@ -50,7 +50,14 @@ qc() {
     git status
     commit_message=$(gum input --placeholder "Commit message")
     git commit -m "$commit_message"
-    gum spin --title="Pushing" --show-output -- git push
+
+    gum confirm "Force push?"
+    if [ $? -eq 0 ]
+    then
+        gum spin --title="Pushing" --show-output -- git push
+    else
+	gum spin --title="Pushing" --show-output -- git push -f
+    fi
 }
 
 # Kubectl
