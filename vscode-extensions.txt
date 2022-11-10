@@ -1,4 +1,5 @@
 dbaeumer.vscode-eslint
+dracula-theme.theme-dracula
 golang.go
 maptz.camelcasenavigation
 mikestead.dotenv
