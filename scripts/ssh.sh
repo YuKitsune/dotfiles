@@ -2,25 +2,9 @@
 
 source $PWD/scripts/utils.sh
 
-import_command="import"
-link_command="link"
+echo "🔑 📥 Importing SSH Keys"
 
-command=$(get_command "$1" "$import_command" "$link_command")
-if [ $? -ne 0 ]
-then
-    echo "👋 Bye!"
-    exit 1
-fi
-
-if [ "$command" == "$import_command" ]
-then
-    echo "🔑 📥 Importing SSH Keys"
-elif [ "$command" == "$link_command" ]
-then
-    echo "🔑 🔗 Linking SSH Keys"
-fi
-
-echo "🔑 Please select the directory containing your SSH keys:"
+echo "🔑 📀 Please select the volume containing your SSH keys:"
 volume=$(ls -1 -d -p /Volumes/* | gum choose)
 if [ $? -ne 0 ]
 then
@@ -28,7 +12,7 @@ then
     exit 1
 fi
 
-echo "🔑 Selected $volume"
+echo "🔑 📀 Selected $volume"
 # volume=$(echo $volume | sed 's/ /\\ /g') # Escape spaces
 source_dir="$volume/.ssh"
 if [ ! -d "$source_dir" ]
@@ -73,15 +57,8 @@ do
         fi
     fi
 
-    if [ "$command" == "$import_command" ]
-    then
-        echo "🔑 📥 Copying \"$file\" to \"$target\""
-        cp "$source_file" "$target"
-    elif [ "$command" == "$link_command" ]
-    then
-        echo "🔑 🔗 Linking \"$source_file\" to \"$target\""
-        ln -s "$source_file" "$target"
-    fi
+    echo "🔑 📥 Copying \"$source_file\" to \"$target\""
+    cp "$source_file" "$target"
 done
 
 # popd > /dev/null
