@@ -81,6 +81,9 @@ sync() {
     echo "🍺 🧹 Cleaning up brews"
     brew bundle --force cleanup
 
+    echo "🔑 🔧 Configuring SSH keys"
+    sh ./scripts/ssh.sh
+
     # Install VSCode plugins
     sh ./scripts/vscode.sh sync
 
