@@ -13,9 +13,16 @@ alias vim="nvim"
 
 # kubectl
 alias k="kubectl"
+
+alias ka="kubectl apply"
+alias kd="kubectl delete"
+
 alias kgp="kubectl get pods"
 alias kdp="kubectl describe pod"
 alias kl="kubectl logs"
+
+alias kpv="kubectl get pv"
+alias kpvc="kubectl get pvc"
 
 # docker
 alias dp="docker ps"
