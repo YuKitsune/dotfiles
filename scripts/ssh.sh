@@ -4,6 +4,9 @@ source $PWD/scripts/utils.sh
 
 echo "🔑 📥 Importing SSH Keys"
 
+echo "🔑 ✋ Before we try to import SSH keys, ensure the external volume is connected, then press any key to continue..."
+read -n 1 key <&1
+
 echo "🔑 📀 Please select the volume containing your SSH keys:"
 volume=$(ls -1 -d -p /Volumes/* | gum choose)
 if [ $? -ne 0 ]
