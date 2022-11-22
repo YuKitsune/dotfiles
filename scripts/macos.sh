@@ -265,6 +265,7 @@ configure_dock() {
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
     add_dock_item /Applications/Discord.app
+    add_dock_item /Applications/Slack.app
     add_dock_item /Applications/Spotify.app
     add_dock_item /Applications/Hyper.app
     add_dock_item ~/Downloads
