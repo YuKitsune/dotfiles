@@ -63,19 +63,19 @@ install() {
     reboot_prompt
 }
 
-update() {
+dump() {
 
     # Dump brews to brewfile
     echo "🍺 ♻️ Writing brews"
     brew bundle dump --force
 
     # Dump VSCode plugins to file
-    sh ./scripts/vscode.sh update
+    sh ./scripts/vscode.sh dump
 
     echo "👋 All done!"
 }
 
-sync() {
+apply() {
 
     # Update brews to match what's in the file
     echo "🍺 🧹 Cleaning up brews"
@@ -85,7 +85,7 @@ sync() {
     sh ./scripts/ssh.sh
 
     # Install VSCode plugins
-    sh ./scripts/vscode.sh sync
+    sh ./scripts/vscode.sh apply
 
     # Configure macOS defaults
     sh ./scripts/macos.sh
@@ -112,11 +112,11 @@ uninstall() {
 bootstrap
 
 install_command="install"
-update_command="update"
-sync_command="sync"
+dump_command="dump"
+apply_command="apply"
 uninstall_command="uninstall"
 
-command=$(get_command "$1" $install_command $update_command $sync_command $uninstall_command)
+command=$(get_command "$1" $install_command $dump_command $apply_command $uninstall_command)
 if [ $? -ne 0 ]
 then
     echo "👋 Bye!"
@@ -126,12 +126,12 @@ fi
 if [ $command == $install_command ]
 then
     install
-elif [ $command == $update_command ]
+elif [ $command == $dump_command ]
 then
-    update
-elif [ $command == $sync_command ]
+    dump
+elif [ $command == $apply_command ]
 then
-    sync
+    apply
 elif [ $command == $uninstall_command ]
 then
     uninstall

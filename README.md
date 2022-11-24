@@ -31,13 +31,13 @@ cd dotfiles
 ## `install`
 `install` will download, install, and configure everything
 
-## `update`
-`update` will update the `Brewfile` and VSCode extensions based on what's installed on the current system.
+## `dump`
+`dump` will update the `Brewfile` and VSCode extensions file based on what's installed on the current system.
 Use this if you've installed or removed brews or extensions, and want the dotfiles to reflect the changes.
 
-## `sync`
-`sync` will re-apply any configurations, ensure all symlinks are created, re-sync brews and VSCode plugins.
-This is the opposite of `update`. Use this if updates have been made elsewhere, and you want to reflect them on the current system.
+## `apply`
+`apply` will re-apply any configurations, ensure all symlinks are created, install brews and VSCode plugins.
+This is sorta the opposite of `dump`. Use this if changes have been made elsewhere, and you want to reflect them on the current system.
 
 ## `uninstall`
 `uninstall` _should_ revert as many changes as possible made by these scripts. Some things need to be undone manually.

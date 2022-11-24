@@ -4,14 +4,14 @@ source $PWD/scripts/utils.sh
 
 extensions_file=$PWD/vscode-extensions.txt
 
-update_plugins() {
-    echo "⌨️ Updating VSCode Plugins file"
+dump_plugins() {
+    echo "⌨️ Dumping VSCode Plugins"
     code --list-extensions > $extensions_file
     print_result $? "Extensions file updated" "Failed to update extensions file"
 }
 
-sync_plugins() {
-    echo "⌨️ Syncing VSCode Plugins from file"
+apply_plugins() {
+    echo "⌨️ Installing VSCode Plugins"
     readarray -t extensions < $extensions_file
     for i in ${extensions[@]}; do
         gum spin --title="Installing $i" --show-output -- code --install-extension $i --force
@@ -19,20 +19,20 @@ sync_plugins() {
     done
 }
 
-update_command="update"
-sync_command="sync"
+dump_command="dump"
+apply_command="apply"
 
-command=$(get_command "$1" "$update_command" "$sync_command")
+command=$(get_command "$1" "$dump_command" "$apply_command")
 if [ $? -ne 0 ]
 then
     echo "👋 Bye!"
     exit 1
 fi
 
-if [ "$command" == "$update_command" ]
+if [ "$command" == "$dump_command" ]
 then
-    update_plugins
-elif [ "$command" == "$sync_command" ]
+    dump_plugins
+elif [ "$command" == "$apply_command" ]
 then
-    sync_plugins
+    apply_plugins
 fi
