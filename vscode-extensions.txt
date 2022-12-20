@@ -1,14 +1,12 @@
 dbaeumer.vscode-eslint
 dracula-theme.theme-dracula
+esbenp.prettier-vscode
 golang.go
 maptz.camelcasenavigation
 mikestead.dotenv
 ms-azuretools.vscode-docker
 ms-dotnettools.csharp
-ms-kubernetes-tools.vscode-kubernetes-tools
-rangav.vscode-thunder-client
-redhat.vscode-yaml
 rust-lang.rust-analyzer
-rvest.vs-code-prettier-eslint
+svelte.svelte-vscode
 vscode-icons-team.vscode-icons
-zhuangtongfa.material-theme
+wayou.vscode-todo-highlight

@@ -15,7 +15,6 @@ brew "hugo"
 brew "kubernetes-cli"
 brew "lazydocker"
 brew "lazygit"
-brew "python@3.10"
 brew "libfido2"
 brew "lolcat"
 brew "lsusb"
@@ -27,6 +26,8 @@ brew "node"
 brew "pnpm"
 brew "openssh"
 brew "watch"
+brew "python@3.10"
+brew "rust"
 brew "wget"
 brew "youtube-dl"
 brew "zsh"
@@ -54,11 +55,12 @@ cask "visual-studio-code"
 cask "webstorm"
 cask "zoom"
 mas "Affinity Designer", id: 824171161
+cask "tailscale"
 mas "Affinity Photo", id: 824183456
 mas "Bitwarden", id: 1352778147
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
-mas "Tailscale", id: 1475387142
+mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
