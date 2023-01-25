@@ -1,7 +1,10 @@
+bradlc.vscode-tailwindcss
+bungcip.better-toml
 dbaeumer.vscode-eslint
 dracula-theme.theme-dracula
 esbenp.prettier-vscode
 golang.go
+heybourn.headwind
 maptz.camelcasenavigation
 mikestead.dotenv
 ms-azuretools.vscode-docker
