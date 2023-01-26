@@ -13,7 +13,7 @@ bootstrap() {
         echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
         eval "$(/opt/homebrew/bin/brew shellenv)"
     else
-        echo "🍺 ✅ Brew installed"
+        echo "🍺 Brew installed"
     fi
 
     which gum > /dev/null
@@ -23,7 +23,7 @@ bootstrap() {
         echo "🍬 Downloading and Installig gum"
         brew install gum
     else
-        echo "🍬 ✅ Gum installed"
+        echo "🍬 Gum installed"
     fi
 }
 
@@ -38,16 +38,16 @@ reboot_prompt() {
 install() {
 
     # Install brews from the brewfile
-    echo "🍺 ♻️ Syncing brews"
+    echo "🍺 Syncing brews"
     brew bundle
 
-    echo "🍺 🧹 Cleaning up brews"
+    echo "🍺 Cleaning up brews"
     brew bundle cleanup --force
 
-    echo "📦 🌏 Installing packages"
+    echo "📦 Installing packages"
     sudo sh ./scripts/packages.sh
 
-    echo "🔑 🔧 Configuring SSH keys"
+    echo "🔑 Configuring SSH keys"
     sh ./scripts/ssh.sh
 
     # Install VSCode plugins
@@ -78,10 +78,10 @@ dump() {
 apply() {
 
     # Update brews to match what's in the file
-    echo "🍺 🧹 Cleaning up brews"
+    echo "🍺 Cleaning up brews"
     brew bundle --force cleanup
 
-    echo "🔑 🔧 Configuring SSH keys"
+    echo "🔑 Configuring SSH keys"
     sh ./scripts/ssh.sh
 
     # Install VSCode plugins

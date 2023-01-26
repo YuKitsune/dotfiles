@@ -2,6 +2,7 @@
 alias reload="source ~/.zshrc"
 alias c="clear"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
+alias t="task"
 
 # Enable ls colors
 alias l="ls -lah --color"
