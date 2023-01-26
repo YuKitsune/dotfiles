@@ -2,5 +2,6 @@
     "workbench.colorTheme": "One Dark Pro",
     "workbench.iconTheme": "vscode-icons",
     "terminal.external.osxExec": "Hyper.app",
-    "terminal.integrated.fontFamily": "MesloLGS NF"
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "diffEditor.ignoreTrimWhitespace": false
 }
