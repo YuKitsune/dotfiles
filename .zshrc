@@ -57,4 +57,3 @@ check-dotfile-updates
 
 # lmao
 neofetch
-fortune | cowsay | lolcat
