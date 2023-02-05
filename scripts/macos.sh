@@ -409,7 +409,7 @@ configure_stats() {
     write_default eu.exelban.Stats CPU_state -bool true
     write_default eu.exelban.Stats GPU_state -bool true
     write_default eu.exelban.Stats RAM_state -bool true
-    write_default eu.exelban.Stats Network_state -bool true
+    write_default eu.exelban.Stats Network_state -bool false
     write_default eu.exelban.Stats Sensors_state -bool false
     write_default eu.exelban.Stats Disk_state -bool false
     write_default eu.exelban.Stats Battery_state -bool false
@@ -453,15 +453,6 @@ configure_stats() {
     write_default eu.exelban.Stats "RAM_pieChart_position" -int "4"
     write_default eu.exelban.Stats "RAM_tachometer_position" -int "6"
     write_default eu.exelban.Stats "RAM_widget" -string "line_chart"
-
-    # Configure Network stats
-    write_default eu.exelban.Stats "Network_label_position" -int "1"
-    write_default eu.exelban.Stats "Network_networkChart_position" -int "0"
-    write_default eu.exelban.Stats "Network_network_chart_frame" -bool true
-    write_default eu.exelban.Stats "Network_network_chart_label" -bool true
-    write_default eu.exelban.Stats "Network_speed_position" -int "2"
-    write_default eu.exelban.Stats "Network_state_position" -int "3"
-    write_default eu.exelban.Stats "Network_widget" -string "network_chart"
 }
 
 # Rectangle
