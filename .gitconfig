@@ -1,6 +1,7 @@
 [user]
 	name = Eoin Motherway
 	email = 25342760+YuKitsune@users.noreply.github.com
+	signingkey = ~/.ssh/id_ed25519.pub
 
 [core]
 	editor = nvim
@@ -23,3 +24,9 @@
 
 [mergetool "vscode"]
 	cmd = code --wait $MERGED
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
