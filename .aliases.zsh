@@ -37,11 +37,11 @@ alias g="git"
 alias gl="git log"
 alias gs="git status"
 
-alias gc="git checkout"
-alias ga="git add ."
-alias gcm="git commit -m"
-alias gd="git pull" # "pull Down"
-alias gu="git push" # "push Up"
+alias gco="git checkout"
+alias ga="git add"
+alias gcm="git commit"
+alias gpl="git pull"
+alias gps="git push"
 
 alias yeet="git add . && git commit -m 'yeet' && git push"
 
