@@ -5,8 +5,9 @@ alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias t="task"
 
 # Enable ls colors
-alias l="ls -lah --color"
-alias diff="diff --color"
+alias l="exa --oneline --icons"
+alias diff="diff-so-fancy"
+alias du="dua-cli"
 
 # nvim
 alias vi="nvim"
