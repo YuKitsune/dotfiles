@@ -88,9 +88,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 # General UI/UX
 
-# Automatically switch between Light and Dark mode
-write_default NSGlobalDomain AppleInterfaceStyle -string Light
-write_default NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+# Dark mode!
+write_default NSGlobalDomain AppleInterfaceStyle -string Dark
 
 # Expand save panel by default
 write_default NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -254,6 +253,9 @@ configure_dock() {
 
     # Make Dock icons of hidden applications translucent
     write_default com.apple.dock showhidden -bool true
+
+    # Prevent spaces from rearranging based on activity 
+    defaults write com.apple.dock "mru-spaces" -bool "false"
 
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
