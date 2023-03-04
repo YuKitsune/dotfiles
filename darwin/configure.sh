@@ -2,6 +2,9 @@
 
 source $PWD/scripts/utils.sh
 
+# Set up a trap to catch the interrupt signal and exit the script
+trap 'echo "SIGINT detected. Exiting..."; exit 1' SIGINT
+
 function write_default() {
     local usage="\
 Usage:
