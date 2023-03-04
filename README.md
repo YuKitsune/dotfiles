@@ -58,5 +58,3 @@ I have a number of pre-defined [aliases](https://github.com/yukitsune/dotfiles/m
 I am using [`brew`](https://brew.sh) to install most apps for my mac. I also sync apps from the App Store with `brew` via [`mas`](https://github.com/mas-cli/mas), so the resulting Brewfile contains pretty much everything.
 
 I also use a [custom script](https://github.com/yukitsune/dotfiles/main/blob/darwin/install_package.sh) to automatically download and install packages from a `.pkg` file.
-
-## 
