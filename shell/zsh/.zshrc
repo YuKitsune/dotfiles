@@ -55,5 +55,5 @@ export PATH=$(brew --prefix openssh)/bin:$PATH
 # Check for any updates to the dotfiles
 check-dotfile-updates
 
-# lmao
+# MotD
 neofetch

@@ -2,17 +2,20 @@
 
 source $PWD/scripts/utils.sh
 
-echo "🔑 📥 Importing SSH Keys"
+# Set up a trap to catch the interrupt signal and exit the script
+trap 'echo "SIGINT detected. Exiting..."; exit 1' SIGINT
 
-echo "🔑 ✋ Before we try to import SSH keys, ensure the external volume is connected, then press any key to continue..."
+echo "🔑 Configuring SSH keys"
+echo "✋ Before we try to import SSH keys, ensure the external volume is connected, then press any key to continue..."
 read -n 1 key <&1
 
+# TODO: Let user select .ssh directory instead of volume
 echo "🔑 📀 Please select the volume containing your SSH keys:"
 volume=$(ls -1 -d -p /Volumes/* | gum choose)
 if [ $? -ne 0 ]
 then
     echo "🔑 ❌ Failed to select SSH keys volume"
-    exit 1
+    return 1
 fi
 
 echo "🔑 📀 Selected $volume"
@@ -21,11 +24,10 @@ source_dir="$volume/.ssh"
 if [ ! -d "$source_dir" ]
 then
     echo "🔑 ❌ No \".ssh\" directory exists in $volume"
-    exit 1
+    return 1
 fi
 
 echo "🔑 Using $source_dir for SSH keys"
-# pushd "$source_dir" > /dev/null
 
 # List files only
 files=$(ls "$source_dir")
@@ -63,5 +65,3 @@ do
     echo "🔑 📥 Copying \"$source_file\" to \"$target\""
     cp "$source_file" "$target"
 done
-
-# popd > /dev/null

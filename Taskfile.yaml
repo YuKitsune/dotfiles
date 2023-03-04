@@ -1,0 +1,65 @@
+version: '3'
+
+includes:
+  system:
+    taskfile: ./{{OS}}/Taskfile.yaml
+    
+  vscode:
+    taskfile: ./vscode/Taskfile.yaml
+
+vars:
+  BACKUP_DIR: $HOME/.dotfile_backup
+
+tasks:
+
+  default:
+    cmds:
+      - task --list-all
+
+  apply:
+    summary: Downloads necessary packages and applications, configures various settings, installs plugins, and creates symlinks to the config files managed in this git repository.
+    cmds:
+      - task: system:apply-packages
+      - task: configure
+      - task: vscode:apply-plugins
+      - task: create-symlinks
+
+  configure:
+    summary: Configures the local environment, as well as various first-party and third-party applications.
+    cmds:
+      - interactive: true
+        task: system:configure
+
+  dump:
+    summary: Writes the state of the local environment (currently just packages and plugins) to this git repository.
+    cmds:
+      - task: system:dump-packages
+      - task: vscode:dump-plugins
+
+  import-ssh-keys:
+    - platforms: [linux, darwin]
+      summary: Imports SSH keys.
+      interactive: true
+      cmd: ./scripts/import_ssh_keys.sh
+
+    - platforms: [windows]
+      interactive: true
+      cmd: echo "❌ Not yet implemented"
+  
+  create-symlinks:
+    summary: Creates symlinks for the config files managed in this git repository so that they can be read by their intended application.
+    vars:
+      BACKUP_COMMANDS: 
+        sh: yq '.links[] comments="" | .links[] | "test -e " + .destination + " && mv " + .destination + " {{.BACKUP_DIR}}/$(basename " + .source + ")-backup-$(date +%Y-%m-%d_%H:%M:%S)"' symlinks.yaml
+      LINK_COMMANDS:
+        sh: yq '.links[] comments="" | .links[] | "ln " + .source + " " + .destination' symlinks.yaml
+
+    cmds:
+      - platforms: [linux, darwin]
+        cmd: |
+          mkdir -p {{.BACKUP_DIR}}
+          {{.BACKUP_COMMANDS}}
+          {{.LINK_COMMANDS}}
+
+      - platforms: [windows]
+        cmd: echo "❌ Not yet implemented"

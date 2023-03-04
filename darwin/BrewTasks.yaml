@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  apply:
+    summary: Downloads and installs brews listed in the Brewfile.
+    platforms: [darwin]
+    cmds:
+      - defer: { task: cleanup }
+      - echo "🍺 Applying brews"
+      - brew bundle --file ./Brewfile
+
+  cleanup:
+    summary: Uninstall brews not listed in the Brewfile.
+    platforms: [darwin]
+    cmds:
+      - echo "🍺 Cleaning up brews"
+      - brew bundle cleanup --file ./Brewfile --force
+
+  dump:
+    summary: Write all installed casks/formulae/images/taps into the Brewfile.
+    platforms: [darwin]
+    cmds:
+      - echo "🍺 ♻️ Dumping brews"
+      - brew bundle dump --file ./Brewfile --force

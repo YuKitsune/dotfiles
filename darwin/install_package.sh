@@ -5,9 +5,7 @@ source $PWD/scripts/utils.sh
 brew_versions=$(brew list --versions)
 applications=$(find /Applications -path '*.app' -maxdepth 5 -print)
 
-# Todo: Ask for sudo. It's required to install packages
-
-is_installed() {
+function _package_is_installed() {
     for name in "$@"; do
 
         # Check the brew list first
@@ -38,17 +36,29 @@ is_installed() {
     done
 }
 
-install() {
+function _install_package() {
+    local usage="\
+Usage:
+  ${FUNCNAME[0]} <package_name> <package_url>
+Sample:
+  ${FUNCNAME[0]} dockutil https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg"
+
+    if [[ ${#} -lt 2 ]]
+    then
+        echo -e "${usage}" > /dev/tty
+        return 1
+    fi
+
     name=$1
     url=$2
     file_name=$(basename $url)
 
-    is_installed $name > /dev/null
+    _package_is_installed $name > /dev/null
     thing_exists=$?
 
     if [ $thing_exists -eq 0 ]
     then
-        echo "⏭ $name already installed"
+        echo "$name already installed"
         return 0
     fi
 
@@ -60,7 +70,7 @@ install() {
         return 1
     fi
 
-    gum spin --show-output --title "Installing $name" -- installer -pkg $HOME/Downloads/$file_name -target /
+    gum spin --show-output --title "Installing $name" -- sudo installer -pkg $HOME/Downloads/$file_name -target /
     print_result $? "$name installed" "Failed to install $name"
     if [ $? -ne 0 ]
     then
@@ -68,5 +78,4 @@ install() {
     fi
 }
 
-install dockutil https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
-install yubikey-manager-qt-latest-mac https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-mac.pkg
+_install_package $@

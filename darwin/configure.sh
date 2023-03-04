@@ -2,7 +2,7 @@
 
 source $PWD/scripts/utils.sh
 
-write_default() {
+function write_default() {
     local usage="\
 Usage:
   ${FUNCNAME[0]} <domain> <key> <type> <value>
@@ -24,7 +24,7 @@ Sample:
     defaults write $domain "$key" $type $value
 }
 
-ensure_onboarding_completed() {
+function ensure_onboarding_completed() {
     local usage="\
 Usage:
   ${FUNCNAME[0]} <domain> <name> <path>
@@ -65,173 +65,192 @@ Sample:
     return 0
 }
 
-kill_process() {
+function kill_process() {
     name=$1
     pgrep $name > /dev/null
     if [ $? -eq 0 ]
     then
-        echo "🔫 Killing $name" > /dev/tty
-        killall "$name"
+        gum confirm "🫣 Kill $name?"
+        if [ $? -eq 0 ]
+        then
+            echo "🔫 Killing $name" > /dev/tty
+            killall "$name"
+        else
+            echo "😮‍💨 $name spared. It may require a restart." > /dev/tty
+            return 1
+        fi
     fi
+
+    return 0
 }
 
 dir=$(dirname "$0")
 
-echo "🍎 Configuring macOS"
+# Todo: Configure menu bar
 
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
+function configure_macos() {
 
-# Keep-alive: update existing `sudo` time stamp until this script has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+    echo "To prevent the System Settings app from overriding any of the settings we're about to change, we need to kill it."
+    kill_process "System Settings"
+    if [ $? -ne 0 ]
+    then
+        echo "Skipping System Settings..."
+        return 1
+    fi
 
-# General UI/UX
+    # General UI/UX
 
-# Automatically switch between Light and Dark mode
-write_default NSGlobalDomain AppleInterfaceStyle -string Light
-write_default NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool true
+    # Dark mode
+    write_default NSGlobalDomain AppleInterfaceStyle -string Dark
+    write_default NSGlobalDomain AppleInterfaceStyleSwitchesAutomatically -bool false
 
-# Expand save panel by default
-write_default NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-write_default NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
+    # Expand save panel by default
+    write_default NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+    write_default NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
-# Keyboard and Trackpad
+    # Keyboard and Trackpad
 
-# Keyboard: Use F-keys as normal function keys
-write_default NSGlobalDomain com.apple.keyboard.fnState -bool true
+    # Keyboard: Use F-keys as normal function keys
+    write_default NSGlobalDomain com.apple.keyboard.fnState -bool true
 
-# Keyboard: Set a blazingly fast keyboard repeat rate
-write_default NSGlobalDomain KeyRepeat -int 1
-write_default NSGlobalDomain InitialKeyRepeat -int 10
+    # Keyboard: Set a blazingly fast keyboard repeat rate
+    write_default NSGlobalDomain KeyRepeat -int 1
+    write_default NSGlobalDomain InitialKeyRepeat -int 10
 
-# Trackpad: enable tap to click for this user and for the login screen
-write_default com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-write_default NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+    # Trackpad: enable tap to click for this user and for the login screen
+    write_default com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    write_default NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Trackpad: Tracking speed
-write_default .GlobalPreferences com.apple.trackpad.scaling -int 1
+    # Trackpad: Tracking speed
+    write_default .GlobalPreferences com.apple.trackpad.scaling -int 1
 
-# Siri
-write_default com.apple.assistant.support "Assistant Enabled" -bool false
+    # Siri
+    write_default com.apple.assistant.support "Assistant Enabled" -bool false
 
-# Search engine
-echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo"
-/usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo" $HOME/Library/Preferences/.GlobalPreferences.plist
+    # Search engine
+    echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo"
+    /usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo" $HOME/Library/Preferences/.GlobalPreferences.plist
 
-echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo\""
-/usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo\"" $HOME/Library/Preferences/.GlobalPreferences.plist
+    echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo.www\""
+    /usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo.www\"" $HOME/Library/Preferences/.GlobalPreferences.plist
 
-# Audio
+    # Audio
 
-# Increase sound quality for Bluetooth headphones/headsets
-write_default com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+    # Increase sound quality for Bluetooth headphones/headsets
+    write_default com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
-# Screen
+    # Screen
 
-# Require password immediately after sleep or screen saver begins
-write_default com.apple.screensaver askForPassword -int 1
-write_default com.apple.screensaver askForPasswordDelay -int 0
+    # Require password immediately after sleep or screen saver begins
+    write_default com.apple.screensaver askForPassword -int 1
+    write_default com.apple.screensaver askForPasswordDelay -int 0
 
-# Disable auto-correct
-write_default NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+    # Disable auto-correct
+    write_default NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# Todo: Configure menu bar icons
+    # Todo: Limit IP address tracking
+}
 
-# Finder
+function configure_finder() {
 
-# Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
-write_default com.apple.finder QuitMenuItem -bool true
+    # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+    write_default com.apple.finder QuitMenuItem -bool true
 
-# Set Desktop as the default location for new Finder windows
-# Computer     : `PfCm`
-# Volume       : `PfVo`
-# $HOME        : `PfHm`
-# Desktop      : `PfDe`
-# Documents    : `PfDo`
-# All My Files : `PfAF`
-# Other…       : `PfLo`
-write_default com.apple.finder NewWindowTarget -string 'PfHm'
-write_default com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+    # Set Desktop as the default location for new Finder windows
+    # Computer     : `PfCm`
+    # Volume       : `PfVo`
+    # $HOME        : `PfHm`
+    # Desktop      : `PfDe`
+    # Documents    : `PfDo`
+    # All My Files : `PfAF`
+    # Other…       : `PfLo`
+    write_default com.apple.finder NewWindowTarget -string 'PfHm'
+    write_default com.apple.finder NewWindowTargetPath -string "file://${HOME}"
 
-# Show icons for hard drives, servers, and removable media on the desktop
-write_default com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-write_default com.apple.finder ShowHardDrivesOnDesktop -bool true
-write_default com.apple.finder ShowMountedServersOnDesktop -bool true
-write_default com.apple.finder ShowRemovableMediaOnDesktop -bool true
+    # Show icons for hard drives, servers, and removable media on the desktop
+    write_default com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+    write_default com.apple.finder ShowHardDrivesOnDesktop -bool true
+    write_default com.apple.finder ShowMountedServersOnDesktop -bool true
+    write_default com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Sidebar sections
-write_default com.apple.finder SidebarDevicesSectionDisclosedState -bool true
-write_default com.apple.finder SidebarPlacesSectionDisclosedState -bool true
-write_default com.apple.finder SidebarShowingSignedIntoiCloud -bool true
-write_default com.apple.finder SidebarShowingiCloudDesktop -bool true
-write_default com.apple.finder SidebarTagsSctionDisclosedState -bool false
+    # Sidebar sections
+    write_default com.apple.finder SidebarDevicesSectionDisclosedState -bool true
+    write_default com.apple.finder SidebarPlacesSectionDisclosedState -bool true
+    write_default com.apple.finder SidebarShowingSignedIntoiCloud -bool true
+    write_default com.apple.finder SidebarShowingiCloudDesktop -bool true
+    write_default com.apple.finder SidebarTagsSctionDisclosedState -bool false
 
-# Show hidden files by default
-write_default com.apple.finder AppleShowAllFiles -bool true
+    # Show hidden files by default
+    write_default com.apple.finder AppleShowAllFiles -bool true
 
-# Show all filename extensions
-write_default NSGlobalDomain AppleShowAllExtensions -bool true
+    # Show all filename extensions
+    write_default NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Disable the warning when changing a file extension
-write_default com.apple.finder FXEnableExtensionChangeWarning -bool false
+    # Disable the warning when changing a file extension
+    write_default com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Remove trash items after 30 days
-write_default com.apple.finder FXRemoveOldTrashItems -bool true
+    # Remove trash items after 30 days
+    write_default com.apple.finder FXRemoveOldTrashItems -bool true
 
-# View Options
+    # View Options
 
-# Show status bar
-write_default com.apple.finder ShowStatusBar -bool true
+    # Show status bar
+    write_default com.apple.finder ShowStatusBar -bool true
 
-# Show path bar
-write_default com.apple.finder ShowPathbar -bool true
+    # Show path bar
+    write_default com.apple.finder ShowPathbar -bool true
 
-# Tab Bar
-# Show icon and text in the tab bar
-/usr/libexec/PlistBuddy -c "Set :\"NSToolbar Configuration Browser\":\"TB Display Mode\" 1" $HOME/Library/Preferences/com.apple.finder.plist
+    # Tab Bar
+    # Show icon and text in the tab bar
+    /usr/libexec/PlistBuddy -c "Set :\"NSToolbar Configuration Browser\":\"TB Display Mode\" 1" $HOME/Library/Preferences/com.apple.finder.plist
 
-# Avoid creating .DS_Store files on network or USB volumes
-write_default com.apple.desktopservices DSDontWriteNetworkStores -bool true
-write_default com.apple.desktopservices DSDontWriteUSBStores -bool true
+    # Avoid creating .DS_Store files on network or USB volumes
+    write_default com.apple.desktopservices DSDontWriteNetworkStores -bool true
+    write_default com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use column view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
-write_default com.apple.finder FXPreferredViewStyle -string "clmv"
+    # Use column view in all Finder windows by default
+    # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
+    write_default com.apple.finder FXPreferredViewStyle -string "clmv"
 
-# Show the ~/Library folder
-chflags nohidden $HOME/Library
+    # Show the ~/Library folder
+    chflags nohidden $HOME/Library
 
-# Show the /Volumes folder
-chflags nohidden /Volumes
+    # Show the /Volumes folder
+    sudo chflags nohidden /Volumes
 
-# Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
-defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+    # Expand the following File Info panes:
+    # “General”, “Open with”, and “Sharing & Permissions”
+    defaults write com.apple.finder FXInfoPanesExpanded -dict \
+        General -bool true \
+        OpenWith -bool true \
+        Privileges -bool true
 
-kill_process "Finder"
+    # Todo: Configure sidebar favourites
 
-# Activity Monitor
+    kill_process "Finder"
+}
 
-# Show all processes in Activity Monitor
-write_default com.apple.ActivityMonitor ShowCategory -int 0
+function configure_activitymonitor() {
 
-# Sort Activity Monitor results by CPU usage
-write_default com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-write_default com.apple.ActivityMonitor SortDirection -int 0
+    # Show all processes in Activity Monitor
+    write_default com.apple.ActivityMonitor ShowCategory -int 0
 
-# Disk Utility
+    # Sort Activity Monitor results by CPU usage
+    write_default com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+    write_default com.apple.ActivityMonitor SortDirection -int 0
 
-# Enable the debug menu in Disk Utility
-write_default com.apple.DiskUtility DUDebugMenuEnabled -bool true
-write_default com.apple.DiskUtility advanced-image-options -bool true
+    kill_process "Activity Monitor"
+}
 
-# Dock
+function configure_diskutility() {
+    # Enable the debug menu in Disk Utility
+    write_default com.apple.DiskUtility DUDebugMenuEnabled -bool true
+    write_default com.apple.DiskUtility advanced-image-options -bool true
 
-add_dock_item() {
+    kill_process "Disk Utility"
+}
+
+function add_dock_item() {
     path=$1
     echo "📝 Adding $path to dock" > /dev/tty
 
@@ -239,7 +258,7 @@ add_dock_item() {
     print_result_if_failed $? "Failed to set dock item"
 }
 
-configure_dock() {
+function configure_dock() {
     # Set the size of the dock
     write_default com.apple.dock "tilesize" -int "40"
 
@@ -273,11 +292,14 @@ configure_dock() {
     kill_process "Dock"
 }
 
-# Safari & WebKit
-configure_safari() {
-    # Privacy: don’t send search queries to Apple
+function configure_safari() {
+    # Privacy: Don’t send search queries to Apple
     write_default com.apple.Safari UniversalSearchEnabled -bool false
     write_default com.apple.Safari SuppressSearchSuggestions -bool true
+
+    # Disable auto-correct
+    write_default com.apple.Safari WebAutomaticSpellingCorrectionEnabled -bool false
+    write_default NSGlobalDomain WebAutomaticSpellingCorrectionEnabled -bool false
 
     # Show the full URL in the address bar (note: this still hides the scheme)
     write_default com.apple.Safari ShowFullURLInSmartSearchField -bool true
@@ -342,8 +364,7 @@ configure_safari() {
     kill_process "Safari"
 }
 
-# Mac App Store
-configure_app_store() {
+function configure_app_store() {
     # Enable the WebKit Developer Tools in the Mac App Store
     write_default com.apple.appstore WebKitDeveloperExtras -bool true
 
@@ -371,8 +392,7 @@ configure_app_store() {
 
 # 3rd Party Applications
 
-# Mos
-configure_mos() {
+function configure_mos() {
     # Ensure onboarding has been completed before writing defaults
     ensure_onboarding_completed com.caldis.Mos Mos /Applications/Mos.app
     if [ $? == 1 ]
@@ -387,8 +407,7 @@ configure_mos() {
     write_default com.caldis.Mos hideStatusItem -bool true
 }
 
-# Stats
-configure_stats() {
+function configure_stats() {
     # Ensure onboarding has been completed before writing defaults
     ensure_onboarding_completed eu.exelban.Stats Stats /Applications/Stats.app
     if [ $? == 1 ]
@@ -455,9 +474,7 @@ configure_stats() {
     write_default eu.exelban.Stats "RAM_widget" -string "line_chart"
 }
 
-# Rectangle
-
-configure_rectangle() {
+function configure_rectangle() {
     # Ensure onboarding has been completed before writing defaults
     ensure_onboarding_completed com.knollsoft.Rectangle Rectangle /Applications/Rectangle.app
     if [ $? == 1 ]
@@ -478,8 +495,42 @@ configure_rectangle() {
     write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
 }
 
+function configure_fork() {
+    write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Developer"
+}
+
+# Todo: Configure Fork.
+# Configuration is stored in ~/Library/Application Support/Fork as an `.ipak` file (Apple binary property list)
+# Need to find a way to read/write these
+
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "dock" "safari" "app store" "mos" "stats" "rectangle")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "activity_monitor" "disk_utility" "safari" "app store" "mos" "stats" "rectangle" "fork")
+
+# First-party
+
+element_exists_in_array "macos" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_macos
+fi
+
+element_exists_in_array "finder" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_finder
+fi
+
+element_exists_in_array "activity_monitor" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_activitymonitor
+fi
+
+element_exists_in_array "disk_utility" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_diskutility
+fi
 
 element_exists_in_array "dock" ${apps[*]}
 if [ $? -eq 0 ]
@@ -499,6 +550,8 @@ then
     configure_app_store
 fi
 
+# Third-party
+
 element_exists_in_array "mos" ${apps[*]}
 if [ $? -eq 0 ]
 then
@@ -517,10 +570,8 @@ then
     configure_rectangle
 fi
 
-# Kill affected applications
-for app in "Activity Monitor" \
-	"Disk Utility" \
-	"SystemUIServer" \
-	"WindowServer"; do
-	killall "${app}" &> /dev/null
-done
+element_exists_in_array "fork" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_fork
+fi

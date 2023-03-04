@@ -1,0 +1,11 @@
+version: '3'
+
+tasks:
+  apply:
+    summary: Downloads and installs packages listed in packages.yaml.
+    platforms: [darwin]
+    vars:
+      PACKAGES_CMD:
+        sh: "yq .packages ./packages.yaml | awk -F': ' '{print \"./install_package.sh\", $1, $2}'"
+    cmds:
+      - '{{.PACKAGES_CMD}}'

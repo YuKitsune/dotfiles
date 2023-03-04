@@ -1,0 +1,33 @@
+links:
+
+  # Git
+  - source: ./config/.gitconfig
+    destination: $HOME/.gitconfig
+
+  - source: ./config/.gitignore
+    destination: $HOME/.gitignore 
+
+  # ZSH
+  - source: ./shell/zsh/.plug.zsh
+    destination: $HOME/.plug.zsh
+
+  - source: ./shell/zsh/.zshrc
+    destination: $HOME/.zshrc
+
+  - source: ./shell/zsh/.p10k.zsh
+    destination: $HOME/.p10k.zsh
+
+  - source: ./shell/zsh/.aliases.zsh
+    destination: $HOME/.aliases.zsh
+
+  - source: ./shell/zsh/.functions.zsh
+    destination: $HOME/.functions.zsh
+
+  # Hyper
+  - source: ./config/.hyper.js
+    destination: $HOME/.hyper.js
+
+  # VS Code
+  # (DO NOT use spaces. It's a bloody mess...)
+  - source: ./vscode/.vscode.json
+    destination: $HOME/Library/Application\ Support/Code/User/settings.json

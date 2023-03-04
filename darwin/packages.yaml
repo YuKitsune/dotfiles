@@ -1,0 +1,3 @@
+packages:
+  dockutil: https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+  yubikey-manager-qt-latest-mac: https://developers.yubico.com/yubikey-manager-qt/Releases/yubikey-manager-qt-latest-mac.pkg
