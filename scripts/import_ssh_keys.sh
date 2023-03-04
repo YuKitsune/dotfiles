@@ -9,25 +9,11 @@ echo "🔑 Configuring SSH keys"
 echo "✋ Before we try to import SSH keys, ensure the external volume is connected, then press any key to continue..."
 read -n 1 key <&1
 
-# TODO: Let user select .ssh directory instead of volume
-echo "🔑 📀 Please select the volume containing your SSH keys:"
-volume=$(ls -1 -d -p /Volumes/* | gum choose)
-if [ $? -ne 0 ]
-then
-    echo "🔑 ❌ Failed to select SSH keys volume"
-    return 1
-fi
+echo "😅 Hear me out... I'm gonna show you a file browser, it's going to ask you to select a file. But what I'm actually gonna do is try to import all keys from what ever directory the selected file is in... This is just because the gum command doesn't let you select directories, only files..."
+echo "🔑 Please select a file in the directory containing the SSH keys:"
+source_dir=$(gum file --all / | xargs dirname)
 
-echo "🔑 📀 Selected $volume"
-# volume=$(echo $volume | sed 's/ /\\ /g') # Escape spaces
-source_dir="$volume/.ssh"
-if [ ! -d "$source_dir" ]
-then
-    echo "🔑 ❌ No \".ssh\" directory exists in $volume"
-    return 1
-fi
-
-echo "🔑 Using $source_dir for SSH keys"
+echo "📁 Sourcing SSH keys from $source_dir"
 
 # List files only
 files=$(ls "$source_dir")
