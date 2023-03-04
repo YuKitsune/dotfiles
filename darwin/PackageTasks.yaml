@@ -4,6 +4,7 @@ tasks:
   apply:
     summary: Downloads and installs packages listed in packages.yaml.
     platforms: [darwin]
+    interactive: true
     vars:
       PACKAGES_CMD:
         sh: "yq .packages ./packages.yaml | awk -F': ' '{print \"./install_package.sh\", $1, $2}'"

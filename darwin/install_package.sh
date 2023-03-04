@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source $PWD/scripts/utils.sh
+source ../scripts/utils.sh
 
 brew_versions=$(brew list --versions)
 applications=$(find /Applications -path '*.app' -maxdepth 5 -print)
