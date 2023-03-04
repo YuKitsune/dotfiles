@@ -274,6 +274,9 @@ function configure_dock() {
     # Make Dock icons of hidden applications translucent
     write_default com.apple.dock showhidden -bool true
 
+    # Prevent spaces from rearranging based on activity 
+    defaults write com.apple.dock "mru-spaces" -bool "false"
+
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
