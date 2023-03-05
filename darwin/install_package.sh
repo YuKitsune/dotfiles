@@ -63,14 +63,14 @@ Sample:
     fi
 
     # Todo: Download to temp dir
-    gum spin --spinner="globe" --show-output --title "Downloading $name" -- wget -P $HOME/Downloads $url
+    gum spin --show-output --title "Downloading $name" -- wget -P $HOME/Downloads $url
     print_result $? "$name downloaded" "Failed to download $name"
     if [ $? -ne 0 ]
     then
         return 1
     fi
 
-    gum spin --show-output --title "Installing $name" -- sudo installer -pkg $HOME/Downloads/$file_name -target /
+    sudo installer -pkg $HOME/Downloads/$file_name -target /
     print_result $? "$name installed" "Failed to install $name"
     if [ $? -ne 0 ]
     then
