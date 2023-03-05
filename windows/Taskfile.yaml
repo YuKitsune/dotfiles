@@ -1,30 +1,25 @@
 version: '3'
 
-# includes:
-#   packages:
-#     taskfile: ./PackageTasks.yaml
-
-#   brews:
-#     taskfile: ./BrewTasks.yaml
+includes:
+  winget:
+    taskfile: ./WingetTasks.yaml
 
 tasks:
 
   apply-packages:
     internal: true
-    summary: Downloads and installs packages and brews.
     platforms: [windows]
     cmds:
-      - task: packages:apply
-      - task: brews:apply
+      - task: winget:apply
 
   dump-packages:
     internal: true
     platforms: [windows]
     cmds:
-      - task: brews:dump
+      - task: winget:dump
 
   configure:
     internal: true
     platforms: [windows]
     cmds:
-      - cmd: ./darwin/configure.sh
+      - cmd: PowerShell.exe -File configure.ps1
