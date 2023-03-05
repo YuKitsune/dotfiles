@@ -32,20 +32,6 @@ Where <array> is the array to search."
     return 1
 }
 
-get_command() {
-    command="$1"
-    valid_commands=(${@:2})
-
-    if element_exists_in_array "$command" ${valid_commands[*]}
-    then
-        echo $command
-    else
-        gum choose ${valid_commands[*]}
-    fi
-}
-
-export -f get_command
-
 print_result() {
     local usage="\
 Usage:
