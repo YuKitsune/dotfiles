@@ -46,3 +46,11 @@ alias gps="git push"
 alias yeet="git add . && git commit -m 'yeet' && git push"
 
 alias lg="lazygit"
+
+# github
+alias gpc="gh pr create"
+alias gpcw="gh pr create --web"
+alias gpv="gh pr view"
+alias gpvw="gh pr view --web"
+alias grl="gh release list"
+alias grc="gh release create"
