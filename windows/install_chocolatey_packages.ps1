@@ -1,0 +1,1 @@
+choco.exe install chocolatey.xml
