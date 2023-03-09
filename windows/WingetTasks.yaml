@@ -2,7 +2,7 @@ version: '3'
 
 tasks:
   apply:
-    summary: Imports winget.json into winget.
+    desc: Imports winget.json into winget.
     platforms: [windows]
     cmds:
       - echo "u{1F4E6} Importing winget packages"
@@ -15,8 +15,8 @@ tasks:
       - cmd: ./darwin/configure.sh
 
   dump:
-    summary: Updates winget.json with the list of currently installed apps.
     platforms: [darwin]
+    desc: Updates winget.json with the list of currently installed apps.
     cmds:
       - echo "u{1F4E6} Exporting winget packages"
       - PowerShell.exe -File export_winget_packages.ps1

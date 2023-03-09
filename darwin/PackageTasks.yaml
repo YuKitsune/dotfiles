@@ -2,7 +2,7 @@ version: '3'
 
 tasks:
   apply:
-    summary: Downloads and installs packages listed in packages.yaml.
+    desc: Downloads and installs packages listed in packages.yaml.
     platforms: [darwin]
     interactive: true
     vars:

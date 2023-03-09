@@ -2,7 +2,7 @@ version: '3'
 
 tasks:
   apply-plugins:
-    summary: Ensures all plugins defined in the plugins file are installed.
+    desc: Ensures all plugins defined in the plugins file are installed.
     vars:
       INSTALL_COMMAND:
         sh: "yq '.plugins[]' ./plugins.yaml | awk -F': ' '{print \"code --install-extension\", $1, \"--force\"}'"
@@ -10,7 +10,7 @@ tasks:
       - "{{.INSTALL_COMMAND}}"
 
   dump-plugins:
-    summary: Updates the plugins file with a list of installed plugins.
+    desc: Updates the plugins file with a list of installed plugins.
     vars:
       PLUGINS:
         sh: printf '"%s", ' $(code --list-extensions) | sed 's/, $//'
