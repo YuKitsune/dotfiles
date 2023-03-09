@@ -4,10 +4,10 @@ alias c="clear"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias t="task"
 
-# Enable ls colors
-alias l="exa --oneline --icons"
+alias l="exa --long --all --icons"
 alias diff="diff-so-fancy"
 alias du="dua-cli"
+alias cat="bat"
 
 # nvim
 alias vi="nvim"
