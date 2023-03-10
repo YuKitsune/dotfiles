@@ -1,1 +1,0 @@
-choco.exe export chocolatey.xml
