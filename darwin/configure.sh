@@ -131,6 +131,7 @@ function configure_macos() {
     write_default com.apple.assistant.support "Assistant Enabled" -bool false
 
     # Search engine
+    # Todo: This doesn't seem to work...
     echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo"
     /usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo" $HOME/Library/Preferences/.GlobalPreferences.plist
 
@@ -257,7 +258,7 @@ function add_dock_item() {
     path=$1
     echo "📝 Adding $path to dock" > /dev/tty
 
-    dockutil --add $path --no-restart > /dev/null
+    dockutil --add "$path" --no-restart > /dev/null
     print_result_if_failed $? "Failed to set dock item"
 }
 
@@ -283,7 +284,7 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    add_dock_item /Applications/Safari.app
+    add_dock_item "/Applications/Firefox Developer Edition.app"
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /System/Applications/Notes.app
