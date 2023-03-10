@@ -3,6 +3,8 @@ version: '3'
 includes:
   winget:
     taskfile: ./WingetTasks.yaml
+  additional:
+    taskfile: ./AdditionalAppTasks.yaml
 
 tasks:
 
@@ -11,6 +13,7 @@ tasks:
     platforms: [windows]
     cmds:
       - task: winget:apply
+      - task: additional:install
 
   dump-packages:
     internal: true

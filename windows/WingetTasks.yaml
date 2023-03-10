@@ -6,21 +6,11 @@ tasks:
     platforms: [windows]
     cmds:
       - echo "u{1F4E6} Importing winget packages"
-      - PowerShell.exe -File import_winget_packages.ps1
-      - echo "u{1F36B} Importing Chocolatey packages"
-      - PowerShell.exe -File install_chocolatey_packages.ps1
-
-  configure:
-    internal: true
-    platforms: [windows]
-    cmds:
-      - cmd: PowerShell.exe -File ./configure.ps1
+      - winget.exe import --import-file ./winget.json
 
   dump:
     desc: Updates winget.json with the list of currently installed apps.
     platforms: [windows]
     cmds:
       - echo "u{1F4E6} Exporting winget packages"
-      - PowerShell.exe -File export_winget_packages.ps1
-      - echo "u{1F36B} Exporting Chocolatey packages"
-      - PowerShell.exe -File export_chocolatey_packages.ps1
+      - winget.exe export --output ./winget.json
