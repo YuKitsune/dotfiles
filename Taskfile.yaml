@@ -60,6 +60,3 @@ tasks:
           mkdir -p {{.BACKUP_DIR}}
           {{.BACKUP_COMMANDS}}
           {{.LINK_COMMANDS}}
-
-      - platforms: [windows]
-        cmd: echo "❌ Not yet implemented"
