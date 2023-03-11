@@ -35,7 +35,16 @@ This ensures that all the necessary tools are installed.
 ./bootstrap.sh
 ```
 
-## 4. Apply
+## 4. Debloat
+
+When running on Windows, consider running the debloater task.
+This uninstalls a number of pre-installed aplications from Windows, including some that are re-added during the next step.
+
+```sh
+task system:debloat
+```
+
+## 5. Go!
 
 Applies all the necessary configuration.
 
@@ -47,11 +56,11 @@ task apply
 
 ## Shell
 
-I'm currently using [Hyper](https://hyper.is) as my terminal emulator with zsh as my shell of choice.
-I've written a [custom plugin manager](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.plug.zsh) to manage zsh plugins, which works well for me.
-On top of zsh is [Powerlevel10k](https://github.com/romkatv/powerlevel10k) which makes everything pretty.
+I'm currently using [Hyper](https://hyper.is) as my terminal emulator with `zsh` as my shell of choice.
+I've written a [custom plugin manager](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.plug.zsh) to manage `zsh` plugins, which works well for me.
+On top of `zsh` is [Powerlevel10k](https://github.com/romkatv/powerlevel10k) which makes everything pretty.
 
-I have a number of pre-defined [aliases](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.aliases.zsh) and [functions](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.functions.zsh) defined to make things a little easier.
+I have a number of pre-defined [aliases](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.aliases.zsh) and [functions](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.functions.zsh) defined to make life a little easier.
 
 ## Apps
 

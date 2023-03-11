@@ -8,6 +8,12 @@ includes:
 
 tasks:
 
+  debloat:
+    platforms: [windows]
+    desc: "Removes bloatware using Windows 10 Debloater: https://github.com/Sycnex/Windows10Debloater"
+    cmds:
+      - cmd: PowerShell.exe -File debloat.ps1
+
   apply-packages:
     internal: true
     platforms: [windows]
