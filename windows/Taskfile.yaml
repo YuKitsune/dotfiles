@@ -3,6 +3,8 @@ version: '3'
 includes:
   winget:
     taskfile: ./WingetTasks.yaml
+  chocolatey:
+    taskfile: ./ChocolateyTasks.yaml
   additional:
     taskfile: ./AdditionalAppTasks.yaml
 
@@ -19,12 +21,14 @@ tasks:
     platforms: [windows]
     cmds:
       - task: winget:apply
+      - task: chocolatey:apply
       - task: additional:install
 
   dump-packages:
     internal: true
     platforms: [windows]
     cmds:
+      - task: chocolatey:dump
       - task: winget:dump
 
   configure:

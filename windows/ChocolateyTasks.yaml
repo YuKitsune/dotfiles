@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  apply:
+    desc: Imports chocolatey.config into chocolatey.
+    platforms: [windows]
+    cmds:
+      - echo "u{1F36B} Importing winget packages"
+      - choco install ".\chocolatey.config"
+
+  dump:
+    desc: Updates chocolatey.config with the list of currently installed chocolatey packages.
+    platforms: [windows]
+    cmds:
+      - echo "u{1F36B} Exporting winget packages"
+      - choco.exe export .\chocolatey.config
