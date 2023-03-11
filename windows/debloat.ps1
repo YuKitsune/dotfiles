@@ -1,1 +1,1 @@
-Invoke-WebRequest -useb https://git.io/debloat | Invoke-Expression -Sysprep -Debloat -Privacy
+Invoke-WebRequest -useb https://git.io/debloat | Invoke-Expression
