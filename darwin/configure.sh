@@ -283,10 +283,10 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    add_dock_item /Applications/Safari.app
+    add_dock_item /Applications/Arc.app # Todo: Find a way to configure the default browser.
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
-    add_dock_item /System/Applications/Notes.app
+    add_dock_item /Applications/Obsidian.app
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
     add_dock_item /Applications/Discord.app
@@ -297,6 +297,8 @@ function configure_dock() {
 
     kill_process "Dock"
 }
+
+# Todo: Chromium/Arc configuration
 
 function configure_safari() {
     # Privacy: Don’t send search queries to Apple
