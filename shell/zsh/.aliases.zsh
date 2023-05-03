@@ -4,7 +4,7 @@ alias c="clear"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias t="task"
 
-alias l="exa --long --all --icons"
+alias l="exa --long --all --icons --no-user --git"
 alias diff="diff-so-fancy"
 alias du="dua-cli"
 alias cat="bat"
