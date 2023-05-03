@@ -2,7 +2,6 @@ plugins:
   - bradlc.vscode-tailwindcss
   - bungcip.better-toml
   - dbaeumer.vscode-eslint
-  - dracula-theme.theme-dracula
   - golang.go
   - heybourn.headwind
   - maptz.camelcasenavigation
@@ -10,9 +9,7 @@ plugins:
   - ms-azuretools.vscode-docker
   - ms-dotnettools.csharp
   - ms-kubernetes-tools.vscode-kubernetes-tools
-  - ms-vscode.makefile-tools
   - ms-vscode.vscode-typescript-next
-  - rangav.vscode-thunder-client
   - redhat.vscode-yaml
   - rust-lang.rust-analyzer
   - rvest.vs-code-prettier-eslint
