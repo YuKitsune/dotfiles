@@ -501,6 +501,9 @@ function configure_rectangle() {
 
     # Automatic updates
     write_default com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
+
+    # Gap size
+    write_default com.knollsoft.Rectangle gapSize -int 20
 }
 
 function configure_fork() {
