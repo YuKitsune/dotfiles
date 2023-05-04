@@ -46,7 +46,7 @@ fi
 
 source ~/.environment.zsh
 
-# Use OpenSSH instead of the built-in one
+# Use OpenSSH installed from Brew instead of the built-in one
 export PATH=$(brew --prefix openssh)/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.

@@ -53,10 +53,6 @@ tasks:
       desc: Imports SSH keys.
       interactive: true
       cmd: ./scripts/import_ssh_keys.sh
-
-    - platforms: [windows]
-      interactive: true
-      cmd: echo "❌ Not yet implemented"
   
   create-symlinks:
     desc: Creates symlinks for the config files managed in this git repository so that they can be read by their intended application.
