@@ -1,0 +1,4 @@
+repos:
+  - url: https://github.com/tmux-plugins/tpm
+    dir: $HOME/.tmux/plugins/tpm
+    ref: origin/master

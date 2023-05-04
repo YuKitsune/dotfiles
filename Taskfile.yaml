@@ -20,9 +20,21 @@ tasks:
     desc: Downloads necessary packages and applications, configures various settings, installs plugins, and creates symlinks to the config files managed in this git repository.
     cmds:
       - task: system:apply-packages
+      - task: clone-repos
       - task: configure
       - task: vscode:apply-plugins
       - task: create-symlinks
+
+  clone-repos:
+    desc: Clones any git repositories defined in repos.yaml, and ensures any already cloned repos are up-to-date.
+    vars:
+      COMMANDS:
+        sh: yq '.repos[] | "sh ./scripts/install-from-git.sh " + .url + " " + .dir + " " + .ref' repos.yaml
+
+    cmds:
+      - platforms: [linux, darwin]
+        cmd: |
+          {{.COMMANDS}}
 
   configure:
     desc: Configures the local environment, as well as various first-party and third-party applications.

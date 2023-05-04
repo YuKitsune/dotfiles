@@ -31,3 +31,7 @@ links:
   # (DO NOT use spaces. It's a bloody mess...)
   - source: ./vscode/.vscode.json
     destination: $HOME/Library/Application\ Support/Code/User/settings.json
+
+  # Tmux
+  - source: ./config/.tmux.conf
+    destination: $HOME/.tmux.conf
