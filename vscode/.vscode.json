@@ -1,7 +1,8 @@
 {
-    "workbench.colorTheme": "One Dark Pro",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Visual Studio Dark",
     "terminal.external.osxExec": "Hyper.app",
     "terminal.integrated.fontFamily": "MesloLGS NF",
-    "diffEditor.ignoreTrimWhitespace": false
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.iconTheme": "vscode-icons",
+    "svelte.enable-ts-plugin": true
 }

@@ -1,6 +1,5 @@
 plugins:
   - bradlc.vscode-tailwindcss
-  - bungcip.better-toml
   - dbaeumer.vscode-eslint
   - golang.go
   - heybourn.headwind
@@ -8,10 +7,12 @@ plugins:
   - mikestead.dotenv
   - ms-azuretools.vscode-docker
   - ms-dotnettools.csharp
+  - ms-dotnettools.vscode-dotnet-runtime
   - ms-kubernetes-tools.vscode-kubernetes-tools
   - ms-vscode.vscode-typescript-next
   - redhat.vscode-yaml
   - rust-lang.rust-analyzer
   - rvest.vs-code-prettier-eslint
+  - svelte.svelte-vscode
+  - tamasfe.even-better-toml
   - vscode-icons-team.vscode-icons
-  - zhuangtongfa.material-theme
