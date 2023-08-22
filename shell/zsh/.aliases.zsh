@@ -2,8 +2,12 @@
 alias reload="source ~/.zshrc"
 alias c="clear"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
-alias t="task"
 
+# Taskfiles
+alias t="task"
+alias tl="task --list"
+
+# Core commands
 alias l="exa --long --all --icons --no-user --git"
 alias diff="diff-so-fancy"
 alias du="dua-cli"
