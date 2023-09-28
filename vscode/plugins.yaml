@@ -1,18 +1,24 @@
 plugins:
   - bradlc.vscode-tailwindcss
   - dbaeumer.vscode-eslint
+  - esbenp.prettier-vscode
   - golang.go
   - heybourn.headwind
+  - jeff-hykin.better-cpp-syntax
   - maptz.camelcasenavigation
   - mikestead.dotenv
   - ms-azuretools.vscode-docker
+  - ms-dotnettools.csdevkit
   - ms-dotnettools.csharp
   - ms-dotnettools.vscode-dotnet-runtime
-  - ms-kubernetes-tools.vscode-kubernetes-tools
-  - ms-vscode.vscode-typescript-next
-  - redhat.vscode-yaml
+  - ms-dotnettools.vscodeintellicode-csharp
+  - ms-vscode.cpptools
+  - ms-vscode.cpptools-extension-pack
+  - ms-vscode.cpptools-themes
+  - ms-vscode.powershell
+  - ms-vsliveshare.vsliveshare
+  - OctopusDeploy.vscode-octopusdeploy
   - rust-lang.rust-analyzer
-  - rvest.vs-code-prettier-eslint
   - svelte.svelte-vscode
-  - tamasfe.even-better-toml
   - vscode-icons-team.vscode-icons
+  - wayou.vscode-todo-highlight
