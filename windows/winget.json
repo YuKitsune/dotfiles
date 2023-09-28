@@ -39,20 +39,8 @@
 				{
 					"PackageIdentifier" : "Mojang.MinecraftLauncher"
 				},
-				{
-					"PackageIdentifier": "Microsoft.PowerToys"
-				},
-                {
-                    "PackageIdentifier": "Fork.Fork"
-                },
-                {
-                    "PackageIdentifier": "Microsoft.VisualStudioCode"
-                },
                 {
                     "PackageIdentifier": "Greenshot.Greenshot"
-                },
-                {
-                    "PackageIdentifier": "Henry++.simplewall"
                 }
 			],
 			"SourceDetails" : 
@@ -65,3 +53,4 @@
 		}
 	],
 	"WinGetVersion" : "1.4.10173"
+}
