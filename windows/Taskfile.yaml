@@ -14,7 +14,7 @@ tasks:
     platforms: [windows]
     desc: "Removes bloatware using Windows 10 Debloater: https://github.com/Sycnex/Windows10Debloater"
     cmds:
-      - cmd: PowerShell.exe -File debloat.ps1
+      - cmd: PowerShell.exe -File ./windows/debloat.ps1
 
   apply-packages:
     internal: true
@@ -35,4 +35,4 @@ tasks:
     internal: true
     platforms: [windows]
     cmds:
-      - cmd: PowerShell.exe -File configure.ps1
+      - cmd: PowerShell.exe -File ./windows/configure.ps1
