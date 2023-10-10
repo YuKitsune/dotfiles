@@ -6,11 +6,11 @@ tasks:
     platforms: [windows]
     cmds:
       - echo "u{1F36B} Importing winget packages"
-      - choco install ".\chocolatey.config"
+      - choco install chocolatey.config
 
   dump:
     desc: Updates chocolatey.config with the list of currently installed chocolatey packages.
     platforms: [windows]
     cmds:
       - echo "u{1F36B} Exporting winget packages"
-      - choco.exe export .\chocolatey.config
+      - choco.exe export chocolatey.config
