@@ -27,6 +27,15 @@ reg.exe add "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" /v
 Write-Host "Setting keyboard repeat rate to 15 repeats/second"
 reg.exe add "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" /v RepeatRate /t REG_SZ /d 15 /f
 
+# Show Hidden Files and Folders
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
+
+# Show Checkmarks Next to Files and Folders
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "AutoCheckSelect" -Value 1
+
+# Show File Extensions
+Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Value 0
+
 # Restart Windows Explorer to apply the changes
 Write-Host "Restarting Windows Explorer to apply changes..."
 Stop-Process -Name explorer -Force
