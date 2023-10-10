@@ -1,9 +1,0 @@
-version: '3'
-
-tasks:
-
-  install:
-    desc: Installs additional applications which aren't available via package managers.
-    platforms: [windows]
-    cmds:
-      - cmd: PowerShell.exe -File install-additional-apps.ps1

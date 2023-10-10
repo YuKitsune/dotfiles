@@ -38,6 +38,12 @@
 				},
                 {
                     "PackageIdentifier": "Greenshot.Greenshot"
+                },
+                {
+                    "PackageIdentifier": "Logitech.GHUB"
+                },
+                {
+                    "PackageIdentifier": "Open-Shell.Open-Shell-Menu"
                 }
 			],
 			"SourceDetails" : 
