@@ -6,11 +6,11 @@ tasks:
     platforms: [windows]
     cmds:
       - echo "u{1F4E6} Importing winget packages"
-      - winget.exe import --import-file ./windows/winget.json
+      - winget.exe import --import-file winget.json
 
   dump:
     desc: Updates winget.json with the list of currently installed apps.
     platforms: [windows]
     cmds:
       - echo "u{1F4E6} Exporting winget packages"
-      - winget.exe export --output ./windows/winget.json
+      - winget.exe export --output winget.json
