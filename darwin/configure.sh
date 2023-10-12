@@ -130,13 +130,6 @@ function configure_macos() {
     # Siri
     write_default com.apple.assistant.support "Assistant Enabled" -bool false
 
-    # Search engine
-    echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo"
-    /usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSDefaultDisplayName\" DuckDuckGo" $HOME/Library/Preferences/.GlobalPreferences.plist
-
-    echo "📝 [.GlobalPreferences] \"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo.www\""
-    /usr/libexec/PlistBuddy -c "Set :\"NSPreferredWebServices\":\"NSWebServicesProviderWebSearch\":\"NSProviderIdentifier\" \"com.duckduckgo.www\"" $HOME/Library/Preferences/.GlobalPreferences.plist
-
     # Audio
 
     # Increase sound quality for Bluetooth headphones/headsets
