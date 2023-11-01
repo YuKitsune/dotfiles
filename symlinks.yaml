@@ -23,6 +23,9 @@ links:
   - source: ./shell/zsh/.functions.zsh
     destination: $HOME/.functions.zsh
 
+  - source: ./shell/zsh/.fzf.zsh
+    destination: $HOME/.fzf.zsh
+
   # Hyper
   - source: ./config/.hyper.js
     destination: $HOME/.hyper.js
