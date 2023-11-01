@@ -56,5 +56,8 @@ source ~/.environment.zsh
 # Use OpenSSH installed from Brew instead of the built-in one
 export PATH=$(brew --prefix openssh)/bin:$PATH
 
+# Link to .NET tools
+export PATH="$PATH:$HOME/.dotnet/tools"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
