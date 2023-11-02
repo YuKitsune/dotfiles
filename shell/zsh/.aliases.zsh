@@ -37,15 +37,24 @@ alias dq="docker ps --format \"{{.Names}}\" | gum choose --no-limit | xargs dock
 alias ld="lazydocker"
 
 # git
-alias g="git"
-alias gl="git log"
-alias gs="git status"
+alias g='git'
+alias ga='git add'
 
-alias gco="git checkout"
-alias ga="git add"
-alias gcm="git commit"
+alias gco='git checkout'
+alias gcb='git checkout -b'
+
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcpc='git cherry-pick --continue'
+alias gclean='git clean --interactive -d'
+alias gcl='git clone --recurse-submodules'
+
+alias gc='git commit'
+alias gcm='git commit --message'
+
+alias gf='git fetch'
+alias gps='git push'
 alias gpl="git pull"
-alias gps="git push"
 
 alias yeet="git add . && git commit -m 'yeet' && git push"
 
