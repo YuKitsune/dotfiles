@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 source $PWD/scripts/utils.sh
 
 # Set up a trap to catch the interrupt signal and exit the script
@@ -278,7 +276,7 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    add_dock_item /Applications/Safari.app
+    add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
@@ -506,6 +504,13 @@ function configure_rectangle() {
 function configure_fork() {
     write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Developer"
 }
+
+gum confirm --affirmative="Continue" --negative="Cancel" "👮‍♀️ Before we can configure macOS, your terminal requires full disk access. Please ensure Full Disk Access is enabled for your terminal, then select Continue."
+if [ $? == 0 ]
+then
+    echo "⏭ Skipping $name configuration"
+    return 0
+fi
 
 # Todo: Configure Fork.
 # Configuration is stored in ~/Library/Application Support/Fork as an `.ipak` file (Apple binary property list)
