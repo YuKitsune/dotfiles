@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Todo: Os-specific bootstrapping
 
 which brew > /dev/null
@@ -7,10 +9,15 @@ brewExists=$?
 if [ $brewExists -ne 0 ]
 then
     echo "🍺 Downloading and Installig Brew"
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    echo '# Set PATH, MANPATH, etc., for Homebrew.' >> $HOME/.zprofile
-    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> $HOME/.zprofile
+
+    # Copied from Installation section of https://brew.sh/
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # Copied from the installation instructions shown after installing brew
     eval "$(/opt/homebrew/bin/brew shellenv)"
+
+    # Sanity check
+    brew doctor
 else
     echo "🍺 Brew installed"
 fi

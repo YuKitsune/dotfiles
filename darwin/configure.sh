@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 source $PWD/scripts/utils.sh
 
 # Set up a trap to catch the interrupt signal and exit the script
