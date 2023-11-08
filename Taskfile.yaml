@@ -21,9 +21,9 @@ tasks:
   apply:
     desc: Downloads necessary packages and applications, configures various settings, installs plugins, and creates symlinks to the config files managed in this git repository.
     cmds:
-      - task: create-symlinks
       - task: system:apply-packages
       - task: clone-repos
+      - task: create-symlinks
       - task: configure
       - task: vscode:apply-plugins
 

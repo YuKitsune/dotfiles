@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 source ../scripts/utils.sh
 
 brew_versions=$(brew list --versions)
