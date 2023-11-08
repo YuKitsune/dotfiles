@@ -122,7 +122,7 @@ function configure_macos() {
     write_default NSGlobalDomain KeyRepeat -int 1
     write_default NSGlobalDomain InitialKeyRepeat -int 10
 
-    # Trackpad: enable tap to click for this user and for the login screen
+    # Trackpad: Enable tap to click for this user and for the login screen
     write_default com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
     write_default NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
@@ -151,10 +151,10 @@ function configure_macos() {
 
 function configure_finder() {
 
-    # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
+    # Finder: Allow quitting via ⌘ + Q; doing so will also hide desktop icons
     write_default com.apple.finder QuitMenuItem -bool true
 
-    # Set Desktop as the default location for new Finder windows
+    # Set $HOME as the default location for new Finder windows
     # Computer     : `PfCm`
     # Volume       : `PfVo`
     # $HOME        : `PfHm`
@@ -278,22 +278,24 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    add_dock_item /Applications/Arc.app # Todo: Find a way to configure the default browser.
+    add_dock_item /Applications/Safari.app
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
     add_dock_item /Applications/Discord.app
-    add_dock_item /Applications/Slack.app
+    
+    if [[ $PROFILE = 'work' ]]; then
+        add_dock_item /Applications/Slack.app
+    elif
+    
     add_dock_item /Applications/Spotify.app
     add_dock_item /Applications/Hyper.app
     add_dock_item ~/Downloads
 
     kill_process "Dock"
 }
-
-# Todo: Chromium/Arc configuration
 
 function configure_safari() {
     # Privacy: Don’t send search queries to Apple
