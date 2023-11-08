@@ -8,6 +8,7 @@ tasks:
       - defer: { task: cleanup }
       - echo "🍺 Applying brews"
       - brew bundle --file ./Brewfile
+      - ./post-brew.sh
 
   cleanup:
     desc: Uninstall brews not listed in the Brewfile.
