@@ -288,7 +288,7 @@ function configure_dock() {
     
     if [[ $PROFILE = 'work' ]]; then
         add_dock_item /Applications/Slack.app
-    elif
+    fi
     
     add_dock_item /Applications/Spotify.app
     add_dock_item /Applications/Hyper.app
