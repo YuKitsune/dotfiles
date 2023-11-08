@@ -1,0 +1,4 @@
+load "#{Dir.pwd}/Brewfile"
+
+mas "Affinity Designer", id: 824171161
+mas "Affinity Photo", id: 824183456

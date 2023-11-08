@@ -1,0 +1,4 @@
+load "#{Dir.pwd}/Brewfile"
+
+cask "zoom"
+cask "slack"

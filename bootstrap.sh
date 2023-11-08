@@ -36,3 +36,11 @@ then
 else
     echo "🏃 Task installed"
 fi
+
+# Set the profile
+echo "🤔 Before we can begin, is this a personal machine, or a work machine?"
+profile=$(gum choose "personal" "work")
+echo "PROFILE=$profile" > .env
+echo "🆕 .env file created"
+
+echo "🚀 You're all set!"

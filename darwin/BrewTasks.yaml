@@ -7,14 +7,15 @@ tasks:
     cmds:
       - defer: { task: cleanup }
       - echo "🍺 Applying brews"
-      - brew bundle --file ./Brewfile
+      - pwd
+      - brew bundle --file ./$PROFILE/Brewfile
 
   cleanup:
     desc: Uninstall brews not listed in the Brewfile.
     platforms: [darwin]
     cmds:
       - echo "🍺 Cleaning up brews"
-      - brew bundle cleanup --file ./Brewfile --force
+      - brew bundle cleanup --file ./$PROFILE/Brewfile --force
 
   dump:
     desc: Write all installed casks/formulae/images/taps into the Brewfile.

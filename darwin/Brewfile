@@ -1,5 +1,4 @@
 tap "derailed/k9s"
-tap "fluxcd/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask-versions"
 brew "act"
@@ -50,21 +49,17 @@ brew "youtube-dl"
 brew "yq"
 brew "zsh"
 brew "derailed/k9s/k9s"
-brew "fluxcd/tap/flux"
-cask "balenaetcher"
-cask "datagrip"
+cask "bitwarden"
 cask "discord"
 cask "docker"
 cask "firefox-developer-edition"
 cask "fork"
 cask "hyper"
 cask "jetbrains-toolbox"
-cask "firefox"
 cask "keycastr"
 cask "little-snitch"
 cask "mos"
 cask "obsidian"
-cask "onyx"
 cask "raspberry-pi-imager"
 cask "rectangle"
 cask "signal"
@@ -74,16 +69,11 @@ cask "steam"
 cask "tailscale"
 cask "visual-studio-code"
 cask "vlc"
-cask "zoom"
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
-mas "Bitwarden", id: 1352778147
+cask "yubico-authenticator"
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Slack", id: 803453959
 mas "Xcode", id: 497799835
-mas "Yubico Authenticator", id: 1497506650
 vscode "bradlc.vscode-tailwindcss"
 vscode "dbaeumer.vscode-eslint"
 vscode "esbenp.prettier-vscode"
