@@ -10,7 +10,7 @@ module.exports = {
         // default font size in pixels for all tabs
         fontSize: 12,
         // font family with optional fallbacks
-        fontFamily: 'MesloLGS NF',
+        fontFamily: 'MesloLGS Nerd Font',
         // default font weight: 'normal' or 'bold'
         fontWeight: 'normal',
         // font weight for bold characters: 'normal' or 'bold'
@@ -131,7 +131,7 @@ module.exports = {
         preserveCWD: true,
         // for advanced config flags please refer to https://hyper.is/#cfg
         "hyper-one-dark": {
-            fontFamily: 'MesloLGS NF',
+            fontFamily: 'MesloLGS Nerd Font NF',
         }
     },
     // a list of plugins to fetch and install from npm

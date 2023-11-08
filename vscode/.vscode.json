@@ -1,7 +1,7 @@
 {
     "workbench.colorTheme": "Visual Studio Dark",
     "terminal.external.osxExec": "Hyper.app",
-    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.iconTheme": "vscode-icons",
     "svelte.enable-ts-plugin": true
