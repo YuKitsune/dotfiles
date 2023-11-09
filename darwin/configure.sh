@@ -512,9 +512,15 @@ then
     return 0
 fi
 
-# Todo: Configure Fork.
-# Configuration is stored in ~/Library/Application Support/Fork as an `.ipak` file (Apple binary property list)
-# Need to find a way to read/write these
+# Todo: Configure Finder sidebar
+#  -> nwnode://domain-AirDrop
+# Recent -> file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
+# Applications -> file:///Applications/
+# Desktop -> file:///Users/eoinmotherway/Desktop/
+# Documents -> file:///Users/eoinmotherway/Documents/
+# Downloads -> file:///Users/eoinmotherway/Downloads/
+# Developer -> file:///Users/eoinmotherway/Developer/
+# Home -> file:///Users/eoinmotherway/
 
 echo "🤔 Which of these apps do you want to configure?"
 apps=$(gum choose --no-limit "macos" "finder" "dock" "activity_monitor" "disk_utility" "safari" "app store" "mos" "stats" "rectangle" "fork")
