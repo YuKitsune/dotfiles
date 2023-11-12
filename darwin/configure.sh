@@ -517,6 +517,32 @@ function configure_rectangle() {
 
     # Gap size
     write_default com.knollsoft.Rectangle gapSize -int 20
+
+    # Todo: Key bindings for 6ths
+    # bottomCenterSixth =     {
+    #     keyCode = 23;
+    #     modifierFlags = 786432;
+    # };
+    # bottomLeftSixth =     {
+    #     keyCode = 21;
+    #     modifierFlags = 786432;
+    # };
+    # bottomRightSixth =     {
+    #     keyCode = 22;
+    #     modifierFlags = 786432;
+    # };
+    # topCenterSixth =     {
+    #     keyCode = 19;
+    #     modifierFlags = 786432;
+    # };
+    # topLeftSixth =     {
+    #     keyCode = 18;
+    #     modifierFlags = 786432;
+    # };
+    # topRightSixth =     {
+    #     keyCode = 20;
+    #     modifierFlags = 786432;
+    # };
 }
 
 function configure_fork() {
