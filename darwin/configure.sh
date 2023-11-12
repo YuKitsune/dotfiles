@@ -376,6 +376,15 @@ function configure_safari() {
     kill_process "Safari"
 }
 
+function configure_mail() {
+
+    # Tool Bar
+    # Show icon and text in the tab bar
+    /usr/libexec/PlistBuddy -c "Set :\"NSToolbar Configuration MainWindow\":\"TB Display Mode\" 1" /Users/eoinmotherway/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist
+
+    kill_process "Mail"
+}
+
 function configure_app_store() {
     # Enable the WebKit Developer Tools in the Mac App Store
     write_default com.apple.appstore WebKitDeveloperExtras -bool true
@@ -532,7 +541,7 @@ fi
 # Home -> file:///Users/eoinmotherway/
 
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "activity_monitor" "disk_utility" "safari" "app store" "mos" "stats" "rectangle" "fork")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "activity_monitor" "disk_utility" "safari" "app store" "mos" "stats" "rectangle" "fork")
 
 # First-party
 
@@ -564,6 +573,12 @@ element_exists_in_array "dock" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_dock
+fi
+
+element_exists_in_array "mail" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_mail
 fi
 
 element_exists_in_array "safari" ${apps[*]}
