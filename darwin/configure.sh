@@ -549,13 +549,6 @@ function configure_fork() {
     write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Developer"
 }
 
-gum confirm --affirmative="Continue" --negative="Cancel" "👮‍♀️ Before we can configure macOS, your terminal requires full disk access. Please ensure Full Disk Access is enabled for your terminal, then select Continue."
-if [ $? == 0 ]
-then
-    echo "⏭ Skipping $name configuration"
-    return 0
-fi
-
 # Todo: Configure Finder sidebar
 #  -> nwnode://domain-AirDrop
 # Recent -> file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
