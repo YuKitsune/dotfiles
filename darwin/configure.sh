@@ -296,6 +296,10 @@ function configure_dock() {
 }
 
 function configure_safari() {
+
+    # Use the compact tab bar
+    write_default com.apple.Safari ShowStandaloneTabBar -bool false
+
     # Privacy: Don’t send search queries to Apple
     write_default com.apple.Safari UniversalSearchEnabled -bool false
     write_default com.apple.Safari SuppressSearchSuggestions -bool true
@@ -363,6 +367,11 @@ function configure_safari() {
 
     # Update extensions automatically
     write_default com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
+    # Enable privacy protection for both normal and private browsing
+    write_default com.apple.Safari EnableEnhancedPrivacyInRegularBrowsing -bool true
+
+    # Todo: Toolbar layout
 
     kill_process "Safari"
 }
