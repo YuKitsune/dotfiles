@@ -2,7 +2,9 @@
 
 set -e
 
-# Todo: Os-specific bootstrapping
+# macOS: Install xcode tools and 
+# xcode-select --install # Todo: this exits with a non-zero code if it's already installed
+softwareupdate --install-rosetta
 
 which brew > /dev/null
 brewExists=$?
@@ -45,9 +47,20 @@ else
 fi
 
 # Set the profile
-echo "🤔 Before we can begin, is this a personal machine, or a work machine?"
-profile=$(gum choose "personal" "work")
-echo "PROFILE=$profile" > .env
-echo "🆕 .env file created"
+if [[ -f .env ]]; then
+    echo "📄 .env file exists"
+else 
+    echo "🤔 Is this a personal machine, or a work machine?"
+    profile=$(gum choose "personal" "work")
+    echo "PROFILE=$profile" > .env
+    echo "📄 .env file created"
+fi
+
+# Test for full disk access
+if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null; then
+  echo "👮 The scripts in this repository require your terminal app to have Full Disk Access. Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
+  open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
+  exit 1
+fi
 
 echo "🚀 You're all set!"
