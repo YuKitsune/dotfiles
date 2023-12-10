@@ -1,49 +1,47 @@
 #!/usr/bin/env bash
 
-set -e
-
-# macOS: Install xcode tools and 
-# xcode-select --install # Todo: this exits with a non-zero code if it's already installed
-softwareupdate --install-rosetta
-
-which brew > /dev/null
-brewExists=$?
-if [ $brewExists -ne 0 ]
-then
-    echo "🍺 Downloading and Installig Brew"
-
-    # Copied from Installation section of https://brew.sh/
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-    # Copied from the installation instructions shown after installing brew
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-
-    # Sanity check
-    brew doctor
+# Check if Xcode Command Line Tools are installed
+if ! command -v xcode-select &> /dev/null; then
+    # Install Xcode Command Line Tools
+    echo "Installing Xcode Command Line Tools..."
+    xcode-select --install
 else
-    echo "🍺 Brew installed"
+    echo "Xcode Command Line Tools are already installed."
 fi
 
-# Ensure gum is installed
-which gum > /dev/null
-gumExists=$?
-if [ $gumExists -ne 0 ]
-then
-    echo "🍬 Downloading and Installig gum"
+# Install Rosetta 2 for macOS on Apple Silicon
+if [[ "$(uname -m)" == "arm64" ]]; then
+    echo "Checking and installing Rosetta 2..."
+    softwareupdate --install-rosetta --agree-to-license
+else
+    echo "Not an Apple Silicon system. Skipping Rosetta 2 installation."
+fi
+
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null; then
+    # Install Homebrew
+    echo "Installing Homebrew..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+else
+    echo "Homebrew is already installed."
+fi
+
+# Check if gum is installed
+if ! command -v gum &> /dev/null; then
+    # Install gum using Homebrew
+    echo "Installing gum..."
     brew install gum
 else
-    echo "🍬 Gum installed"
+    echo "gum is already installed."
 fi
 
-# Ensure Task is installed
-which task > /dev/null
-taskExists=$?
-if [ $taskExists -ne 0 ]
-then
-    echo "🏃 Downloading and Installig task"
-    brew install go-task
+# Check if task is installed
+if ! command -v task &> /dev/null; then
+    # Install task using Homebrew
+    echo "Installing task..."
+    brew install task
 else
-    echo "🏃 Task installed"
+    echo "task is already installed."
 fi
 
 # Set the profile
