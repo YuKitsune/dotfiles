@@ -549,15 +549,15 @@ function configure_fork() {
     write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Developer"
 }
 
-# Todo: Configure Finder sidebar
-#  -> nwnode://domain-AirDrop
-# Recent -> file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
-# Applications -> file:///Applications/
-# Desktop -> file:///Users/eoinmotherway/Desktop/
-# Documents -> file:///Users/eoinmotherway/Documents/
-# Downloads -> file:///Users/eoinmotherway/Downloads/
-# Developer -> file:///Users/eoinmotherway/Developer/
-# Home -> file:///Users/eoinmotherway/
+function configure_finder_sidebar() {
+    mysides add Recent file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
+    mysides add Home file://$HOME/
+    mysides add Desktop file://$HOME/Desktop/
+    mysides add Documents file://$HOME/Documents/
+    mysides add Developer file://$HOME/Developer/
+    mysides add Applications file:///Applications/
+    mysides add Downloads file://$HOME/Downloads/
+}
 
 echo "🤔 Which of these apps do you want to configure?"
 apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "activity_monitor" "disk_utility" "safari" "app store" "mos" "stats" "rectangle" "fork")
@@ -574,6 +574,7 @@ element_exists_in_array "finder" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_finder
+    configure_finder_sidebar
 fi
 
 element_exists_in_array "activity_monitor" ${apps[*]}
