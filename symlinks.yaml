@@ -38,3 +38,13 @@ links:
   # Tmux
   - source: ./config/.tmux.conf
     destination: $HOME/.tmux.conf
+
+  # Yabai
+  # Todo: macOS only
+  - source: ./darwin/yabairc
+    destination: $HOME/.config/yabai/yabairc
+
+  # skhd
+  # Todo: macOS only
+  - source: ./darwin/skhdrc
+    destination: $HOME/.config/skhd/skhdrc
