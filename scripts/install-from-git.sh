@@ -21,7 +21,7 @@ Usage:
     if [ ! -d $clone_dir/.git ]; then
         # Clone the tpm repository to the directory if it doesn't exist
         echo "♻️ Cloning $repo_url"
-        git clone $repo_url $clone_dir
+        git clone $repo_url $clone_dir --depth 1
     else
         # Fetch the latest changes from the remote repository
         pushd $clone_dir > /dev/null

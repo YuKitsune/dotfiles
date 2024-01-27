@@ -2,3 +2,7 @@ repos:
   - url: https://github.com/tmux-plugins/tpm
     dir: $HOME/.tmux/plugins/tpm
     ref: origin/master
+    
+  - url: https://github.com/nvchad/nvchad
+    dir: $HOME/.config/nvim
+    ref: origin/v2.0
