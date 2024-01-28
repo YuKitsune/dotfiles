@@ -62,7 +62,7 @@ tasks:
       BACKUP_COMMANDS: 
         sh: yq '.links[] comments="" | .links[] | "test -e " + .destination + " && mv " + .destination + " {{.BACKUP_DIR}}/$(basename " + .source + ")-backup-$(date +%Y-%m-%d_%H:%M:%S)"' symlinks.yaml
       LINK_COMMANDS:
-        sh: yq '.links[] comments="" | .links[] | "ln -f " + .source + " " + .destination' symlinks.yaml
+        sh: yq '.links[] comments="" | .links[] | "[[ -f " + .source + " ]] && mkdir -p \"$(dirname " + .destination + ")\" || mkdir -p " + .destination + " && ln -s -f \"$(realpath " + .source + ")\" " + .destination' symlinks.yaml
 
     cmds:
       - platforms: [linux, darwin]
