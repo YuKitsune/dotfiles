@@ -1,8 +1,4 @@
 
-
-
-
-
 - [ ] Finish tmux setup
   - [ ] Find a good set of key bindings
 - [ ] Demo Sketchybar
@@ -10,10 +6,12 @@
     - [ ] Can you emulate the existing menubar apps (Tailscale, JetBrains, Stats, Control Center)
 - [ ] Demo Yabai
     - [ ] Same/Similar keybinds to Rectangle
-- [ ] Finish nvim setup (https://www.youtube.com/playlist?list=PL05iK6gnYad1sb4iQyqsim_Jc_peZdNXf)
+- [ ] Finish nvim setup
+    - [ ] Migrate deprecated plugins
+    - [ ] Configure key mappings
 
+# Key Map ideas
 
-
-Ideas:
-CTRL + OPT: Window Manager
-CMD + hjkl: Tmux
+CTRL + OPT    : Window/Space Manager
+CTRL +     CMD: Tmux
+       OPT + hl: Traverse words
