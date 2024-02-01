@@ -37,7 +37,7 @@ links:
 
   # Tmux
   - source: ./config/.tmux.conf
-    destination: $HOME/.tmux.conf  # NVChad
+    destination: $HOME/.tmux.conf
 
   # NVChad
   - source: ./nvim
