@@ -16,7 +16,6 @@ plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highli
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-
 # Updated wordchars
 # What's different?
 # - Removed `/`
@@ -70,3 +69,5 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export REPOS=$HOME/Developer
 export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
 export PROFILE=$(env $DOTFILES/.env PROFILE)
+
+export XDG_CONFIG_HOME="$HOME/.config/"

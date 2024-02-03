@@ -1,3 +1,6 @@
 
 [font]
 normal = { family = "SFMono Nerd Font" }
+
+[window]
+option_as_alt = "both"

@@ -40,8 +40,8 @@ links:
     destination: $HOME/Library/Application\ Support/Code/User/settings.json
 
   # Tmux
-  - source: ./config/.tmux.conf
-    destination: $HOME/.tmux.conf
+  - source: ./config/tmux.conf
+    destination: $HOME/.config/tmux/tmux.conf
 
   # NVChad
   - source: ./nvim
