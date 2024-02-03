@@ -30,6 +30,10 @@ links:
   - source: ./config/.hyper.js
     destination: $HOME/.hyper.js
 
+  # Alacritty
+  - source: ./config/alacritty.toml
+    destination: $HOME/.config/alacritty/alacritty.toml
+
   # VS Code
   # (DO NOT use spaces. It's a bloody mess...)
   - source: ./vscode/.vscode.json
