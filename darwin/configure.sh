@@ -289,7 +289,7 @@ function configure_dock() {
     fi
     
     add_dock_item /Applications/Spotify.app
-    add_dock_item /Applications/Hyper.app
+    add_dock_item /Applications/Alacritty.app
     add_dock_item ~/Downloads
 
     kill_process "Dock"
