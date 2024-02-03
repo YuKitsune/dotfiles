@@ -82,6 +82,7 @@ cask "steam"
 cask "tailscale"
 cask "visual-studio-code"
 cask "vlc"
+cask "whisky"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Bitwarden", id: 1352778147
