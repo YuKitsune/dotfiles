@@ -35,6 +35,7 @@ alias d="docker"
 alias dp="docker ps"
 alias dq="docker ps --format \"{{.Names}}\" | gum choose --no-limit | xargs docker stop"
 alias ld="lazydocker"
+alias dc="docker compose"
 
 # git
 alias g='git'
