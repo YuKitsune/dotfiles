@@ -70,3 +70,9 @@ kfn() {
     local namespace=$(kubectl get namespace | awk '{print $1}' | tail +2 | gum choose)
 	kubectl get namespace $namespace -o json |jq '.spec = {"finalizers":[]}' > temp.json; curl --data-binary @temp.json -k -H "Content-Type: application/json" -X PUT 127.0.0.1:8001/api/v1/namespaces/$namespace/finalize
 }
+
+## Removes all /bin and /obj directories recusrively
+dotnet-obliterate() {
+	find . -iname "bin" | xargs rm -rf
+	find . -iname "obj" | xargs rm -rf
+}
