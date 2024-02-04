@@ -3,13 +3,10 @@ tap "felixkratz/formulae"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
-<<<<<<< HEAD
 tap "homebrew/services"
 tap "koekeishiya/formulae"
 tap "yukitsune/formulae"
-=======
 tap "octopusdeploy/taps"
->>>>>>> 6a3735a (Bump Brewfile)
 brew "act"
 brew "ansible"
 brew "bash"
