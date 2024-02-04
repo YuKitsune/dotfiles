@@ -1,6 +1,8 @@
 
 [font]
 normal = { family = "SFMono Nerd Font" }
+size = 13.0
+
 
 [window]
 option_as_alt = "both"
