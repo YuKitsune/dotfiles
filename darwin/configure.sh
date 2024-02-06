@@ -276,7 +276,8 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    # add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    add_dock_item /Applications/Arc.app
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
