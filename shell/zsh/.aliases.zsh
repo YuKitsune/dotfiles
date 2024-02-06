@@ -5,7 +5,7 @@ alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 # Taskfiles
 alias t="task"
-alias tl="task --list --json | jq '.tasks[].name' | gum choose | xargs task"
+alias tl="task --list --json | jq -r '.tasks[].name' | gum choose | xargs task"
 
 # Core commands
 alias l="exa --long --all --icons --no-user --git"
