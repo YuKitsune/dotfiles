@@ -40,6 +40,7 @@ alias dc="docker compose"
 # git
 alias g='git'
 alias ga='git add'
+alias gl='git log'
 
 alias gco='git checkout'
 alias gcb='git checkout -b'
