@@ -1,7 +1,8 @@
 
 [font]
-normal = { family = "SFMono Nerd Font Mono" }
+normal = { family = "SFMono Nerd Font" }
 size = 12.0
+builtin_box_drawing = false
 
 [window]
 option_as_alt = "both"
