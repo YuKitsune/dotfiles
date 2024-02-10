@@ -15,6 +15,7 @@ tasks:
     cmds:
       - task: packages:apply
       - task: brews:apply
+      - task: apply-patches
 
   dump-packages:
     internal: true
@@ -27,3 +28,9 @@ tasks:
     platforms: [darwin]
     cmds:
       - cmd: ./darwin/configure.sh
+
+  apply-patches:
+    desc: Applies any patches or modifications to installed packages or applications.
+    platforms: [darwin]
+    cmds:
+      - cmd: ./darwin/patch-alacritty-icon.sh
