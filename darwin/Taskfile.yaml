@@ -29,8 +29,3 @@ tasks:
     cmds:
       - cmd: ./darwin/configure.sh
 
-  apply-patches:
-    desc: Applies any patches or modifications to installed packages or applications.
-    platforms: [darwin]
-    cmds:
-      - cmd: ./darwin/patch-alacritty-icon.sh

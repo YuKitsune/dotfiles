@@ -16,6 +16,14 @@ tasks:
     cmds:
       - echo "🍺 Cleaning up brews"
       - brew bundle cleanup --file ./Brewfile --force
+      - task: patch-icons
+
+  patch-icons:
+    desc: Updates various application icons with alternatives.
+    platforms: [darwin]
+    cmds:
+      - echo "Patching icons"
+      - ./patch-alacritty-icon.sh
 
   dump:
     desc: Write all installed casks/formulae/images/taps into the Brewfile.
