@@ -45,6 +45,8 @@ alias gl='git log'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 
+alias ggb='git rev-parse --abbrev-ref HEAD'
+
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
@@ -59,7 +61,6 @@ alias gps='git push'
 alias gpl="git pull"
 
 alias yeet="git add . && git commit -m 'yeet' && git push"
-
 alias lg="lazygit"
 
 # github
