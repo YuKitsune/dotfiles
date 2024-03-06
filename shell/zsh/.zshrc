@@ -65,6 +65,9 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 # Add fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Configure zoxide to use cd prefix
+eval "$(zoxide init --cmd cd zsh)"
+
 # dotfile environment variables
 export REPOS=$HOME/Developer
 export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
