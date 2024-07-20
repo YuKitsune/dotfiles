@@ -144,7 +144,8 @@ function configure_macos() {
     # Disable auto-correct
     write_default NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-    # Todo: Limit IP address tracking
+    # Disable Live-Text
+    write_default NSGlobalDomain AppleLiveTextEnabled -bool false
 }
 
 function configure_finder() {
