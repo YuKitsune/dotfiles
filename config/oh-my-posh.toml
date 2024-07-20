@@ -8,34 +8,86 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   type = 'prompt'
   alignment = 'left'
 
-  # Path
+  # If an SSH session is detected, shows the current user and host name.
+  [[blocks.segments]]
+    type = "session"
+    style = "plain"
+    background = "transparent"
+    foreground = "green"
+    template = "{{ if .SSHSession }}\ueba9 {{ .UserName }}@{{ .HostName }}{{ end }}"
+
+  # Shows when the current user is root or when in an elevated shell (Windows).
+  [[blocks.segments]]
+    type = "root"
+    style = "plain"
+    background = "transparent"
+    foreground = "yellow"
+
+  # The path segment
   [[blocks.segments]]
     type = 'path'
     style = 'plain'
     background = 'transparent'
     foreground = 'blue'
-    template = '{{ .Path }}'
+    template = '{{ .Path }} '
 
     [blocks.segments.properties]
       style = 'agnoster_short'
       max_depth = 3
+    
+      [blocks.segments.properties.mapped_locations]
+        "~/Developer/github.com/" = "\uF09B "
 
-
-  # Git
+  # When in a git repository, shows the git HEAD.
   [[blocks.segments]]
     type = "git"
     style = "plain"
     background = 'transparent'
     foreground = 'darkGray'
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    template = '{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}<cyan>{{ if gt .Behind 0 }} ⇣{{ end }}{{ if gt .Ahead 0 }} ⇡{{ end }}</> '
 
     [blocks.segments.properties]
       branch_icon = ''
       fetch_status = true
 
+  # A right arrow to separate the prompt from the command.
   [[blocks.segments]]
     type = 'text'
     style = 'plain'
     background = 'transparent'
     foreground = 'magenta'
     template = '❯'
+
+[[blocks]]
+  type = 'prompt'
+  alignment = 'right'
+
+  [[blocks.segments]]
+    type = "status"
+    style = "plain"
+    background = "transparent"
+    foreground = "red"
+    template = "{{ if ne .Code 0 }}{{.Code}} {{ reason .Code }}{{ end }}"
+
+# Shows the kubectl context and namespace.
+[[tooltips]]
+  type = "kubectl"
+  tips = [ "kubectl", "k" ]
+  style = "plain"
+  background = "transparent"
+  foreground = "lightBlue"
+  template = " ﴱ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+
+# Shows the docker context when a non-default context is active.
+[[tooltips]]
+  type = "docker"
+  tips = [ "docker", "d" ]
+  style = "plain"
+  background = "transparent"
+  foreground = "lightBlue"
+  template = "  {{ .Context }} "
+
+[secondary_prompt]
+  background = 'transparent'
+  foreground = 'darkGray'
+  template = '❯ '
