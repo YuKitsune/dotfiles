@@ -45,6 +45,9 @@ eval "$(zoxide init --cmd cd zsh)"
 # Add fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Configure direnv
+eval "$(direnv hook zsh)"
+
 # Load oh-my-posh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $DOTFILES/config/oh-my-posh.toml)"
