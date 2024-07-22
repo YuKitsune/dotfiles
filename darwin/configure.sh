@@ -277,19 +277,24 @@ function configure_dock() {
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
-    # add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
-    add_dock_item /Applications/Arc.app
+
+    if [[ $PROFILE = 'work' ]]; then
+        add_dock_item /Applications/Arc.app
+    else
+        add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    fi
+
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
     add_dock_item /Applications/Discord.app
-    
+
     if [[ $PROFILE = 'work' ]]; then
         add_dock_item /Applications/Slack.app
     fi
-    
+
     add_dock_item /Applications/Spotify.app
     add_dock_item /Applications/WezTerm.app
     add_dock_item ~/Downloads
