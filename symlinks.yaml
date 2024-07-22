@@ -34,6 +34,9 @@ links:
   - source: ./config/alacritty.toml
     destination: $HOME/.config/alacritty/alacritty.toml
 
+  - source: ./config/wezterm.lua
+    destination: $HOME/.wezterm.lua
+
   # VS Code
   # (DO NOT use spaces. It's a bloody mess...)
   - source: ./vscode/.vscode.json
