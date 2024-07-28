@@ -177,6 +177,9 @@ function configure_finder() {
     write_default com.apple.finder SidebarShowingiCloudDesktop -bool true
     write_default com.apple.finder SidebarTagsSctionDisclosedState -bool false
 
+    # Search the current folder when searching
+    defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
     # Show hidden files by default
     write_default com.apple.finder AppleShowAllFiles -bool true
 
@@ -259,6 +262,15 @@ function configure_dock() {
     # Set the size of the dock
     write_default com.apple.dock "tilesize" -int "40"
 
+    # Automatically hide the dock
+    defaults write com.apple.dock "autohide" -bool "true"
+
+    # Remove the animation delay
+    defaults write com.apple.dock "autohide-delay" -float 0
+
+    # Instantly reveal the dock
+    defaults write com.apple.dock "autohide-time-modifier" -int 0
+
     # Enable magnification
     write_default com.apple.dock "magnification" -bool true
 
@@ -273,6 +285,15 @@ function configure_dock() {
 
     # Prevent spaces from rearranging based on activity 
     defaults write com.apple.dock "mru-spaces" -bool "false"
+
+    # Group windows by application in mission control
+    defaults write com.apple.dock "expose-group-apps" -bool "true"
+
+    # Don't show recents
+    defaults write com.apple.dock "show-recents" -bool "false"
+
+    # Minimise applications into their dock icon
+    defaults write com.apple.dock "minimize-to-application" -bool "true"
 
     # Setup the dock icons
     echo "📝 Clearing dock" > /dev/tty
