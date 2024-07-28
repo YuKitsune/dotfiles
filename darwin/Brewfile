@@ -25,6 +25,7 @@ brew "fortune"
 brew "fzf"
 brew "gh"
 brew "git"
+brew "git-cliff"
 brew "glow"
 brew "go"
 brew "go-task"
@@ -38,6 +39,7 @@ brew "kubernetes-cli"
 brew "lazydocker"
 brew "lazygit"
 brew "libfido2"
+brew "llvm"
 brew "lolcat"
 brew "lsusb"
 brew "mas"
@@ -91,7 +93,7 @@ cask "tailscale"
 cask "visual-studio-code"
 cask "vlc"
 cask "wezterm"
-cask "yubico-authenticator"
+cask "whisky"
 mas "Affinity Designer", id: 824171161
 mas "Affinity Photo", id: 824183456
 mas "Bitwarden", id: 1352778147
@@ -99,7 +101,9 @@ mas "Focused Work", id: 1523968394
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Reeder", id: 1529448980
 mas "Xcode", id: 497799835
+mas "Yubico Authenticator", id: 1497506650
 vscode "bradlc.vscode-tailwindcss"
 vscode "dbaeumer.vscode-eslint"
 vscode "esbenp.prettier-vscode"
@@ -120,6 +124,7 @@ vscode "ms-vscode.powershell"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "rust-lang.rust-analyzer"
 vscode "svelte.svelte-vscode"
+vscode "tamasfe.even-better-toml"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wayou.vscode-todo-highlight"
 
