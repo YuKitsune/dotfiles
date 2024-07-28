@@ -5,7 +5,7 @@ links:
     destination: $HOME/.gitconfig
 
   - source: ./config/.gitignore
-    destination: $HOME/.gitignore 
+    destination: $HOME/.gitignore
 
   # ZSH
   - source: ./shell/zsh/.plug.zsh
@@ -13,9 +13,6 @@ links:
 
   - source: ./shell/zsh/.zshrc
     destination: $HOME/.zshrc
-
-  - source: ./shell/zsh/.p10k.zsh
-    destination: $HOME/.p10k.zsh
 
   - source: ./shell/zsh/.aliases.zsh
     destination: $HOME/.aliases.zsh
@@ -25,14 +22,6 @@ links:
 
   - source: ./shell/zsh/.fzf.zsh
     destination: $HOME/.fzf.zsh
-
-  # Hyper
-  - source: ./config/.hyper.js
-    destination: $HOME/.hyper.js
-
-  # Alacritty
-  - source: ./config/alacritty.toml
-    destination: $HOME/.config/alacritty/alacritty.toml
 
   - source: ./config/wezterm.lua
     destination: $HOME/.wezterm.lua
