@@ -1,8 +1,9 @@
 {
-    "workbench.colorTheme": "Visual Studio Dark",
-    "terminal.external.osxExec": "Hyper.app",
-    "terminal.integrated.fontFamily": "MesloLGS Nerd Font",
-    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontFamily": "SFMono Nerd Font",
+    "workbench.colorTheme": "Xcode Default (Dark)",
     "workbench.iconTheme": "vscode-icons",
+    "terminal.external.osxExec": "WezTerm.app",
+    "terminal.integrated.fontFamily": "SFMono Nerd Font",
+    "diffEditor.ignoreTrimWhitespace": false,
     "svelte.enable-ts-plugin": true
 }
