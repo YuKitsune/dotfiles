@@ -38,3 +38,7 @@ links:
   # NVChad
   - source: ./nvim
     destination: $HOME/.config/nvim/lua/custom
+
+  # LinearMouse
+  - source: ./config/linearmouse.json
+    destination: $HOME/.config/linearmouse/linearmouse.json
