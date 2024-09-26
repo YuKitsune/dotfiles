@@ -43,10 +43,12 @@ alias g='git'
 alias ga='git add'
 alias gl='git log'
 
+alias gs='git switch'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 
 alias ggb='git rev-parse --abbrev-ref HEAD'
+alias grb='git branch --move'
 
 alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
