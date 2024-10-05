@@ -1,30 +1,6 @@
 
 RefreshEnv
 
-# Ensure Chocolatey is installed
-if(!(Get-Command choco -ErrorAction SilentlyContinue)) {
-    Write-Host "`u{1F36B} Downloading and Installing chocolatey"
-    
-    # Source https://docs.chocolatey.org/en-us/choco/setup#non-administrative-install
-
-    # Set directory for installation - Chocolatey does not lock
-    # down the directory if not the default
-    $InstallDir='C:\ProgramData\chocoportable'
-    $env:ChocolateyInstall="$InstallDir"
-
-    # If your PowerShell Execution policy is restrictive, you may
-    # not be able to get around that. Try setting your session to
-    # Bypass.
-    Set-ExecutionPolicy Bypass -Scope Process -Force;
-
-    # All install options - offline, proxy, etc at
-    # https://chocolatey.org/install
-    Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    RefreshEnv
-} else {
-    Write-Host "`u{1F36B} chocolatey installed"
-}
-
 # Ensure Scoop is installed
 if(!(Get-Command scoop -ErrorAction SilentlyContinue)) {
 
