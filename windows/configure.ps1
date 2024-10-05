@@ -14,11 +14,11 @@ Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer
 Write-Host "Hiding the Task View button"
 Set-ItemProperty -Path "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Value "ShowTaskViewButton" -Value 0 -PropertyType DWORD -Force
 
-Write-Host "Setting keyboard repeat delay to 100 milliseconds"
-Set-ItemProperty -Path "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" -Value "DelayBeforeRepeat"-Value 100
+Write-Host "Setting keyboard repeat delay to 10 milliseconds"
+Set-ItemProperty -Path "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" -Value "DelayBeforeRepeat"-Value 10
 
-Write-Host "Setting keyboard repeat rate to 20 repeats/second"
-Set-ItemProperty -Path "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" -Name "RepeatRate" -Value 20
+Write-Host "Setting keyboard repeat rate to 100 repeats/second"
+Set-ItemProperty -Path "HKEY_CURRENT_USER\Control Panel\Accessibility\Keyboard Response" -Name "RepeatRate" -Value 100
 
 Write-Host "Showing Hidden Files and Folders"
 Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "Hidden" -Value 1
