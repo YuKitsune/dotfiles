@@ -136,8 +136,3 @@ if ENV["PROFILE"] == "work"
     cask "powershell"
     vscode "octopusdeploy.vscode-octopusdeploy"
 end
-
-if ENV["PROFILE"] == "personal"
-    cask "steam"
-    cask "whisky"
-end
