@@ -1,0 +1,33 @@
+
+variables:
+  brewfile-path: ./darwin/Brewfile
+
+commands:
+  
+  install:
+    desc: Downloads and installs brews listed in the Brewfile.
+    actions:
+      - sh: echo "🍺 Installing brews"
+      - sh: brew bundle --file $brewfile-path
+      - sh: dingus packages post-install
+
+  # TODO: Install form packages.yaml
+
+  clean:
+    desc: Uninstall brews that are no longer listed in the Brewfile.
+    actions:
+      - sh: echo "🍺 Cleaning up brews"
+      - sh: brew bundle cleanup --file $brewfile-path --force
+
+  dump:
+    desc: Write all installed casks/formulae/images/taps into the Brewfile.
+    actions:
+      - sh: echo "🍺 Dumping brews"
+      - sh: brew bundle dump --file $brewfile-path --force
+
+  post-install:
+    desc: Runs any post-installation tasks
+    hidden: true
+    actions:
+      - sh: echo "🔍 Configuring fzf"
+      - sh: $(brew --prefix)/opt/fzf/install

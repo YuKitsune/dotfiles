@@ -1,0 +1,33 @@
+
+variables:
+  backup-dir: 
+    env: BACKUP_DIR
+    value: ~/.dotfile_backup
+
+  symlinks-file:
+    env: SYMLINKS_FILE
+    value: ./symlinks.yaml
+
+commands:
+  create-nix:
+    name: create
+    desc: Creates symlinks for the config files managed in this git repository so that they can be read by their intended application.
+    platforms:
+      - macOS
+      - Linux
+
+    variables:
+      backup-commands:
+        env: BACKUP_COMMANDS
+        exec:
+          sh: yq '.links[] comments="" | .links[] | "test -e " + .destination + " && mv " + .destination + " $BACKUP_DIR/$(basename " + .source + ")-backup-$(date +%Y-%m-%d_%H:%M:%S);"' $SYMLINKS_FILE
+      
+      link-commands:
+        env: LINK_COMMANDS
+        exec:
+          sh: yq '.links[] comments="" | .links[] | "mkdir -p \"$(dirname " + .destination + ")\" && ln -s -f \"$(realpath " + .source + ")\" " + .destination + ";"' $SYMLINKS_FILE
+    
+    actions:
+      - sh: mkdir -p $BACKUP_DIR
+      - sh: eval $BACKUP_COMMANDS
+      - sh: eval $LINK_COMMANDS

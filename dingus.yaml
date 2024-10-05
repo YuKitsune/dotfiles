@@ -1,0 +1,41 @@
+imports:
+  - alias: packages
+    source: ./darwin/dingus.packages.yaml
+    platform: macOS
+
+  # - alias: packages
+  #   source: windows\dingus.packages.yaml
+  #   platform: Windows
+
+  - alias: symlinks
+    source: dingus.symlinks.yaml
+    platforms:
+      - macOS
+      - Linux
+  
+  - alias: ssh
+    source: dingus.ssh.yaml
+    platforms:
+      - macOS
+      - Linux
+
+commands:
+
+  configure-darwin:
+    name: configure
+    desc: Runs various commands to configure the system. 
+    platform: macOS
+    action:
+      sh: ./darwin/configure.sh
+
+  configure-windows:
+    name: configure
+    desc: Runs various scripts to configure the system. 
+    platform: Windows
+    action: powershell.exe -ExecutionPolicy ByPass -File "windows\configure.ps1"
+
+  debloat-windows:
+    name: debloat
+    desc: "Removes bloatware using Windows 10 Debloater: https://github.com/Sycnex/Windows10Debloater"
+    platform: Windows
+    action: powershell.exe -File windows\debloat.ps1
