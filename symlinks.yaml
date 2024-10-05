@@ -28,7 +28,7 @@ links:
 
   # VS Code
   # (DO NOT use spaces. It's a bloody mess...)
-  - source: ./vscode/.vscode.json
+  - source: ./config/.vscode.json
     destination: $HOME/Library/Application\ Support/Code/User/settings.json
 
   # Tmux
