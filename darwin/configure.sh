@@ -576,11 +576,7 @@ fi
 
 # Third-party
 
-element_exists_in_array "mos" ${apps[*]}
-if [ $? -eq 0 ]
-then
-    configure_mos
-fi
+# TODO: Configure startup applications
 
 element_exists_in_array "rectangle" ${apps[*]}
 if [ $? -eq 0 ]
