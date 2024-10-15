@@ -306,7 +306,7 @@ function configure_dock() {
     fi
 
     add_dock_item /System/Applications/Mail.app
-    add_dock_item /Applications/Fantastical.app
+    add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
