@@ -1,9 +1,13 @@
+- [ ] Fix Bootstrap scripts
+  - [ ] Swap Taskfile for dingus
+  - [ ] Once brew is installed, the zshrc file needs to be updated
+  - [ ] Skip macOS specific checks on Linux
 
-- [ ] Demo Sketchybar
-    - [ ] Can you retain the original menubar items (File, Edit, View, etc.)
-    - [ ] Can you emulate the existing menubar apps (Tailscale, JetBrains, Stats, Control Center)
-- [ ] Demo Yabai
-    - [ ] Same/Similar keybinds to Rectangle
+- [ ] Windows
+  - [ ] Use only one package manager for Windows
+  - [ ] Confirm Windows 11 compatibility
+  - [ ] Configure WSL and bootstrap dotfiles for linux
+
 - [ ] Finish nvim setup
     - [ ] Migrate deprecated plugins
     - [ ] Configure key mappings

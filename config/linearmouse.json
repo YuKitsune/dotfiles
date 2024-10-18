@@ -1,28 +1,54 @@
 {
-  "$schema": "https://schema.linearmouse.app/0.9.5",
-  "schemes": [
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
+  "schemes" : [
     {
-      "if": {
-        "device": {
-          "category": "mouse",
-          "vendorID": "0x46d",
-          "productName": "USB Receiver",
-          "productID": "0xc53a"
+      "if" : {
+        "device" : {
+          "productName" : "USB Receiver",
+          "category" : "mouse",
+          "vendorID" : "0x46d",
+          "productID" : "0xc53a"
         }
       },
-      "pointer": {
-        "acceleration": 0.25,
-        "disableAcceleration": true
+      "buttons" : {
+        "universalBackForward" : true
       },
-      "buttons": {
-        "universalBackForward": true
+      "pointer" : {
+        "acceleration" : 0.25,
+        "disableAcceleration" : true
       },
-      "scrolling": {
-        "acceleration": {
-          "vertical": 1
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
         },
-        "reverse": {
-          "vertical": true
+        "acceleration" : {
+          "vertical" : 1
+        }
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "vendorID" : "0x46d",
+          "productName" : "G502 X PLUS",
+          "productID" : "0xc095",
+          "serialNumber" : "9E6762A2",
+          "category" : "mouse"
+        }
+      },
+      "buttons" : {
+        "universalBackForward" : true
+      },
+      "pointer" : {
+        "acceleration" : 0.25,
+        "disableAcceleration" : true
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "acceleration" : {
+          "vertical" : 1
         }
       }
     }
