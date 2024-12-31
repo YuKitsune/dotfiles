@@ -317,7 +317,7 @@ function configure_dock() {
     fi
 
     add_dock_item /Applications/Spotify.app
-    add_dock_item /Applications/WezTerm.app
+    add_dock_item /Applications/Ghostty.app
     add_dock_item ~/Downloads
 
     kill_process "Dock"

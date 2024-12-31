@@ -43,10 +43,12 @@ links:
   - source: ./config/linearmouse.json
     destination: $HOME/.config/linearmouse/linearmouse.json
 
+<<<<<<< HEAD
   # LazyGit
   - source: ./config/lazygit.yaml
     destination: $HOME/.config/lazygit/config.yml
-
+=======
   # Ghostty
   - source: ./config/ghostty.config
     destination: $XDG_CONFIG_HOME/ghostty/config
+>>>>>>> 93c3821 (Add Ghostty)
