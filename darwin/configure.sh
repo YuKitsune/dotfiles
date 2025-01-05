@@ -299,11 +299,7 @@ function configure_dock() {
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
 
-    if [[ $PROFILE = 'work' ]]; then
-        add_dock_item /Applications/Arc.app
-    else
-        add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
-    fi
+    add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
 
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app

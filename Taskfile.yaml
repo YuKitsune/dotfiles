@@ -5,9 +5,6 @@ dotenv: ['.env']
 includes:
   system:
     taskfile: ./{{OS}}/Taskfile.yaml
-    
-  vscode:
-    taskfile: ./vscode/Taskfile.yaml
 
 vars:
   BACKUP_DIR: $HOME/.dotfile_backup

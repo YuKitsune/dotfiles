@@ -2,6 +2,7 @@
     "editor.fontFamily": "SFMono Nerd Font",
     "workbench.colorTheme": "Xcode Default (Dark)",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.tree.indent": 16,
     "terminal.external.osxExec": "WezTerm.app",
     "terminal.integrated.fontFamily": "SFMono Nerd Font",
     "diffEditor.ignoreTrimWhitespace": false,
