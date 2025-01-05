@@ -1,8 +1,13 @@
 #:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
-version = 2
-final_space = true
 console_title_template = '{{ .Shell }} in {{ .Folder }}'
+version = 3
+final_space = true
+
+[secondary_prompt]
+  template = '❯ '
+  foreground = 'darkGray'
+  background = 'transparent'
 
 [[blocks]]
   type = 'prompt'
@@ -10,84 +15,93 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
   # If an SSH session is detected, shows the current user and host name.
   [[blocks.segments]]
-    type = "session"
-    style = "plain"
-    background = "transparent"
-    foreground = "green"
-    template = "{{ if .SSHSession }}\ueba9 {{ .UserName }}@{{ .HostName }}{{ end }}"
+    template = '{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}'
+    foreground = 'green'
+    background = 'transparent'
+    type = 'session'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
   # Shows when the current user is root or when in an elevated shell (Windows).
   [[blocks.segments]]
-    type = "root"
-    style = "plain"
-    background = "transparent"
-    foreground = "yellow"
+    foreground = 'yellow'
+    background = 'transparent'
+    type = 'root'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
   # The path segment
   [[blocks.segments]]
+    template = '{{ .Path }} '
+    foreground = 'blue'
+    background = 'transparent'
     type = 'path'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'blue'
-    template = '{{ .Path }} '
 
     [blocks.segments.properties]
-      style = 'agnoster_short'
+      cache_duration = 'none'
       max_depth = 3
-    
+      style = 'agnoster_short'
+
       [blocks.segments.properties.mapped_locations]
-        "~/Developer/github.com/" = "\uF09B "
+        '~/Developer/github.com/' = ' '
 
   # When in a git repository, shows the git HEAD.
   [[blocks.segments]]
-    type = "git"
-    style = "plain"
-    background = 'transparent'
-    foreground = 'darkGray'
     template = '{{ .HEAD }}<cyan>{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .Behind 0 }} ⇣{{.Behind}}{{ end }}{{ if gt .Ahead 0 }} ⇡{{.Ahead}}{{ end }}</> '
+    foreground = 'darkGray'
+    background = 'transparent'
+    type = 'git'
+    style = 'plain'
 
     [blocks.segments.properties]
       branch_icon = ''
+      cache_duration = 'none'
       fetch_status = true
 
   # A right arrow to separate the prompt from the command.
   [[blocks.segments]]
+    template = '❯'
+    foreground = 'magenta'
+    background = 'transparent'
     type = 'text'
     style = 'plain'
-    background = 'transparent'
-    foreground = 'magenta'
-    template = '❯'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
 [[blocks]]
   type = 'prompt'
   alignment = 'right'
 
   [[blocks.segments]]
-    type = "status"
-    style = "plain"
-    background = "transparent"
-    foreground = "red"
-    template = "{{ if ne .Code 0 }}{{.Code}} {{ reason .Code }}{{ end }}"
+    template = '{{ if ne .Code 0 }}{{.Code}} {{ reason .Code }}{{ end }}'
+    foreground = 'red'
+    background = 'transparent'
+    type = 'status'
+    style = 'plain'
+
+    [blocks.segments.properties]
+      cache_duration = 'none'
 
 # Shows the kubectl context and namespace.
 [[tooltips]]
-  type = "kubectl"
-  tips = [ "kubectl", "k" ]
-  style = "plain"
-  background = "transparent"
-  foreground = "lightBlue"
-  template = " ﴱ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
+  template = ' ﴱ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
+  foreground = 'lightBlue'
+  background = 'transparent'
+  type = 'kubectl'
+  style = 'plain'
+  tips = ['kubectl', 'k']
 
 # Shows the docker context when a non-default context is active.
 [[tooltips]]
-  type = "docker"
-  tips = [ "docker", "d" ]
-  style = "plain"
-  background = "transparent"
-  foreground = "lightBlue"
-  template = "  {{ .Context }} "
-
-[secondary_prompt]
+  template = '  {{ .Context }} '
+  foreground = 'lightBlue'
   background = 'transparent'
-  foreground = 'darkGray'
-  template = '❯ '
+  type = 'docker'
+  style = 'plain'
+  tips = ['docker', 'd']
