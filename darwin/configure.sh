@@ -304,6 +304,10 @@ function configure_dock() {
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /System/Applications/Notes.app
+    if [[ $PROFILE = 'work' ]]; then
+        add_dock_item /Applications/Obsidian.app
+    fi
+
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
     add_dock_item /Applications/Discord.app
