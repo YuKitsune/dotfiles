@@ -64,7 +64,6 @@ cask "jetbrains-toolbox"
 cask "keycastr"
 cask "linearmouse"
 cask "little-snitch"
-cask "nextcloud"
 cask "ngrok"
 cask "obsidian"
 cask "parallels"
@@ -84,7 +83,6 @@ mas "Focused Work", id: 1523968394
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Reeder", id: 1529448980
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
 vscode "bradlc.vscode-tailwindcss"
