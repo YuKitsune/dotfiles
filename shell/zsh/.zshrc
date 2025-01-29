@@ -7,7 +7,7 @@ source ~/.functions.zsh
 [ -f ~/.functions.private.zsh ] && source ~/.functions.private.zsh
 
 # Environment Variables
-export REPOS=$HOME/Developer
+export REPOS=$HOME/Code
 export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
 export PROFILE=$(env $DOTFILES/.env PROFILE)
 

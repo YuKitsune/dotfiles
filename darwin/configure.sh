@@ -507,7 +507,7 @@ function configure_rectangle() {
 }
 
 function configure_fork() {
-    write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Developer"
+    write_default com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Code"
 }
 
 function configure_finder_sidebar() {
@@ -515,7 +515,7 @@ function configure_finder_sidebar() {
     mysides add Home file://$HOME/
     mysides add Desktop file://$HOME/Desktop/
     mysides add Documents file://$HOME/Documents/
-    mysides add Developer file://$HOME/Developer/
+    mysides add Code file://$HOME/Code/
     mysides add Applications file:///Applications/
     mysides add Downloads file://$HOME/Downloads/
 }
