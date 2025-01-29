@@ -12,7 +12,7 @@ echo "✋ Before we try to import SSH keys, ensure the external volume is connec
 read -n 1 key <&1
 
 echo "📁 Please select a directory containing SSH keys"
-source_dir=$(gum file --all --directory / | xargs -I{} dirname "{}")
+source_dir=$(gum file --all --directory /)
 
 echo "📁 Sourcing SSH keys from $source_dir"
 if [ ! -d "$source_dir" ]; then
