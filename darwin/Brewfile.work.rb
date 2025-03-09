@@ -1,0 +1,7 @@
+tap "octopusdeploy/taps" 
+brew "octopusdeploy/taps/octopus-cli"
+cask "1password-cli"
+cask "azure-data-studio"
+cask "powershell"
+cask "slack"
+vscode "octopusdeploy.vscode-octopusdeploy"

@@ -9,6 +9,13 @@ tasks:
       - echo "🍺 Applying brews"
       - brew bundle --file ./Brewfile
       - ./post-brew.sh
+  
+  apply-work:
+    desc: Downloads and installs brews specifically used for work.
+    platforms: [darwin]
+    cmds:
+      - echo "🍺 Applying brews"
+      - brew bundle --file ./Brewfile.work.rb
 
   cleanup:
     desc: Uninstall brews not listed in the Brewfile.

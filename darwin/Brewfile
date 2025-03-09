@@ -91,12 +91,3 @@ vscode "rust-lang.rust-analyzer"
 vscode "tamasfe.even-better-toml"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wayou.vscode-todo-highlight"
-
-if ENV["PROFILE"] == "work"
-    tap "octopusdeploy/taps" 
-    brew "octopusdeploy/taps/octopus-cli"
-    cask "1password-cli"
-    cask "azure-data-studio"
-    cask "powershell"
-    vscode "octopusdeploy.vscode-octopusdeploy"
-end
