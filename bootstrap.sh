@@ -40,7 +40,7 @@ fi
 if ! command -v task &> /dev/null; then
     # Install task using Homebrew
     echo "Installing task..."
-    brew install task
+    brew install go-task
 else
     echo "task is already installed."
 fi
