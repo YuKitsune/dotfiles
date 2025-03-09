@@ -13,12 +13,13 @@ export PROFILE=$(env $DOTFILES/.env PROFILE)
 
 export XDG_CONFIG_HOME="$HOME/.config/"
 
+# Local Environment Variables (not synced)
 [ -f ~/.environment.zsh ] && source ~/.environment.zsh
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Plugins
+# ZSH Plugins
 source $HOME/.plug.zsh
 plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
 plugin "https://github.com/zsh-users/zsh-syntax-highlighting" "zsh-syntax-highlighting.zsh"
@@ -28,8 +29,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # Updated wordchars
-# What's different?
-# - Removed `/`
+# Removed `/`
 # Default: *?_-.[]~=/&;!#$%^(){}<>
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
