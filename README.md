@@ -54,6 +54,21 @@ Applies all the necessary configuration.
 task apply
 ```
 
+## SSH Key Import
+
+I store my SSH keys on an external USB flash drive. When I set up a new machine, I copy them from the flash drive onto the machine.
+Run the following task to automatically import SSH keys from the flash drive once it's been connected.
+
+```sh
+task import-ssh-keys
+```
+
+Once this is done, you'll need to fix the git remote for the dotfiles repo, as it was cloned using HTTPS.
+
+```sh
+git remote set-url origin git@github.com:yukitsune/dotfiles.git
+```
+
 # My Setup
 
 ## Shell
