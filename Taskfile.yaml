@@ -22,7 +22,6 @@ tasks:
       - task: clone-repos
       - task: create-symlinks
       - task: configure
-      - task: vscode:apply-plugins
 
   clone-repos:
     desc: Clones any git repositories defined in repos.yaml, and ensures any already cloned repos are up-to-date.
@@ -45,7 +44,6 @@ tasks:
     desc: Writes the state of the local environment (currently just packages and plugins) to this git repository.
     cmds:
       - task: system:dump-packages
-      - task: vscode:dump-plugins
 
   import-ssh-keys:
     - platforms: [linux, darwin]
