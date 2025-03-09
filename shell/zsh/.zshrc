@@ -15,6 +15,9 @@ export XDG_CONFIG_HOME="$HOME/.config/"
 
 [ -f ~/.environment.zsh ] && source ~/.environment.zsh
 
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Plugins
 source $HOME/.plug.zsh
 plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
