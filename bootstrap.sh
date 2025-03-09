@@ -55,11 +55,4 @@ else
     echo "📄 .env file created"
 fi
 
-# Test for full disk access
-if ! plutil -lint /Library/Preferences/com.apple.TimeMachine.plist >/dev/null; then
-  echo "👮 The scripts in this repository require your terminal app to have Full Disk Access. Add this terminal to the Full Disk Access list in System Preferences > Security & Privacy, quit the app, and re-run this script."
-  open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
-  exit 1
-fi
-
 echo "🚀 You're all set!"
