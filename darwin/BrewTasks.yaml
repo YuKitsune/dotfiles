@@ -30,7 +30,7 @@ tasks:
     platforms: [darwin]
     cmds:
       - echo "Patching icons"
-      - ./patch-alacritty-icon.sh
+      - ./patch_spotify_icon.sh
 
   dump:
     desc: Write all installed casks/formulae/images/taps into the Brewfile.
