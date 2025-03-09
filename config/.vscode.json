@@ -3,7 +3,7 @@
     "workbench.colorTheme": "Xcode Default (Dark)",
     "workbench.iconTheme": "vscode-icons",
     "workbench.tree.indent": 16,
-    "terminal.external.osxExec": "WezTerm.app",
+    "terminal.external.osxExec": "Ghostty.app",
     "terminal.integrated.fontFamily": "SFMono Nerd Font",
     "diffEditor.ignoreTrimWhitespace": false,
     "svelte.enable-ts-plugin": true
