@@ -23,8 +23,10 @@ xcode-select --install
 ## 2. Clone the repo
 
 ```sh
-git clone https://github.com/yukitsune/dotfiles
-cd dotfiles
+$DOTFILES="~/Code/github.com/YuKitsune/dotfiles"
+mkdir -p $DOTFILES
+git clone https://github.com/yukitsune/dotfiles $DOTFILES
+cd $DOTFILES
 ```
 
 ## 3. Bootstrap
@@ -56,11 +58,11 @@ task apply
 
 ## Shell
 
-I'm currently using [Hyper](https://hyper.is) as my terminal emulator with `zsh` as my shell of choice.
+I'm currently using [Ghostty](https://ghostty.org) as my terminal emulator with `zsh` as my shell of choice.
 I've written a [custom plugin manager](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.plug.zsh) to manage `zsh` plugins, which works well for me.
-On top of `zsh` is [Powerlevel10k](https://github.com/romkatv/powerlevel10k) which makes everything pretty.
+On top of `zsh` is [Oh My Posh](https://ohmyposh.dev) which makes everything pretty.
 
-I have a number of pre-defined [aliases](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.aliases.zsh) and [functions](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.functions.zsh) defined to make life a little easier.
+I have a number of pre-defined [aliases](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.aliases.zsh) and [functions](https://github.com/yukitsune/dotfiles/main/blob/shell/zsh/.functions.zsh) to make life a little easier.
 
 ## Apps
 
