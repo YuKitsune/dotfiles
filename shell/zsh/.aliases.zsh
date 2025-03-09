@@ -9,9 +9,8 @@ alias t="task"
 alias tl="task --list --json | jq -r '.tasks[].name' | gum choose | xargs task"
 
 # Core commands
-alias l="exa --long --all --icons --no-user --git"
+alias l="eza --long --all --icons --no-user --git"
 alias diff="diff-so-fancy"
-alias du="dua-cli"
 alias cat="bat"
 
 # nvim
