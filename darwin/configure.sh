@@ -131,6 +131,10 @@ function configure_finder() {
     # Finder: Allow quitting via ⌘ + Q; doing so will also hide desktop icons
     defaults write com.apple.finder QuitMenuItem -bool true
 
+    # Sync Desktop and Documents
+    defaults write com.apple.finder FXICloudDriveDesktop -bool true
+    defaults write com.apple.finder FXICloudDriveDocuments -bool true
+
     # Set $HOME as the default location for new Finder windows
     # Computer     : `PfCm`
     # Volume       : `PfVo`
@@ -203,29 +207,16 @@ function configure_finder() {
         OpenWith -bool true \
         Privileges -bool true
 
-    # Todo: Configure sidebar favourites
+    # Configure sidebar favourites
+    mysides add Recent file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
+    mysides add Home file://$HOME/
+    mysides add Desktop file://$HOME/Desktop/
+    mysides add Documents "file://$HOME/Documents/"
+    mysides add Code file://$HOME/Code/
+    mysides add Applications file:///Applications/
+    mysides add Downloads file://$HOME/Downloads/
 
     kill_process "Finder"
-}
-
-function configure_activitymonitor() {
-
-    # Show all processes in Activity Monitor
-    defaults write com.apple.ActivityMonitor ShowCategory -int 0
-
-    # Sort Activity Monitor results by CPU usage
-    defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-    defaults write com.apple.ActivityMonitor SortDirection -int 0
-
-    kill_process "Activity Monitor"
-}
-
-function configure_diskutility() {
-    # Enable the debug menu in Disk Utility
-    defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
-    defaults write com.apple.DiskUtility advanced-image-options -bool true
-
-    kill_process "Disk Utility"
 }
 
 function add_dock_item() {
@@ -377,7 +368,57 @@ function configure_safari() {
     # Enable privacy protection for both normal and private browsing
     defaults write com.apple.Safari EnableEnhancedPrivacyInRegularBrowsing -bool true
 
-    # Todo: Toolbar layout
+    # Enable developer tools
+    defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+    # Warn before connecting to HTTP websites
+    defaults write com.apple.Safari UseHTTPSOnly -bool true
+
+    # Prevent cross-site tracking
+    defaults write com.apple.Safari BlockStoragePolicy -int 2
+    defaults write com.apple.Safari WebKitPreferences.storageBlockingPolicy -int 1
+    defaults write com.apple.Safari WebKitStorageBlockingPolicy -int 1
+
+    # Hide IP address
+    # - From trackers and websites: 66976960
+    # - From trackers only: 66976972
+    defaults write com.apple.Safari WBSPrivacyProxyAvailabilityTraffic -int 66976960
+
+    # Disable privacy preserving ads
+    defaults write com.apple.Safari WebKitPreferences.privateClickMeasurementEnabled -bool false
+
+    # Configure toolbar
+    defaults write com.apple.Safari "NSToolbar Configuration BrowserToolbarIdentifier-v4.6" \
+    '{
+        "TB Display Mode" = 2;
+        "TB Item Identifiers" = (
+            CombinedSidebarTabGroupToolbarIdentifier,
+            SidebarSeparatorToolbarItemIdentifier,
+            BackForwardToolbarIdentifier,
+            UnifiedTabBarToolbarIdentifier,
+            ShowWebInspectorToolbarIdentifier,
+            ShowDownloadsToolbarIdentifier,
+            "WebExtension-com.bitwarden.desktop.safari (LTZ2PFU5D6)",
+            NewTabToolbarIdentifier
+        );
+    }'
+
+    defaults write com.apple.Safari "ExtensionsToolbarConfiguration BrowserToolbarIdentifier-v4.6" \
+    '{
+        "OrderedToolbarItemIdentifiers" = (
+            SidebarSeparatorToolbarItemIdentifier,
+            BackForwardToolbarIdentifier,
+            UnifiedTabBarToolbarIdentifier,
+            "com.adguard.safari.AdGuard.Extension (TC3Q7MAJXF) Button",
+            ShowWebInspectorToolbarIdentifier,
+            ShowDownloadsToolbarIdentifier,
+            "WebExtension-com.bitwarden.desktop.safari (LTZ2PFU5D6)",
+            NewTabToolbarIdentifier
+        );
+        UserRemovedToolbarItemIdentifiers =(
+            "com.adguard.safari.AdGuard.Extension (TC3Q7MAJXF) Button"
+        );
+    }'
 
     kill_process "Safari"
 }
@@ -386,9 +427,20 @@ function configure_mail() {
 
     # Tool Bar
     # Show icon and text in the tab bar
-    /usr/libexec/PlistBuddy -c "Set :\"NSToolbar Configuration MainWindow\":\"TB Display Mode\" 1" /Users/eoinmotherway/Library/Containers/com.apple.mail/Data/Library/Preferences/com.apple.mail.plist
+    defaults write com.apple.mail "NSToolbar Configuration MainWindow" \
+        '{
+            "TB Display Mode" = 1;
+            "TB Icon Size Mode" = 1;
+            "TB Is Shown" = 1;
+            "TB Size Mode" = 1;
+        }'
 
     kill_process "Mail"
+}
+
+function configure_calendar() {
+    defaults write com.apple.iCal "TimeZone support enabled" -bool true
+    defaults write com.apple.iCal "last calendar view description" -string "Daily"
 }
 
 function configure_app_store() {
@@ -475,18 +527,8 @@ function configure_fork() {
     defaults write com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Code"
 }
 
-function configure_finder_sidebar() {
-    mysides add Recent file:///System/Library/CoreServices/Finder.app/Contents/Resources/MyLibraries/myDocuments.cannedSearch/
-    mysides add Home file://$HOME/
-    mysides add Desktop file://$HOME/Desktop/
-    mysides add Documents "file://$HOME/Library/Mobile Documents/com~apple~CloudDocs/Documents/"
-    mysides add Code file://$HOME/Code/
-    mysides add Applications file:///Applications/
-    mysides add Downloads file://$HOME/Downloads/
-}
-
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "activity_monitor" "disk_utility" "safari" "app store" "mos" "rectangle" "fork")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "mos" "rectangle" "fork")
 
 # First-party
 
@@ -500,19 +542,6 @@ element_exists_in_array "finder" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_finder
-    configure_finder_sidebar
-fi
-
-element_exists_in_array "activity_monitor" ${apps[*]}
-if [ $? -eq 0 ]
-then
-    configure_activitymonitor
-fi
-
-element_exists_in_array "disk_utility" ${apps[*]}
-if [ $? -eq 0 ]
-then
-    configure_diskutility
 fi
 
 element_exists_in_array "dock" ${apps[*]}
@@ -525,6 +554,12 @@ element_exists_in_array "mail" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_mail
+fi
+
+element_exists_in_array "calendar" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_calendar
 fi
 
 element_exists_in_array "safari" ${apps[*]}
