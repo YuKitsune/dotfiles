@@ -1,10 +1,10 @@
 {
-    "editor.fontFamily": "SFMono Nerd Font",
+    "editor.fontFamily": "SFMono Nerd Font Mono",
     "workbench.colorTheme": "Xcode Default (Dark)",
     "workbench.iconTheme": "vscode-icons",
     "workbench.tree.indent": 16,
     "terminal.external.osxExec": "Ghostty.app",
-    "terminal.integrated.fontFamily": "SFMono Nerd Font",
+    "terminal.integrated.fontFamily": "SFMono Nerd Font Mono",
     "diffEditor.ignoreTrimWhitespace": false,
     "svelte.enable-ts-plugin": true
 }

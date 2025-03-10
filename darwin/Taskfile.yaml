@@ -17,6 +17,12 @@ tasks:
       - task: brews:apply
       - task: apply-patches
 
+  install-sfmono-fonts:
+    desc: Downloads the SF Mono font and patches it with NerdFonts.
+    platforms: [darwin]
+    cmds:
+      - ./darwin/install-sf-mono-nerdfont.sh
+
   dump-packages:
     internal: true
     platforms: [darwin]
