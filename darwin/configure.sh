@@ -527,8 +527,20 @@ function configure_fork() {
     defaults write com.DanPristupov.Fork defaultSourceFolder -string "$HOME/Code"
 }
 
+function configure_meetingbar() {
+    # Ensure onboarding has been completed before writing defaults
+    ensure_onboarding_completed leits.MeetingBar MeetingBar /Applications/MeetingBar.app
+    if [ $? == 1 ]
+    then
+        return 1
+    fi
+
+    defaults write leits.MeetingBar eventTitleIconFormat -string "iconCalendar"
+    defaults write leits.MeetingBar nonAllDayEvents -string "hide_without_meeting_link"
+}
+
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "mos" "rectangle" "fork")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "mos" "rectangle" "fork" "meetingbar")
 
 # First-party
 
@@ -588,4 +600,10 @@ element_exists_in_array "fork" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_fork
+fi
+
+element_exists_in_array "meetingbar" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_meetingbar
 fi
