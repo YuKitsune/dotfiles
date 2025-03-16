@@ -1,6 +1,4 @@
 tap "homebrew/bundle"
-tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 brew "ansible"
@@ -64,8 +62,6 @@ cask "signal"
 cask "spotify"
 cask "visual-studio-code"
 cask "vlc"
-mas "Affinity Designer", id: 824171161
-mas "Affinity Photo", id: 824183456
 mas "Bitwarden", id: 1352778147
 mas "Focused Work", id: 1523968394
 mas "Keynote", id: 409183694
