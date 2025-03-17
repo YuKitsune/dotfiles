@@ -574,6 +574,10 @@ function configure_orion() {
 
     # Disable nested tabs
     defaults write com.kagi.kagimacOS ShowNestedTabs -bool false
+
+    # Todo: Toolbar layout
+    # Todo: Install extensions
+    # Todo: Default browser
 }
 
 echo "🤔 Which of these apps do you want to configure?"
