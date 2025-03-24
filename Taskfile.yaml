@@ -44,12 +44,6 @@ tasks:
     desc: Writes the state of the local environment (currently just packages and plugins) to this git repository.
     cmds:
       - task: system:dump-packages
-
-  import-ssh-keys:
-    - platforms: [linux, darwin]
-      desc: Imports SSH keys.
-      interactive: true
-      cmd: ./scripts/import_ssh_keys.sh
   
   create-symlinks:
     desc: Creates symlinks for the config files managed in this git repository so that they can be read by their intended application.

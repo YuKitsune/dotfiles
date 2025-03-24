@@ -13,6 +13,9 @@ export PROFILE=$(env $DOTFILES/.env PROFILE)
 
 export XDG_CONFIG_HOME="$HOME/.config/"
 
+# Use Bitwarden SSH Agent
+export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
+
 # Local Environment Variables (not synced)
 [ -f ~/.environment.zsh ] && source ~/.environment.zsh
 

@@ -5,6 +5,7 @@ if ! command -v xcode-select &> /dev/null; then
     # Install Xcode Command Line Tools
     echo "Installing Xcode Command Line Tools..."
     xcode-select --install
+    sudo xcodebuild -license accept
 else
     echo "Xcode Command Line Tools are already installed."
 fi
