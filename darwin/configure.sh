@@ -268,8 +268,7 @@ function configure_dock() {
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
 
-    add_dock_item /Applications/Orion.app
-
+    add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /System/Applications/Notes.app
