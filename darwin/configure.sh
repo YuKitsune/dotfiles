@@ -278,10 +278,11 @@ function configure_dock() {
 
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
-    add_dock_item /Applications/Discord.app
 
     if [[ $PROFILE = 'work' ]]; then
         add_dock_item /Applications/Slack.app
+    else
+        add_dock_item /Applications/Discord.app
     fi
 
     add_dock_item /Applications/Spotify.app
