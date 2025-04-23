@@ -23,7 +23,7 @@ xcode-select --install
 ## 2. Clone the repo
 
 ```sh
-$DOTFILES="~/Code/github.com/YuKitsune/dotfiles"
+DOTFILES="$HOME/Code/github.com/YuKitsune/dotfiles"
 mkdir -p $DOTFILES
 git clone https://github.com/yukitsune/dotfiles $DOTFILES
 cd $DOTFILES
