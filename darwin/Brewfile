@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 brew "ansible"
 brew "bash"
@@ -67,10 +65,13 @@ mas "Focused Work", id: 1523968394
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "SocialFocus", id: 1661093205
+mas "UnTrap", id: 1637438059
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
 vscode "bradlc.vscode-tailwindcss"
 vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
 vscode "esbenp.prettier-vscode"
 vscode "golang.go"
 vscode "heybourn.headwind"
