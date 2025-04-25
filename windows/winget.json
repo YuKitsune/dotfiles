@@ -1,11 +1,32 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-03-05T12:41:19.107-00:00",
+	"CreationDate" : "2025-01-16T19:50:28.491-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
+				{
+					"PackageIdentifier" : "CPUID.CPU-Z"
+				},
+				{
+					"PackageIdentifier" : "Git.Git"
+				},
+				{
+					"PackageIdentifier" : "Mozilla.Firefox"
+				},
+				{
+					"PackageIdentifier" : "Logitech.GHUB"
+				},
+				{
+					"PackageIdentifier" : "GitHub.cli"
+				},
+				{
+					"PackageIdentifier" : "Nvidia.PhysX"
+				},
+				{
+					"PackageIdentifier" : "Valve.Steam"
+				},
 				{
 					"PackageIdentifier" : "Bitwarden.Bitwarden"
 				},
@@ -13,38 +34,17 @@
 					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.WindowsTerminal"
-				},
-				{
-					"PackageIdentifier" : "Mozilla.Firefox"
-				},
-				{
 					"PackageIdentifier" : "Spotify.Spotify"
 				},
 				{
-					"PackageIdentifier" : "Valve.Steam"
+					"PackageIdentifier" : "Balena.Etcher"
 				},
 				{
-					"PackageIdentifier" : "WinDirStat.WinDirStat"
+					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "ElectronicArts.EADesktop"
-				},
-				{
-					"PackageIdentifier" : "Nvidia.GeForceExperience"
-				},
-				{
-					"PackageIdentifier" : "Mojang.MinecraftLauncher"
-				},
-                {
-                    "PackageIdentifier": "Greenshot.Greenshot"
-                },
-                {
-                    "PackageIdentifier": "Logitech.GHUB"
-                },
-                {
-                    "PackageIdentifier": "Open-Shell.Open-Shell-Menu"
-                }
+					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				}
 			],
 			"SourceDetails" : 
 			{
@@ -55,5 +55,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.4.10173"
+	"WinGetVersion" : "1.9.25200"
 }
