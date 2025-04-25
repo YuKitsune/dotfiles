@@ -3,9 +3,9 @@ imports:
     source: ./darwin/dingus.packages.yaml
     platform: macOS
 
-  # - alias: packages
-  #   source: windows\dingus.packages.yaml
-  #   platform: Windows
+  - alias: packages
+    source: windows\dingus.packages.yaml
+    platform: Windows
 
   - alias: symlinks
     source: dingus.symlinks.yaml
@@ -30,7 +30,7 @@ commands:
 
   configure-windows:
     name: configure
-    desc: Runs various scripts to configure the system. 
+    desc: Runs various scripts to configure amd debloat the system. 
     platform: Windows
     action: powershell.exe -ExecutionPolicy ByPass -File "windows\configure.ps1"
 

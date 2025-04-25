@@ -1,17 +1,16 @@
 
 variables:
-  winget-file-path: windows\winget.json
+  winget-file-path: .\windows\winget.json
 
 commands:
-  
+
+  # Bug: Variables aren't injected
   install:
     desc: Downloads and installs packages listed in the winget.json file.
     actions:
-      - echo "📦 Importing winget packages"
       - winget.exe import --import-file $winget-file-path
+      - wsl --install
 
   dump:
     desc: Updates winget.json with the list of currently installed apps.
-    actions:
-      - echo "📦 Exporting winget packages"
-      - winget.exe export --output $winget-file-path
+    action: winget.exe export --output $winget-file-path

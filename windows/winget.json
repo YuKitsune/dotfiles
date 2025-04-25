@@ -44,6 +44,27 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				},
+				{
+					"PackageIdentifier" : "OO-Software.ShutUp10"
+				},
+				{
+					"PackageIdentifier" : "Yubico.Authenticator"
+				},
+				{
+					"PackageIdentifier" : "Google.Chrome"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
+				},
+				{
+					"PackageIdentifier" : "Fork.Fork"
+				},
+				{
+					"PackageIdentifier" : "JetBrains.Toolbox"
+				},
+				{
+					"PackageIdentifier" : "Greenshot.Greenshot"
 				}
 			],
 			"SourceDetails" : 
