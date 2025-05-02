@@ -43,7 +43,6 @@ brew "wget"
 brew "yq"
 brew "zoxide"
 brew "zsh"
-cask "bitwarden"
 cask "discord"
 cask "docker"
 cask "font-sf-mono"
@@ -63,6 +62,7 @@ cask "signal"
 cask "spotify"
 cask "visual-studio-code"
 cask "vlc"
+mas "Bitwarden", id: 1352778147
 mas "Focused Work", id: 1523968394
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825

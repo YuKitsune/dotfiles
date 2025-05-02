@@ -1,0 +1,5 @@
+commands:
+  import-keys:
+    desc: Imports SSH keys.
+    action:
+      sh: ./scripts/import_ssh_keys.sh
