@@ -268,7 +268,16 @@ function configure_dock() {
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
 
+<<<<<<< HEAD
+    if [[ $PROFILE = 'work' ]]; then
+        add_dock_item /Applications/Orion.app
+    elif [[ $PROFILE = 'personal' ]]; then
+        add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    fi
+
+=======
     add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+>>>>>>> fuckedit
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
 
@@ -283,7 +292,11 @@ function configure_dock() {
 
     if [[ $PROFILE = 'work' ]]; then
         add_dock_item /Applications/Slack.app
+<<<<<<< HEAD
+    elif [[ $PROFILE = 'personal' ]]; then
+=======
     else
+>>>>>>> fuckedit
         add_dock_item /Applications/Discord.app
     fi
 
