@@ -541,49 +541,8 @@ function configure_meetingbar() {
     defaults write leits.MeetingBar nonAllDayEvents -string "hide_without_meeting_link"
 }
 
-function configure_orion() {
-    # Ensure onboarding has been completed before writing defaults
-    ensure_onboarding_completed com.kagi.kagimacOS Orion /Applications/Orion.app
-    if [ $? == 1 ]
-    then
-        return 1
-    fi
-
-    # Disable autofill so it doesn't conflict with Bitwarden
-    defaults write com.kagi.kagimacOS AutofillEnabled -bool false
-
-    # Enable Firefox extensions
-    defaults write com.kagi.kagimacOS AllowFirefoxWebExtensions -bool true
-
-    defaults write com.kagi.kagimacOS BookmarksBarStyle -string "iconAndText"
-
-    # Disable content blocker so that it doesn't conflict with uBlock Origin
-    # https://help.kagi.com/orion/browser-extensions/ublock-origin.html
-    defaults write com.kagi.kagimacOS ContentBlockerEnabled -bool false
-
-    # Use mini toolbar
-    defaults write com.kagi.kagimacOS CurrentToolbarSize -string "small"
-
-    # I don't actually know what this does
-    defaults write com.kagi.kagimacOS PasswordProvider -string "thirdParty"
-
-    # Remove trackers from all browsing
-    defaults write com.kagi.kagimacOS RemoveURLTrackersOption -string "forAllBrowsing"
-
-    # Enable vertical tab bar
-    defaults write com.kagi.kagimacOS CurrentOpenSidebar -string "verticalTabs"
-    defaults write com.kagi.kagimacOS TabStyle -string "treeStyle"
-
-    # Disable nested tabs
-    defaults write com.kagi.kagimacOS ShowNestedTabs -bool false
-
-    # Todo: Toolbar layout
-    # Todo: Install extensions
-    # Todo: Default browser
-}
-
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "orion" "rectangle" "fork" "meetingbar")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "rectangle" "fork" "meetingbar")
 
 # First-party
 
@@ -632,12 +591,6 @@ fi
 # Third-party
 
 # TODO: Configure startup applications
-
-element_exists_in_array "orion" ${apps[*]}
-if [ $? -eq 0 ]
-then
-    configure_orion
-fi
 
 element_exists_in_array "rectangle" ${apps[*]}
 if [ $? -eq 0 ]
