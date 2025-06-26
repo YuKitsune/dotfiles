@@ -494,7 +494,7 @@ function configure_rectangle() {
     defaults write com.knollsoft.Rectangle SUEnableAutomaticChecks -bool true
 
     # Gap size
-    defaults write com.knollsoft.Rectangle gapSize -int 20
+    defaults write com.knollsoft.Rectangle gapSize -int 16
 
     # Todo: Key bindings for 6ths
     # bottomCenterSixth =     {
