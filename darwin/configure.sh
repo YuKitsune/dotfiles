@@ -272,16 +272,16 @@ function configure_dock() {
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
 
-    if [[ $PROFILE = 'work' ]]; then
+    if [[ $DOTFILES_PROFILE = 'work' ]]; then
         add_dock_item /Applications/Obsidian.app
-    elif [[ $PROFILE = 'personal' ]]; then
+    elif [[ $DOTFILES_PROFILE = 'personal' ]]; then
         add_dock_item /System/Applications/Notes.app
     fi
 
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
 
-    if [[ $PROFILE = 'work' ]]; then
+    if [[ $DOTFILES_PROFILE = 'work' ]]; then
         add_dock_item /Applications/Slack.app
     else
         add_dock_item /Applications/Discord.app

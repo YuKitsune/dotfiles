@@ -9,8 +9,7 @@ source ~/.functions.zsh
 # Environment Variables
 export REPOS=$HOME/Code
 export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
-export PROFILE=$(env $DOTFILES/.env PROFILE)
-
+export DOTFILES_PROFILE=$(env $DOTFILES/.env PROFILE)
 export XDG_CONFIG_HOME="$HOME/.config/"
 
 # Local Environment Variables (not synced)
