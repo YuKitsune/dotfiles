@@ -76,6 +76,7 @@ mas "SocialFocus", id: 1661093205
 mas "UnTrap", id: 1637438059
 mas "Xcode", id: 497799835
 mas "Yubico Authenticator", id: 1497506650
+vscode "anthropic.claude-code"
 vscode "bradlc.vscode-tailwindcss"
 vscode "davidanson.vscode-markdownlint"
 vscode "dbaeumer.vscode-eslint"
@@ -89,12 +90,10 @@ vscode "jetbrains.resharper-code"
 vscode "maptz.camelcasenavigation"
 vscode "mateocerquetella.xcode-12-theme"
 vscode "mikestead.dotenv"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-dotnettools.csdevkit"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
-vscode "ms-dotnettools.vscodeintellicode-csharp"
 vscode "rust-lang.rust-analyzer"
 vscode "tamasfe.even-better-toml"
+vscode "tobermory.es6-string-html"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wayou.vscode-todo-highlight"
