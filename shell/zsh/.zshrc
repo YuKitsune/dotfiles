@@ -59,5 +59,5 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" = "ghostty" ]; then
-  tmux new-session -A -s main
+  tmux new-session -A -s ghostty
 fi
