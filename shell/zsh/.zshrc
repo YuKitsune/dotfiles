@@ -58,6 +58,6 @@ fi
 # Cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
-if [ "$TMUX" = "" ]; then
+if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" = "ghostty" ]; then
   tmux new-session -A -s main
 fi
