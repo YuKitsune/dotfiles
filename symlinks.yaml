@@ -49,3 +49,7 @@ links:
   # Ghostty
   - source: ./config/ghostty.config
     destination: $HOME/.config/ghostty/config
+
+  # Claude
+  - source: ./config/claude
+    destination: $HOME/.claude

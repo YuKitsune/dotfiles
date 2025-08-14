@@ -1,2 +1,7 @@
 Brewfile.lock.json
 .env
+
+# Claude Code user data (exclude session data, keep configuration)
+config/claude/projects/
+config/claude/shell-snapshots/
+config/claude/todos/
