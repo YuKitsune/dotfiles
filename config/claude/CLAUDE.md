@@ -81,6 +81,7 @@
 ## Problem-Solving Approach
 
 - **Seek clarification** when stuck or uncertain.
+- **Ask for help early**: If struggling to find files, tests, or other resources after 1-2 search attempts, ask the user for guidance rather than repeatedly running searches.
 - **Simplify** where possible. The simple solution is usually the correct one.
 - **Present tradeoffs** when choosing between two approaches.
 
