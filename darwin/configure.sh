@@ -271,12 +271,7 @@ function configure_dock() {
     add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
-
-    if [[ $DOTFILES_PROFILE = 'work' ]]; then
-        add_dock_item /Applications/Obsidian.app
-    elif [[ $DOTFILES_PROFILE = 'personal' ]]; then
-        add_dock_item /System/Applications/Notes.app
-    fi
+    add_dock_item /Applications/Obsidian.app
 
     add_dock_item /System/Applications/Reminders.app
     add_dock_item /System/Applications/Messages.app
