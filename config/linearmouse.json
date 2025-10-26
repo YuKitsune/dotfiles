@@ -2,13 +2,13 @@
   "$schema" : "https:\/\/schema.linearmouse.app\/0.10.1",
   "schemes" : [
     {
-      "buttons" : {
-        "universalBackForward" : true
-      },
       "if" : {
         "device" : {
           "category" : "mouse"
         }
+      },
+      "buttons" : {
+        "universalBackForward" : true
       },
       "pointer" : {
         "acceleration" : 0.5,
@@ -17,6 +17,9 @@
       "scrolling" : {
         "acceleration" : {
           "vertical" : 1
+        },
+        "reverse" : {
+          "vertical" : true
         }
       }
     }
