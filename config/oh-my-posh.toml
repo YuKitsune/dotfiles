@@ -90,7 +90,7 @@ final_space = true
 
 # Shows the kubectl context and namespace.
 [[tooltips]]
-  template = ' ﴱ {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
+  template = '  {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} '
   foreground = 'lightBlue'
   background = 'transparent'
   type = 'kubectl'
@@ -99,7 +99,7 @@ final_space = true
 
 # Shows the docker context when a non-default context is active.
 [[tooltips]]
-  template = '  {{ .Context }} '
+  template = '  {{ .Context }} '
   foreground = 'lightBlue'
   background = 'transparent'
   type = 'docker'
