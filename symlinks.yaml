@@ -59,3 +59,7 @@ links:
   
   - source: ./config/claude/commands
     destination: $HOME/.claude/commands
+
+  # Colima
+  - source: ./config/colima/colima.yaml
+    destination: $HOME/.config/colima/default/colima.yaml
