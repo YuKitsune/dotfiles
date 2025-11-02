@@ -282,7 +282,7 @@ function configure_dock() {
         add_dock_item /Applications/Discord.app
     fi
 
-    add_dock_item /Applications/Spotify.app
+    add_dock_item /System/Applications/Music.app
     add_dock_item /Applications/Ghostty.app
     add_dock_item ~/Downloads
 
