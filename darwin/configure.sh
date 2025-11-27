@@ -536,27 +536,6 @@ function configure_meetingbar() {
     defaults write leits.MeetingBar nonAllDayEvents -string "hide_without_meeting_link"
 }
 
-function configure_raycast() {
-    # Disable Spotlight keyboard shortcut (CMD+Space)
-    # Symbolic hotkey 64 is for "Show Spotlight search"
-    # Symbolic hotkey 65 is for "Show Finder search window"
-    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:64:enabled false" $HOME/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null
-    /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:65:enabled false" $HOME/Library/Preferences/com.apple.symbolichotkeys.plist 2>/dev/null
-
-    # Ensure onboarding has been completed before writing defaults
-    ensure_onboarding_completed com.raycast.macos Raycast /Applications/Raycast.app
-    if [ $? == 1 ]
-    then
-        return 1
-    fi
-
-    # Set Raycast hotkey to CMD+Space
-    # KeyCode 49 = Space
-    defaults write com.raycast.macos raycastGlobalHotkey -string 'Command-49'
-
-    kill_process "Raycast"
-}
-
 echo "🤔 Which of these apps do you want to configure?"
 apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "rectangle" "fork" "meetingbar")
 
@@ -624,10 +603,4 @@ element_exists_in_array "meetingbar" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_meetingbar
-fi
-
-element_exists_in_array "raycast" ${apps[*]}
-if [ $? -eq 0 ]
-then
-    configure_raycast
 fi
