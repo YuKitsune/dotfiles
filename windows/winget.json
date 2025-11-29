@@ -34,9 +34,6 @@
 					"PackageIdentifier" : "Discord.Discord"
 				},
 				{
-					"PackageIdentifier" : "Spotify.Spotify"
-				},
-				{
 					"PackageIdentifier" : "Balena.Etcher"
 				},
 				{
@@ -53,9 +50,6 @@
 				},
 				{
 					"PackageIdentifier" : "Google.Chrome"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
 				},
 				{
 					"PackageIdentifier" : "Fork.Fork"
