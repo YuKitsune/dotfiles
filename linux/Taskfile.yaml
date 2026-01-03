@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+
+  apply-packages:
+    internal: true
+    platforms: [linux]
+    cmds:
+      - ./linux/install-packages.sh
+
+  configure:
+    internal: true
+    platforms: [linux]
+    cmds:
+      - echo "Linux configuration not yet implemented"

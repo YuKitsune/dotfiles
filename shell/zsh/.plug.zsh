@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-# Prototype plugin manager for ZSH
+# Lightweight plugin manager for ZSH
 
 export ZSH_PLUGINS="$HOME/.zsh_plugins"
 

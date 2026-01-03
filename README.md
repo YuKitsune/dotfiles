@@ -35,6 +35,9 @@ This ensures that all the necessary tools are installed.
 
 ```sh
 ./bootstrap.sh
+source ~/.bashrc
+# or
+source ~/.zshrc
 ```
 
 ### 4. Debloat
@@ -53,6 +56,8 @@ Applies all the necessary configuration.
 ```sh
 task apply
 ```
+
+You may need to reload the shell after running this.
 
 ## SSH Key Import
 

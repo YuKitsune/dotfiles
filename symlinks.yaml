@@ -26,10 +26,6 @@ links:
   - source: ./shell/zsh/.fzf.zsh
     destination: $HOME/.fzf.zsh
 
-  # VS Code
-  - source: ./config/.vscode.json
-    destination: $HOME/Library/Application\ Support/Code/User/settings.json
-
   # Tmux
   - source: ./config/tmux.conf
     destination: $HOME/.config/tmux/tmux.conf
@@ -38,17 +34,9 @@ links:
   - source: ./nvim
     destination: $HOME/.config/nvim/lua/custom
 
-  # LinearMouse
-  - source: ./config/linearmouse.json
-    destination: $HOME/.config/linearmouse/linearmouse.json
-
   # LazyGit
   - source: ./config/lazygit.yaml
     destination: $HOME/.config/lazygit/config.yml
-
-  # Ghostty
-  - source: ./config/ghostty.config
-    destination: $HOME/.config/ghostty/config
 
   # Claude Code - specific files only
   - source: ./config/claude/CLAUDE.md
@@ -59,7 +47,3 @@ links:
   
   - source: ./config/claude/commands
     destination: $HOME/.claude/commands
-
-  # Colima
-  - source: ./config/colima/colima.yaml
-    destination: $HOME/.config/colima/default/colima.yaml

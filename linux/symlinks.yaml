@@ -1,0 +1,8 @@
+# Do not use custom environment variables here as they may not be available at the time these symlinks are created.
+# These symlinks must already be in place for custom environment variables to be available.
+
+links:
+
+  # VS Code
+  - source: ./config/.vscode.json
+    destination: $HOME/.config/Code/User/settings.json

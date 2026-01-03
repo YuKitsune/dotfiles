@@ -1,0 +1,20 @@
+# Do not use custom environment variables here as they may not be available at the time these symlinks are created.
+# These symlinks must already be in place for custom environment variables to be available.
+
+links:
+
+  # VS Code
+  - source: ./config/.vscode.json
+    destination: $HOME/Library/Application\ Support/Code/User/settings.json
+
+  # LinearMouse
+  - source: ./config/linearmouse.json
+    destination: $HOME/.config/linearmouse/linearmouse.json
+
+  # Ghostty
+  - source: ./config/ghostty.config
+    destination: $HOME/.config/ghostty/config
+
+  # Colima
+  - source: ./config/colima/colima.yaml
+    destination: $HOME/.config/colima/default/colima.yaml

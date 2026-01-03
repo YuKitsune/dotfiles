@@ -50,6 +50,14 @@ eval "$(zoxide init --cmd cd zsh)"
 # Configure direnv
 eval "$(direnv hook zsh)"
 
+# CTRL-X to open command buffer in $EDITOR
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x' edit-command-line
+
+# Bind CTRL-Z to undo
+bindkey '^Z' undo
+
 # Load oh-my-posh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $DOTFILES/config/oh-my-posh.toml)"

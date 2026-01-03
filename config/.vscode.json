@@ -6,5 +6,6 @@
     "terminal.external.osxExec": "Ghostty.app",
     "terminal.integrated.fontFamily": "SFMono Nerd Font Mono",
     "diffEditor.ignoreTrimWhitespace": false,
-    "svelte.enable-ts-plugin": true
+    "svelte.enable-ts-plugin": true,
+    "claudeCode.preferredLocation": "panel"
 }
