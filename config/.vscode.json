@@ -7,5 +7,7 @@
     "terminal.integrated.fontFamily": "SFMono Nerd Font Mono",
     "diffEditor.ignoreTrimWhitespace": false,
     "svelte.enable-ts-plugin": true,
-    "claudeCode.preferredLocation": "panel"
+    "claudeCode.preferredLocation": "panel",
+    "telemetry.level": "off",
+    "telemetry.feedback.enabled": false
 }
