@@ -14,5 +14,28 @@
       "Bash(gh pr create:*)",
       "Bash(gh release create:*)"
     ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "handbook@cc-handbook": true,
+    "handbook-extras@cc-handbook": true,
+    "docs@context-engineering-kit": true,
+    "code-review@claude-plugins-official": true,
+    "tdd@context-engineering-kit": true,
+    "ddd@context-engineering-kit": true
+  },
+  "extraKnownMarketplaces": {
+    "cc-handbook": {
+      "source": {
+        "source": "github",
+        "repo": "nikiforovall/claude-code-rules"
+      }
+    },
+    "context-engineering-kit": {
+      "source": {
+        "source": "github",
+        "repo": "NeoLabHQ/context-engineering-kit"
+      }
+    }
   }
 }

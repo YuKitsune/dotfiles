@@ -9,5 +9,7 @@
     "svelte.enable-ts-plugin": true,
     "claudeCode.preferredLocation": "panel",
     "telemetry.level": "off",
-    "telemetry.feedback.enabled": false
+    "telemetry.feedback.enabled": false,
+    "resharper.region.region": "Oceania",
+    "resharper.dataSharing.allowDataSharing": false
 }

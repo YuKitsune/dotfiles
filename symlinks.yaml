@@ -45,5 +45,5 @@ links:
   - source: ./config/claude/settings.json
     destination: $HOME/.claude/settings.json
   
-  - source: ./config/claude/commands
-    destination: $HOME/.claude/commands
+  - source: ./config/claude/skills
+    destination: $HOME/.claude/skills
