@@ -1,5 +1,7 @@
 # TODOs
 
+- [ ] Source shell config after bootstrap
+
 - [ ] docs: Reload the terminal after every step of the installation until after bootstrap
 - [ ] order
     1. bootstrap
