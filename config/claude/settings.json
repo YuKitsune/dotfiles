@@ -15,6 +15,10 @@
       "Bash(gh release create:*)"
     ]
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
     "handbook@cc-handbook": true,
