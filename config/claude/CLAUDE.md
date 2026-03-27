@@ -7,7 +7,6 @@ Be extremely concise; sacrifice grammar for concision.
 ## Git and GitHub
 
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when reading and writing commits.
-- Do not make commits. Provide commit messages and let me commit.
 - Use the `gh` CLI for GitHub interactions.
 
 ## Workflow
