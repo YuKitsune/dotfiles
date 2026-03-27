@@ -7,6 +7,7 @@ Be extremely concise; sacrifice grammar for concision.
 ## Git and GitHub
 
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when reading and writing commits.
+- Never commit directly to the trunk (main/master). Always commit to a branch.
 - Use the `gh` CLI for GitHub interactions.
 - Keep commit messages, PR titles/descriptions, issue titles/bodies, and comments concise and straight to the point. No fluff, unnecessary headings, or filler.
 - For trivial PRs or issues, skip any template and use a short paragraph or two.
