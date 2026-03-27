@@ -26,8 +26,7 @@
     "docs@context-engineering-kit": true,
     "code-review@claude-plugins-official": true,
     "tdd@context-engineering-kit": true,
-    "ddd@context-engineering-kit": true,
-    "ralph-loop@claude-plugins-official": true
+    "ddd@context-engineering-kit": true
   },
   "extraKnownMarketplaces": {
     "cc-handbook": {
