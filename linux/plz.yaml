@@ -1,0 +1,10 @@
+cmds:
+  apply-packages:
+    hidden: true
+    platform: Linux
+    action: ./install-packages.sh
+
+  configure:
+    hidden: true
+    platform: Linux
+    action: echo "Linux configuration not yet implemented"

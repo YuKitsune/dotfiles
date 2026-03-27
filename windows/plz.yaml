@@ -1,0 +1,20 @@
+imports:
+  - alias: winget
+    source: ./winget.plz.yaml
+    platform: Windows
+
+cmds:
+  apply-packages:
+    hidden: true
+    platform: Windows
+    action: plz winget apply
+
+  dump-packages:
+    hidden: true
+    platform: Windows
+    action: plz winget dump
+
+  configure:
+    hidden: true
+    platform: Windows
+    action: PowerShell.exe -File configure.ps1

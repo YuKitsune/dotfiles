@@ -1,0 +1,59 @@
+vars:
+  BACKUP_DIR: $HOME/.dotfile_backup
+  PROFILE:
+    exec:
+      sh: grep '^PROFILE=' .env | cut -d= -f2
+
+imports:
+  - alias: system
+    source: ./darwin/plz.yaml
+    platform: MacOS
+  - alias: system
+    source: ./linux/plz.yaml
+    platform: Linux
+  - alias: system
+    source: ./windows/plz.yaml
+    platform: Windows
+
+cmds:
+  apply:
+    desc: Downloads necessary packages and applications, configures various settings, installs plugins, and creates symlinks to the config files managed in this git repository.
+    actions:
+      - plz system apply-packages
+      - plz clone-repos
+      - plz create-symlinks
+      - plz configure
+
+  clone-repos:
+    desc: Clones any git repositories defined in repos.yaml, and ensures any already cloned repos are up-to-date.
+    vars:
+      COMMANDS:
+        exec:
+          sh: yq '.repos[] | "sh ./scripts/install-from-git.sh " + .url + " " + .dir + " " + .ref' repos.yaml
+    action:
+      sh: eval "$COMMANDS"
+    platforms:
+      - Linux
+      - MacOS
+
+  configure:
+    desc: Configures the local environment, as well as various first-party and third-party applications.
+    action: plz system configure
+
+  dump:
+    desc: Writes the state of the local environment (currently just packages and plugins) to this git repository.
+    action: plz system dump-packages
+
+  import-ssh-keys:
+    desc: Imports SSH keys.
+    action: ./scripts/import_ssh_keys.sh
+    platforms:
+      - Linux
+      - MacOS
+
+  create-symlinks:
+    desc: Creates symlinks for the config files and directories managed in this git repository so that they can be read by their intended application.
+    action: ./scripts/create-symlinks.sh
+    platforms:
+      - Linux
+      - MacOS

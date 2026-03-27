@@ -1,0 +1,38 @@
+cmds:
+  apply:
+    desc: Downloads and installs brews listed in the Brewfile.
+    platform: MacOS
+    actions:
+      - echo "Applying brews"
+      - brew bundle --file ./Brewfile
+      - ./post-brew.sh
+      - plz brews cleanup
+
+  apply-work:
+    desc: Downloads and installs brews specifically used for work.
+    platform: MacOS
+    actions:
+      - echo "Applying brews"
+      - brew bundle --file ./Brewfile.work.rb
+
+  cleanup:
+    desc: Uninstall brews not listed in the Brewfile.
+    platform: MacOS
+    actions:
+      - echo "Cleaning up brews"
+      - brew bundle cleanup --file ./Brewfile --force
+      - plz brews patch-icons
+
+  patch-icons:
+    desc: Updates various application icons with alternatives.
+    platform: MacOS
+    actions:
+      - echo "Patching icons"
+      - ./patch_spotify_icon.sh
+
+  dump:
+    desc: Write all installed casks/formulae/images/taps into the Brewfile.
+    platform: MacOS
+    actions:
+      - echo "Dumping brews"
+      - brew bundle dump --file ./Brewfile --force

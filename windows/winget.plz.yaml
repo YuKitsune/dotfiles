@@ -1,0 +1,14 @@
+cmds:
+  apply:
+    desc: Imports winget.json into winget.
+    platform: Windows
+    actions:
+      - echo "Importing winget packages"
+      - winget.exe import --import-file winget.json
+
+  dump:
+    desc: Updates winget.json with the list of currently installed apps.
+    platform: Windows
+    actions:
+      - echo "Exporting winget packages"
+      - winget.exe export --output winget.json

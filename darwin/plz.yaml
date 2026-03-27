@@ -1,0 +1,30 @@
+imports:
+  - alias: packages
+    source: ./packages.plz.yaml
+    platform: MacOS
+  - alias: brews
+    source: ./brews.plz.yaml
+    platform: MacOS
+
+cmds:
+  apply-packages:
+    hidden: true
+    platform: MacOS
+    actions:
+      - plz packages apply
+      - plz brews apply
+
+  install-sfmono-fonts:
+    desc: Downloads the SF Mono font and patches it with NerdFonts.
+    platform: MacOS
+    action: ./install-sf-mono-nerdfont.sh
+
+  dump-packages:
+    hidden: true
+    platform: MacOS
+    action: plz brews dump
+
+  configure:
+    hidden: true
+    platform: MacOS
+    action: ./configure.sh

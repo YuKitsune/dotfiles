@@ -1,0 +1,11 @@
+vars:
+  PACKAGES_CMD:
+    exec:
+      sh: "yq .packages ./packages.yaml | awk -F': ' '{print \"./install_package.sh\", $1, $2}'"
+
+cmds:
+  apply:
+    desc: Downloads and installs packages listed in packages.yaml.
+    platform: MacOS
+    action:
+      sh: eval "$PACKAGES_CMD"
