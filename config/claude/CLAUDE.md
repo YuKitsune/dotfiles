@@ -1,59 +1,45 @@
-# Global Claude Code Guidelines
+# Claude Code
 
-## Code Quality Principles
+## Interactions
 
-### Core Philosophy
+Be extremely concise; sacrifice grammar for concision.
 
-- **Maintainability over cleverness**: Focus on sustainable solutions that future developers (including yourself) can easily understand and modify
-- **Simplicity first**: Write clean, simple, readable code that clearly expresses intent
-- **Clean over clever**: Prefer clean code over clever abstractions
-- **Explicit over convention**: Prefer explicit approaches over convention-based and hidden magic
-- **Composition over inheritance**: ALWAYS prefer composition over inheritance.
+## Git and GitHub
 
-### Naming and Documentation
+- Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when reading and writing commits.
+- Do not make commits. Provide commit messages and let me commit.
+- Use the `gh` CLI for GitHub interactions.
 
-- **Descriptive names**: Functions and methods should have short but descriptive names that clearly indicate their purpose
-- **Self-documenting code**: Code should read like well-written prose; add comments only when the "why" isn't obvious from the "what"
-- **Consistent terminology**: Use consistent naming conventions throughout the codebase
+## Workflow
 
-### Code Consistency
+- Research before implementing: understand existing patterns and architecture before proposing changes.
+- If technical documentation exists for a particular codebase, refer to this documentation during research instead of the code itself.
+- Propose an approach and verify alignment before proceeding.
+- After implementing, DO NOT run builds, tests, linting, or other commands, wait for instructions.
+- Ask for clarification if requirements are unclear, vague, or ambiguous.
+- At the end of each plan, list any unresolved questions.
+- When breaking tasks into smaller parts, seek approval before continuing to the next step.
+- Write only what was requested. If you notice room for improvement, mention it rather than changing the code.
+- Provide multiple solutions with pros and cons when there are meaningful trade-offs.
 
-- **Follow existing patterns**: Study the codebase architecture and maintain consistency with established patterns
-- **Address drift**: If you notice inconsistencies between code, tests, and documentation, consult to determine the correct approach
-- **Clean deletion**: When removing code, delete it cleanly without "removed code" comments
+## Code
 
-## Development Workflow
+- Focus on sustainable solutions future developers can understand and modify.
+- Write clean, simple, readable code that clearly expresses intent.
+- Prefer clean code over clever abstractions.
+- Prefer explicit approaches over conventions and hidden magic.
+- Prefer composition over inheritance.
+- Study the codebase architecture and maintain consistency with established patterns.
+- When removing code, delete it cleanly, no "removed code" comments.
+- Keep comments brief and technical, focusing on "why" not "what".
+- Help identify performance, security, usability, or maintainability issues.
 
-**Always start with**: "Let me research the codebase and create a plan before implementing."
+## Documentation
 
-1. **Research**: Understand existing patterns, architecture, and similar implementations
-2. **Plan**: Propose approach and verify alignment before proceeding
-3. **Implement**: Build the solution step-by-step, seeking feedback at each step
-4. **Wait for instructions**: After implementing code changes, do NOT automatically run builds, tests, linting, or git commands - wait for instructions before continuing
-
-### Collaboration Approach
-
-- **Pair programming partner**: Act as a collaborative pair programmer
-- **Problem identification**: Help identify performance, security, usability, or maintainability issues
-- **Scope adherence**: Write only what was requested, nothing more
-- **Ask for help**: Stop and ask for guidance when stuck, lost, or struggling
-- **Seek clarification**: Always ask for clarification if requirements are unclear, vague, or ambiguous
-- **Brainstorm solutions**: Provide various solutions with pros and cons for decision making
-- **Step-by-step approval**: When breaking tasks into smaller parts, seek approval before continuing to next step
-
-## Writing Guidelines
-
-### Content Style
-
-- **Concise writing**: Keep all written content brief and to the point
-- **Avoid unnecessary adjectives**: Do not use adjectives like "comprehensive", "robust", "powerful", or "excellent" unless explicitly requested
-- **Factual tone**: Write in a neutral, factual tone without overselling or embellishing
-- **Minimal descriptions**: Use simple, direct descriptions that focus on facts rather than opinions
-- **No emojis**: Do not use emojis in any written content unless explicitly requested
-- **Only expand when requested**: Add detail, context, or positive language only when the user explicitly asks for it
-
-### Specific Applications
-
-- **Git commits**: Use simple, factual descriptions (e.g., "add documentation" not "add comprehensive documentation")
-- **Documentation**: Write clear, minimal explanations without promotional language
-- **Code comments**: Keep comments brief and technical, focusing on "why" not "what"
+- Ask who the intended audience is before writing docs, and tailor accordingly.
+- Keep content brief and to the point.
+- Write in a neutral, factual tone, no promotional language, no embellishing.
+- Do not use emojis unless explicitly requested.
+- Avoid adjectives like "comprehensive", "robust", "powerful", or "excellent" unless asked.
+- Add detail or positive language only when explicitly asked.
+- Do not use the em dash character (—), only write using characters that can easily be entered using an ANSI keyboard.
