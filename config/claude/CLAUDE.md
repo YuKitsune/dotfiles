@@ -8,6 +8,9 @@ Be extremely concise; sacrifice grammar for concision.
 
 - Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when reading and writing commits.
 - Use the `gh` CLI for GitHub interactions.
+- Keep commit messages, PR titles/descriptions, issue titles/bodies, and comments concise and straight to the point. No fluff, unnecessary headings, or filler.
+- For trivial PRs or issues, skip any template and use a short paragraph or two.
+- Only use a PR/issue template if the change or issue is complex enough to warrant a thorough explanation.
 
 ## Workflow
 
