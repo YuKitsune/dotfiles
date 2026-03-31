@@ -38,6 +38,10 @@ export EDITOR="nvim"
 # Use OpenSSH installed from Brew instead of the built-in one
 export PATH=$(brew --prefix openssh)/bin:$PATH
 
+# Prefer Microsoft-installed .NET over Homebrew's (Homebrew dotnet is kept as a
+# dependency for PowerShell, but the official SDK should take precedence)
+export PATH="/usr/local/share/dotnet:$PATH"
+
 # Link to .NET tools
 export PATH="$PATH:$HOME/.dotnet/tools"
 
