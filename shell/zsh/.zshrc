@@ -74,6 +74,10 @@ if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" = "ghostty" ]; then
   tmux new-session -A -s ghostty
 fi
 
+if [ "$TMUX" = "" ] && [ -n "$WT_SESSION" ]; then
+  tmux new-session -A -s wsl
+fi
+
 # Node Version Manager (nvm)
 export NVM_DIR="$HOME/.config//nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
