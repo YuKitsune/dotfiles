@@ -15,7 +15,6 @@
     "deny": [
       "Bash(curl:*)",
       "Bash(git pull:*)",
-      "Bash(git rebase:*)",
       "Bash(gh release create:*)"
     ]
   },
@@ -39,5 +38,6 @@
         "repo": "JuliusBrussee/caveman"
       }
     }
-  }
+  },
+  "effortLevel": "high"
 }
