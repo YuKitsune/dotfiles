@@ -73,6 +73,3 @@ alias grv="gh repo view"
 alias grvw="gh repo view --web"
 alias grl="gh release list"
 alias grc="gh release create"
-
-# claude code
-alias cc="claude"
