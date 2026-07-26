@@ -50,6 +50,17 @@ ref() {
 	echo $hash
 }
 
+gfb() {
+
+	if [ -z "$1" ] || [ -z "$2" ]; then
+		echo "Usage:"
+		echo "	$0 <remote> <branch>"
+		return 1
+	fi
+
+	git fetch $1 $2:$2
+}
+
 # Kubectl
 ## Change context
 kc() {
