@@ -16,6 +16,7 @@ brew "changie"
 brew "cmake"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
+brew "container-compose"
 # Debugger for the Go programming language
 brew "delve"
 # Good-lookin' diffs with diff-highlight and more
