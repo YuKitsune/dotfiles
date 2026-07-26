@@ -18,26 +18,14 @@
       "Bash(gh release create:*)"
     ]
   },
+  "model": "opus",
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
-    "handbook@cc-handbook": true,
-    "handbook-extras@cc-handbook": true,
     "code-review@claude-plugins-official": true,
-    "caveman@caveman": true
+    "swift-lsp@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "cc-handbook": {
-      "source": {
-        "source": "github",
-        "repo": "nikiforovall/claude-code-rules"
-      }
-    },
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
-      }
-    }
-  },
-  "effortLevel": "high"
+  "effortLevel": "high",
+  "theme": "dark",
+  "skipAutoPermissionPrompt": true
 }
