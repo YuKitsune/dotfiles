@@ -36,6 +36,9 @@ alias dq="docker ps --format \"{{.Names}}\" | gum choose --no-limit | xargs dock
 alias ld="lazydocker"
 alias dc="docker compose"
 
+# Apple Container
+alias cc="container-compose"
+
 # git
 alias g='git'
 alias ga='git add'
