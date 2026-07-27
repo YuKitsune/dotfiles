@@ -1,48 +1,28 @@
 # Claude Code
 
-## Interactions
+## 1. Writing
 
-Be extremely concise; sacrifice grammar for concision.
+- 1.1 Write all text in ASD-STE100 Simplified Technical English (STE). This includes code comments, exception messages, documentation, pull requests, and issues.
 
-## Git and GitHub
+## 2. Git and GitHub
 
-- Avoid using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) when reading and writing commits unless specified by the repositori.
-- Ask before committing directly to the trunk (main/master). Prefer to commit to a branch when not allowed to commit to the trunk.
-- Use the `gh` CLI for GitHub interactions.
-- Keep commit messages, PR titles and descriptions, issue titles and bodies, and comments concise and straight to the point. No fluff, unnecessary explanations, or filler. Unless explicitly told otherwise, always provide a high level overview, rather than digging into the details.
-- For trivial PRs or issues, skip any template and use a short paragraph or two.
-- Only use a PR/issue template if the change or issue is complex enough to warrant a thorough explanation.
+- 2.1 Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) only if the repository uses them already.
+- 2.2 Commit to a branch. Ask first if you must commit to the trunk (main or master).
+- 2.3 Use the `gh` CLI for GitHub operations.
+- 2.4 Keep commit messages, pull requests, issues, and review comments short. Give a high-level summary. Give the details only if the user asks for them.
+- 2.5 Use a pull request template or an issue template only for a complex change. For other changes, write one or two short paragraphs.
 
-## Workflow
+## 3. Workflow
 
-- Research before implementing: understand existing patterns and architecture before proposing changes.
-- If technical documentation exists for a particular codebase, refer to this documentation during research instead of the code itself.
-- Propose an approach and verify alignment before proceeding.
-- After implementing, DO NOT run builds, tests, linting, or other commands, wait for instructions.
-- Ask for clarification if requirements are unclear, vague, or ambiguous.
-- At the end of each plan, list any unresolved questions.
-- When breaking tasks into smaller parts, seek approval before continuing to the next step.
-- Write only what was requested. If you notice room for improvement, mention it rather than changing the code.
-- Provide multiple solutions with pros and cons when there are meaningful trade-offs.
+- 3.1 After you write code, do not run builds, tests, or linters. Wait for instructions.
+- 3.2 If the requirements are ambiguous, ask the user for clarification.
+- 3.3 At the end of each plan, make a list of the open questions.
+- 3.4 Write only what the user asks for. If you find a possible improvement, or a problem with performance, security, usability, or maintainability, tell the user. Make the change only if the user approves.
+- 3.5 If there are important trade-offs, give two or more solutions. Give the advantages and the disadvantages of each solution.
 
-## Code
+## 4. Code
 
-- Focus on sustainable solutions future developers can understand and modify.
-- Write clean, simple, readable code that clearly expresses intent.
-- Prefer clean code over clever abstractions.
-- Prefer explicit approaches over conventions and hidden magic.
-- Prefer composition over inheritance.
-- Study the codebase architecture and maintain consistency with established patterns.
-- When removing code, delete it cleanly, no "removed code" comments.
-- Keep comments brief and technical, focusing on "why" not "what".
-- Help identify performance, security, usability, or maintainability issues.
-
-## Documentation
-
-- Ask who the intended audience is before writing docs, and tailor accordingly.
-- Keep content brief and to the point.
-- Write in a neutral, factual tone, no promotional language, no embellishing.
-- Do not use emojis unless explicitly requested.
-- Avoid adjectives like "comprehensive", "robust", "powerful", or "excellent" unless asked.
-- Add detail or positive language only when explicitly asked.
-- Do not use the em dash character (—), only write using characters that can easily be entered using an ANSI keyboard.
+- 4.1 Write simple code that shows its intent. Do not use clever abstractions or hidden behavior.
+- 4.2 Use composition. Use inheritance only if composition is not possible.
+- 4.3 Keep your code consistent with the patterns of the codebase.
+- 4.4 When you remove code, remove it fully. Do not add comments about the removed code.
