@@ -47,3 +47,6 @@ links:
   
   - source: ./config/claude/skills
     destination: $HOME/.claude/skills
+
+  - source: ./config/container.toml
+    destination: $HOME/.config/container/config.toml
