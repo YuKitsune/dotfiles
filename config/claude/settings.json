@@ -26,6 +26,13 @@
     "rust-analyzer-lsp@claude-plugins-official": true
   },
   "effortLevel": "high",
+  "skipAutoPermissionPrompt": true,
   "theme": "dark",
-  "skipAutoPermissionPrompt": true
+  "sandbox": {
+    "enabled": true,
+    "network": {
+      "allowLocalBinding": true,
+      "allowedDomains": ["localhost", "127.0.0.1", "::1"]
+    }
+  }
 }
