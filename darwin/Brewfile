@@ -1,21 +1,20 @@
 tap "blendle/blendle"
-tap "felixkratz/formulae"
+tap "docker/tap", trusted: { casks: ["sbx@nightly"] }
+tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "jandedobbeleer/oh-my-posh"
+tap "jetbrains/utils"
 tap "wouterdebie/tap"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.14"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Automated changelog tool for preparing releases
-brew "changie"
-# Cross-platform make
-brew "cmake"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
 # Create and run Linux containers using lightweight virtual machines
 brew "container"
+# Manage Apple Container with Docker Compose files
 brew "container-compose"
 # Debugger for the Go programming language
 brew "delve"
@@ -23,6 +22,8 @@ brew "delve"
 brew "diff-so-fancy"
 # Load/unload environment variables based on $PWD
 brew "direnv"
+# Isolated development environments using Docker
+brew "docker-compose"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line outline and bitmap font editor/converter
@@ -49,6 +50,8 @@ brew "helm"
 brew "httpie"
 # Configurable static site generator
 brew "hugo"
+# Review-first terminal diff viewer for agent-authored changesets
+brew "hunk"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Lightweight and flexible command-line JSON processor
@@ -83,8 +86,6 @@ brew "ripgrep"
 brew "rust"
 # Terminal multiplexer
 brew "tmux"
-# Command-line tool for Vapor (Server-side Swift web framework)
-brew "vapor"
 # Your CLI home video recorder
 brew "vhs"
 # Executes a program periodically, showing output fullscreen
@@ -93,26 +94,28 @@ brew "watch"
 brew "wget"
 # Process YAML, JSON, XML, CSV and properties documents from the CLI
 brew "yq"
+# Programming language designed for robustness, optimality, and clarity
+brew "zig"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
-# Tool to flash OS images to SD cards & USB drives
-cask "balenaetcher"
-# Terminal-based AI coding assistant
-cask "claude-code"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+cask "container"
 # UI for Apple's container platform
 cask "wouterdebie/tap/davit", trusted: true
 # Voice and text chat software
 cask "discord"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
+cask "font-jetbrains-mono-nerd-font"
 cask "font-sf-mono"
 cask "font-sf-pro"
 # GIT client
 cask "fork"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty@tip"
-# Apple tool to create multi-platform icons
-cask "icon-composer"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Open-source keystroke visualiser
@@ -137,6 +140,8 @@ cask "visual-studio-code"
 cask "vlc"
 # Full-featured companion app to the YubiKey
 cask "yubico-authenticator"
+# Gecko based web browser
+cask "zen"
 mas "Bitwarden", id: 1352778147
 mas "Focused Work", id: 1523968394
 mas "Keynote", id: 361285480
@@ -163,9 +168,13 @@ vscode "mateocerquetella.xcode-12-theme"
 vscode "mikestead.dotenv"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
+vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "rust-lang.rust-analyzer"
 vscode "tamasfe.even-better-toml"
 vscode "tobermory.es6-string-html"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wayou.vscode-todo-highlight"
-cargo "plz"
+vscode "ziglang.vscode-zig"
+cargo "plz", source: "https://github.com/YuKitsune/plz"
+npm "@anthropic-ai/claude-code"
+npm "pnpm"
