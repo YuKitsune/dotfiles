@@ -50,3 +50,6 @@ links:
 
   - source: ./config/container.toml
     destination: $HOME/.config/container/config.toml
+
+  - source: ./config/colima.yaml
+    destination: $HOME/.config/colima/default/colima.yaml
