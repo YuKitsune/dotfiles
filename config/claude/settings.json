@@ -1,8 +1,4 @@
 {
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
   "permissions": {
     "allow": [
       "Bash(git commit:*)",
@@ -25,14 +21,18 @@
     "swift-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
   },
-  "effortLevel": "high",
-  "skipAutoPermissionPrompt": true,
-  "theme": "dark",
   "sandbox": {
     "enabled": true,
     "network": {
-      "allowLocalBinding": true,
-      "allowedDomains": ["localhost", "127.0.0.1", "::1"]
+      "allowedDomains": [
+        "localhost",
+        "127.0.0.1",
+        "::1"
+      ],
+      "allowLocalBinding": true
     }
-  }
+  },
+  "effortLevel": "high",
+  "skipAutoPermissionPrompt": true,
+  "theme": "dark"
 }
