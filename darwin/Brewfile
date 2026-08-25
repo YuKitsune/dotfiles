@@ -100,6 +100,8 @@ brew "zig"
 brew "zoxide"
 # UNIX shell (command interpreter)
 brew "zsh"
+# Utility that prevents the system from going to sleep
+cask "caffeine"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 cask "container"
