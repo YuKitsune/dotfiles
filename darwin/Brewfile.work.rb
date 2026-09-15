@@ -1,6 +1,4 @@
-tap "octopusdeploy/taps" 
-tap "hashicorp/tap"
-brew "octopusdeploy/taps/octopus-cli"
+brew "octopusdeploy/taps/octopus-cli", trusted: true
 
 vscode "octopusdeploy.vscode-octopusdeploy"
 vscode "hashicorp.hcl"

@@ -1,9 +1,3 @@
-tap "blendle/blendle"
-tap "docker/tap", trusted: { casks: ["sbx@nightly"] }
-tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
-tap "jandedobbeleer/oh-my-posh"
-tap "jetbrains/utils"
-tap "wouterdebie/tap", trusted: { casks: ["davit"] }
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -67,7 +61,7 @@ brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
 # Prompt theme engine for any shell
-brew "oh-my-posh"
+brew "jandedobbeleer/oh-my-posh/oh-my-posh", trusted: true
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
 # Pretty system information tool written in POSIX sh
@@ -102,7 +96,7 @@ cask "caffeine"
 cask "claude"
 cask "container"
 # GUI for Apple's container CLI
-cask "davit"
+cask "wouterdebie/tap/davit", trusted: true
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
