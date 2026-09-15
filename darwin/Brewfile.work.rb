@@ -7,6 +7,8 @@ vscode "hashicorp.hcl"
 brew "powershell", link: false
 # Terraform
 brew "hashicorp/tap/terraform", trusted: true
+# Password manager that keeps all passwords secure behind one password
+cask "1Password"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Shows the next meeting in the menu bar
