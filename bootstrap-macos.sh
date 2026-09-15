@@ -89,6 +89,15 @@ fi
 eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Persist ~/.cargo/bin to .zprofile so `plz` is available in new terminals
+# right away. It only lands in the repo-managed .zprofile once
+# `plz create-symlinks` runs, but that's part of `plz apply`, which needs
+# `plz` on PATH to run at all - so it has to be persisted here too.
+CARGO_PATH_LINE='export PATH="$HOME/.cargo/bin:$PATH"'
+if ! grep -qF "$CARGO_PATH_LINE" "$HOME/.zprofile" 2>/dev/null; then
+    echo "$CARGO_PATH_LINE" >> "$HOME/.zprofile"
+fi
+
 # Check if gum is installed
 if ! command -v gum &> /dev/null; then
     # Install gum using Homebrew
