@@ -14,7 +14,6 @@ function has_full_disk_access() {
 }
 
 if has_full_disk_access; then
-    echo "✅ Full Disk Access is already granted"
     exit 0
 fi
 
