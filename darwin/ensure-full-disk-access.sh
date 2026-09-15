@@ -22,16 +22,9 @@ echo "🔒 Full Disk Access is required to configure macOS."
 echo "Opening System Settings > Privacy & Security > Full Disk Access..."
 open "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles"
 
-gum confirm --affirmative="Done" --negative="Skip" "Use \"+\" to add Terminal and Ghostty (from /Applications) and enable Full Disk Access for both, then select \"Done\" to continue."
-if [ $? -ne 0 ]
-then
-    echo "⏭ Skipping. You may need to grant Full Disk Access manually later."
-    exit 0
-fi
-
 # Full Disk Access only takes effect after the granted app is relaunched, so
-# this same script process still won't have it. Stop here instead of letting
-# configure.sh continue with a permission that isn't actually active.
-echo "⚠️  Full Disk Access only takes effect after Terminal is relaunched."
-echo "Quit and reopen Terminal, then run: plz configure"
+# this same script process can't pick it up even if it's granted right now.
+# Exit immediately instead of waiting or offering to continue without it.
+echo "Use \"+\" to add Terminal and Ghostty (from /Applications) and enable Full Disk Access for both."
+echo "⚠️  Then quit and reopen Terminal, and run: plz configure"
 exit 1
