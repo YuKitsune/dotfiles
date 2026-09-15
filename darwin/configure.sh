@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-source $PWD/scripts/utils.sh
+# Resolve relative to this script's own location, not $PWD - plz runs this
+# with its cwd set to the directory containing darwin/plz.yaml, not the
+# repo root, so $PWD/scripts/utils.sh does not exist.
+dir=$(dirname "$0")
+source "$dir/../scripts/utils.sh"
 
 # Set up a trap to catch the interrupt signal and exit the script
 trap 'echo "SIGINT detected. Exiting..."; exit 1' SIGINT
@@ -64,8 +68,6 @@ function kill_process() {
 
     return 0
 }
-
-dir=$(dirname "$0")
 
 "$dir/ensure-full-disk-access.sh" || exit 1
 
