@@ -439,7 +439,7 @@ function configure_mail() {
 
 function configure_calendar() {
     defaults write com.apple.iCal "TimeZone support enabled" -bool true
-    defaults write com.apple.iCal "last calendar view description" -string "Daily"
+    defaults write com.apple.iCal "last calendar view description" -string "Weekly"
 }
 
 function configure_app_store() {
