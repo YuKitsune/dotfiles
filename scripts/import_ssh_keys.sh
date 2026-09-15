@@ -60,22 +60,25 @@ function import_from_bitwarden() {
         exit 1
     fi
 
-    echo "🔑 Fetching SSH keys from Bitwarden..."
+    echo "🔑 Fetching SSH key from Bitwarden..."
     # Item type 5 is "SSH Key"
-    items=$(bw list items --session "$BW_SESSION" | jq -c '.[] | select(.type == 5)')
+    items=$(bw list items --session "$BW_SESSION" | jq -c '[.[] | select(.type == 5)]')
+    count=$(echo "$items" | jq 'length')
 
-    if [ -z "$items" ]; then
+    if [ "$count" -eq 0 ]; then
         echo "❌ No SSH Key items found in Bitwarden"
         exit 1
     fi
 
-    while IFS= read -r item; do
-        name=$(echo "$item" | jq -r '.name')
-        local_name=$(echo "$name" | tr -c 'A-Za-z0-9_-' '_')
-        private_key=$(echo "$item" | jq -r '.sshKey.privateKey')
-        public_key=$(echo "$item" | jq -r '.sshKey.publicKey')
-        write_key "$local_name" "$private_key" "$public_key"
-    done <<< "$items"
+    if [ "$count" -gt 1 ]; then
+        selected_name=$(echo "$items" | jq -r '.[].name' | gum choose)
+        item=$(echo "$items" | jq -c --arg name "$selected_name" '.[] | select(.name == $name)')
+    else
+        item=$(echo "$items" | jq -c '.[0]')
+    fi
+    private_key=$(echo "$item" | jq -r '.sshKey.privateKey')
+    public_key=$(echo "$item" | jq -r '.sshKey.publicKey')
+    write_key "id_ed25519" "$private_key" "$public_key"
 }
 
 echo "🔑 Configuring SSH keys"
