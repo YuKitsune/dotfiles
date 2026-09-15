@@ -45,7 +45,6 @@ function install_cli_tools() {
     sudo apt-get install -y lazygit
     
     sudo snap install yq
-    sudo snap install --classic go-task
     sudo snap install --classic kubectl
     sudo snap install --classic helm
     sudo snap install minikube
@@ -95,6 +94,7 @@ function install_cargo_packages() {
     fi
 
     cargo install zoxide --locked
+    cargo install --git https://github.com/YuKitsune/plz
 }
 
 function install_brew_packages() {

@@ -67,6 +67,8 @@ function kill_process() {
 
 dir=$(dirname "$0")
 
+"$dir/ensure-full-disk-access.sh" || exit 1
+
 # Todo: Configure menu bar
 
 function configure_macos() {

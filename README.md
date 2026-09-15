@@ -1,7 +1,7 @@
 
 # YuKitsune's Dotfiles
 
-These are the dotfiles I use for my development environment(s).
+These are the dotfiles I use for my development environments.
 
 ## What's all this then?
 
@@ -39,15 +39,15 @@ This ensures that all the necessary tools are installed.
 ./bootstrap-ubuntu.sh
 ```
 
-This adds Homebrew to `~/.zprofile` (macOS) or `~/.bashrc` (Ubuntu). Open a new terminal window (or `source` that file) so `brew`, `gum`, and `task` are on your `PATH` before continuing.
+This adds Homebrew to `~/.zprofile` (macOS) or `~/.bashrc` (Ubuntu). Open a new terminal window (or `source` that file) so `brew`, `gum`, and `plz` are on your `PATH` before continuing.
 
 ### 4. Debloat
 
-When running on Windows, consider running the debloater task.
+When running on Windows, consider running the debloater command.
 This uninstalls a number of pre-installed aplications from Windows, including some that are re-added during the next step.
 
 ```sh
-task system:debloat
+plz system debloat
 ```
 
 ### #5. Go!
@@ -55,7 +55,7 @@ task system:debloat
 Applies all the necessary configuration.
 
 ```sh
-task apply
+plz apply
 ```
 
 You may need to reload the shell after running this.
@@ -63,10 +63,10 @@ You may need to reload the shell after running this.
 ## SSH Key Import
 
 I store my SSH keys on an external USB flash drive. When I set up a new machine, I copy them from the flash drive onto the machine.
-Run the following task to automatically import SSH keys from the flash drive once it's been connected.
+Run the following command to automatically import SSH keys from the flash drive once it's been connected.
 
 ```sh
-task import-ssh-keys
+plz import-ssh-keys
 ```
 
 Once this is done, you'll need to fix the git remote for the dotfiles repo, as it was cloned using HTTPS.

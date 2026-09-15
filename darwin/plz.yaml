@@ -11,8 +11,8 @@ cmds:
     hidden: true
     platform: MacOS
     actions:
-      - plz packages apply
       - plz brews apply
+      - plz packages apply
 
   install-sfmono-fonts:
     desc: Downloads the SF Mono font and patches it with NerdFonts.
