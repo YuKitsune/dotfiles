@@ -40,15 +40,6 @@ plz apply
 
 You may need to reload the shell after running this.
 
-## SSH Key Import
-
-I store my SSH keys on an external USB flash drive. When I set up a new machine, I copy them from the flash drive onto the machine.
-Run the following command to automatically import SSH keys from the flash drive once it's been connected.
-
-```sh
-plz import-ssh-keys
-```
-
 Once this is done, you'll need to fix the git remote for the dotfiles repo, as it was cloned using HTTPS.
 
 ```sh

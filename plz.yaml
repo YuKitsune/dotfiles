@@ -45,7 +45,7 @@ cmds:
     action: plz system dump-packages
 
   import-ssh-keys:
-    desc: Imports SSH keys.
+    desc: Imports SSH keys from the password manager.
     action: ./scripts/import_ssh_keys.sh
     platforms:
       - Linux

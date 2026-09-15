@@ -4,6 +4,8 @@ brew "ansible"
 brew "bash"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Secure and free password manager for all of your devices
+brew "bitwarden-cli"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # Create and run Linux containers using lightweight virtual machines
