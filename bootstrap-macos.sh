@@ -121,4 +121,11 @@ else
     echo "plz is already installed."
 fi
 
-echo "🚀 You're all set!"
+echo ""
+echo "🚀 Bootstrap complete!"
+echo ""
+echo "⚠️  Important: Reload your shell to apply PATH changes:"
+echo "   Run: exec zsh"
+echo "   Or open a new terminal window"
+echo ""
+echo "Then run: plz apply"
