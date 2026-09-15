@@ -33,10 +33,6 @@ links:
   - source: ./config/tmux.conf
     destination: $HOME/.config/tmux/tmux.conf
 
-  # NVChad
-  - source: ./nvim
-    destination: $HOME/.config/nvim/lua/custom
-
   # Claude Code
   - source: ./config/claude/CLAUDE.md
     destination: $HOME/.claude/CLAUDE.md
