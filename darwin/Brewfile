@@ -94,6 +94,8 @@ brew "zsh"
 cask "caffeine"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
+cask "claude-code"
 # GUI for Apple's container CLI
 cask "wouterdebie/tap/davit", trusted: true
 # Voice and text chat software
@@ -170,4 +172,3 @@ vscode "wayou.vscode-todo-highlight"
 vscode "ziglang.vscode-zig"
 go "sigs.k8s.io/kind"
 cargo "plz", source: "https://github.com/YuKitsune/plz"
-npm "@anthropic-ai/claude-code"
