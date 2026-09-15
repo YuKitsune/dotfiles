@@ -17,7 +17,7 @@ url = "https://github.com/kata-containers/kata-containers/releases/download/3.28
 [machine]
 cpus = 7
 homeMount = "rw"
-memory = "18gb"
+memory = "16gb"
 virtualization = false
 
 [network]

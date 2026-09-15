@@ -6,17 +6,17 @@ cpu: 4
 # NOTE: value can only be increased after virtual machine has been created.
 #
 # Default: 100
-disk: 100
+disk: 256
 
 # Size of the memory in GiB to be allocated to the virtual machine.
 # Default: 2
-memory: 8
+memory: 4
 
 # Architecture of the virtual machine (x86_64, aarch64, host).
 #
 # NOTE: value cannot be changed after virtual machine is created.
 # Default: host
-arch: aarch64
+arch: host
 
 # Container runtime to be used (docker, containerd).
 #
@@ -30,7 +30,7 @@ runtime: docker
 # ramalama: Uses Ramalama.
 #
 # Default: docker
-modelRunner: ""
+modelRunner: docker
 
 # Set custom hostname for the virtual machine.
 # Default: colima
@@ -46,7 +46,7 @@ kubernetes:
   # Kubernetes version to use.
   # This needs to exactly match a k3s version https://github.com/k3s-io/k3s/releases
   # Default: latest stable release
-  version: v1.33.4+k3s1
+  version: v1.36.4+k3s1
   
   # Additional args to pass to k3s https://docs.k3s.io/cli/server
   # Default: traefik is disabled
@@ -202,7 +202,7 @@ mountInotify: true
 # Options available for host emulation can be checked with: `qemu-system-$(arch) -cpu help`.
 # Instructions are also supported by appending to the cpu type e.g. "qemu64,+ssse3".
 # Default: host
-cpuType: ""
+cpuType: host
 
 # Custom provision scripts for the virtual machine.
 # Provisioning scripts are executed on startup and therefore needs to be idempotent.
