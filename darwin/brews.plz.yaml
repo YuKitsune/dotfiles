@@ -5,12 +5,9 @@ cmds:
     actions:
       - echo "Applying brews"
       - brew bundle --file ./Brewfile
-      - ./post-brew.sh
-      # `cleanup` uninstalls anything not in ./Brewfile, so apply-work must
-      # run after it - otherwise work-only brews would be removed again
-      # immediately by the same cleanup pass.
-      - plz brews cleanup
       - sh: '[ "$DOTFILES_PROFILE" = "work" ] && plz brews apply-work || true'
+      - ./post-brew.sh
+      - plz brews cleanup
 
   apply-work:
     desc: Downloads and installs brews specifically used for work.
@@ -24,7 +21,7 @@ cmds:
     platform: MacOS
     actions:
       - echo "Cleaning up brews"
-      - brew bundle cleanup --file ./Brewfile --force
+      - sh: cat ./Brewfile ./Brewfile.work.rb | brew bundle cleanup --file=-
 
   dump:
     desc: Write all installed casks/formulae/images/taps into the Brewfile.
