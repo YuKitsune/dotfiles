@@ -3,7 +3,7 @@ tap "docker/tap", trusted: { casks: ["sbx@nightly"] }
 tap "felixkratz/formulae", "https://github.com/FelixKratz/homebrew-formulae"
 tap "jandedobbeleer/oh-my-posh"
 tap "jetbrains/utils"
-tap "wouterdebie/tap"
+tap "wouterdebie/tap", trusted: { casks: ["davit"] }
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -62,14 +62,10 @@ brew "kubernetes-cli"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Provides library functionality for FIDO U2F & FIDO 2.0, including USB
-brew "libfido2"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Mac App Store command-line interface
 brew "mas"
-# Run a Kubernetes cluster locally
-brew "minikube"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
@@ -78,6 +74,10 @@ brew "node"
 brew "oh-my-posh"
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
+# Pretty system information tool written in POSIX sh
+brew "pfetch"
+# CLI for the Pkl programming language
+brew "pkl"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.13"
 # Search tool like grep and The Silver Searcher
@@ -86,8 +86,6 @@ brew "ripgrep"
 brew "rust"
 # Terminal multiplexer
 brew "tmux"
-# Your CLI home video recorder
-brew "vhs"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever
@@ -105,8 +103,8 @@ cask "caffeine"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 cask "container"
-# UI for Apple's container platform
-cask "wouterdebie/tap/davit", trusted: true
+# GUI for Apple's container CLI
+cask "davit"
 # Voice and text chat software
 cask "discord"
 # App to build and share containerised applications and microservices
@@ -126,6 +124,8 @@ cask "keycastr"
 cask "linearmouse"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# Open-source software for live streaming and screen recording
+cask "obs"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Imaging utility to install operating systems to a microSD card
@@ -136,6 +136,8 @@ cask "rectangle"
 cask "sf-symbols"
 # Instant messaging application focusing on security
 cask "signal"
+# Virtual machines UI using QEMU
+cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -146,14 +148,13 @@ cask "yubico-authenticator"
 cask "zen"
 mas "Bitwarden", id: 1352778147
 mas "Focused Work", id: 1523968394
-mas "Keynote", id: 361285480
-mas "Numbers", id: 361304891
-mas "Pages", id: 361309726
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
 mas "SocialFocus", id: 1661093205
-mas "Strongbox", id: 897283731
 mas "UnTrap", id: 1637438059
 mas "Xcode", id: 497799835
-mas "Yubico Authenticator", id: 1497506650
 vscode "anthropic.claude-code"
 vscode "bradlc.vscode-tailwindcss"
 vscode "davidanson.vscode-markdownlint"
@@ -163,7 +164,6 @@ vscode "eamodio.gitlens"
 vscode "editorconfig.editorconfig"
 vscode "esbenp.prettier-vscode"
 vscode "golang.go"
-vscode "heybourn.headwind"
 vscode "jetbrains.resharper-code"
 vscode "maptz.camelcasenavigation"
 vscode "mateocerquetella.xcode-12-theme"
@@ -177,6 +177,6 @@ vscode "tobermory.es6-string-html"
 vscode "vscode-icons-team.vscode-icons"
 vscode "wayou.vscode-todo-highlight"
 vscode "ziglang.vscode-zig"
+go "sigs.k8s.io/kind"
 cargo "plz", source: "https://github.com/YuKitsune/plz"
 npm "@anthropic-ai/claude-code"
-npm "pnpm"
