@@ -36,11 +36,16 @@ if ! xcode-select -p &> /dev/null; then
         sleep 5
     done
     echo "Xcode Command Line Tools installed."
-
-    sudo xcodebuild -license accept
 else
     echo "Xcode Command Line Tools are already installed."
 fi
+
+# Accept the Xcode license unconditionally, not just when the Command Line
+# Tools were freshly installed above. CLT can be present with the license
+# still unaccepted (e.g. after an OS update, or on a machine that already
+# had CLT before this script ever ran), and brew/cargo/go builds fail
+# without it.
+sudo xcodebuild -license accept
 
 # Update the Command Line Tools if they're behind the OS. A stale version can
 # fail to link against a newer SDK (e.g. `ld: tapi error: malformed file` / `unknown architecture`),
