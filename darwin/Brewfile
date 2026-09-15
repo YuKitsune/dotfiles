@@ -92,7 +92,6 @@ brew "zsh"
 cask "caffeine"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-cask "container"
 # GUI for Apple's container CLI
 cask "wouterdebie/tap/davit", trusted: true
 # Voice and text chat software
