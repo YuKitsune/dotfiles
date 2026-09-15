@@ -1,5 +1,5 @@
 {
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.2",
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.11.4",
   "schemes" : [
     {
       "buttons" : {
@@ -21,6 +21,34 @@
         "reverse" : {
           "vertical" : true
         }
+      }
+    },
+    {
+      "buttons" : {
+        "gesture" : {
+          "actions" : {
+            "down" : "appExpose",
+            "left" : "missionControl.spaceLeft",
+            "right" : "missionControl.spaceRight",
+            "up" : "missionControl"
+          },
+          "enabled" : false,
+          "threshold" : 50,
+          "trigger" : {
+            "button" : 2
+          }
+        }
+      },
+      "if" : {
+        "device" : {
+          "category" : "mouse",
+          "productID" : "0xc548",
+          "productName" : "USB Receiver",
+          "vendorID" : "0x46d"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.8
       }
     }
   ]

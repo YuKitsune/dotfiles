@@ -13,4 +13,5 @@ Thumbs.db
 # JetBrains
 .idea/
 
+# Claude Code config
 **/.claude/settings.local.json

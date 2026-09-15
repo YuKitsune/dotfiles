@@ -85,3 +85,6 @@ export NVM_DIR="$HOME/.config//nvm"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+
+# opencode
+export PATH="$HOME/.opencode/bin:$PATH"
