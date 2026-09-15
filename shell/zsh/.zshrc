@@ -6,18 +6,6 @@ source ~/.aliases.zsh
 source ~/.functions.zsh
 [ -f ~/.functions.private.zsh ] && source ~/.functions.private.zsh
 
-# Environment Variables
-export REPOS=$HOME/Code
-export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
-export DOTFILES_PROFILE=$(env $DOTFILES/.env PROFILE)
-export XDG_CONFIG_HOME="$HOME/.config/"
-
-# Local Environment Variables (not synced)
-[ -f ~/.environment.zsh ] && source ~/.environment.zsh
-
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # ZSH Plugins
 source $HOME/.plug.zsh
 plugin "https://github.com/zsh-users/zsh-autosuggestions" "zsh-autosuggestions.zsh"
@@ -31,19 +19,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # Removed `/`
 # Default: *?_-.[]~=/&;!#$%^(){}<>
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-# Preferred editor for local and remote sessions
-export EDITOR="nvim"
-
-# Use OpenSSH installed from Brew instead of the built-in one
-export PATH=$(brew --prefix openssh)/bin:$PATH
-
-# Prefer Microsoft-installed .NET over Homebrew's (Homebrew dotnet is kept as a
-# dependency for PowerShell, but the official SDK should take precedence)
-export PATH="/usr/local/share/dotnet:$PATH"
-
-# Link to .NET tools
-export PATH="$PATH:$HOME/.dotnet/tools"
 
 # Configure zoxide to use cd prefix
 eval "$(zoxide init --cmd cd zsh)"
@@ -67,9 +42,6 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $DOTFILES/config/oh-my-posh.toml)"
 fi
 
-# Cargo
-export PATH="$HOME/.cargo/bin:$PATH"
-
 if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" = "ghostty" ]; then
   tmux new-session -A -s ghostty
 fi
@@ -82,9 +54,3 @@ fi
 export NVM_DIR="$HOME/.config//nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
-
-# opencode
-export PATH="$HOME/.opencode/bin:$PATH"

@@ -14,6 +14,9 @@ links:
   - source: ./shell/zsh/.plug.zsh
     destination: $HOME/.plug.zsh
 
+  - source: ./shell/zsh/.zprofile
+    destination: $HOME/.zprofile
+
   - source: ./shell/zsh/.zshrc
     destination: $HOME/.zshrc
 

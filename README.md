@@ -34,11 +34,12 @@ cd $DOTFILES
 This ensures that all the necessary tools are installed.
 
 ```sh
-./bootstrap.sh
-source ~/.bashrc
+./bootstrap-macos.sh
 # or
-source ~/.zshrc
+./bootstrap-ubuntu.sh
 ```
+
+This adds Homebrew to `~/.zprofile` (macOS) or `~/.bashrc` (Ubuntu). Open a new terminal window (or `source` that file) so `brew`, `gum`, and `task` are on your `PATH` before continuing.
 
 ### 4. Debloat
 
