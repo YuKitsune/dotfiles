@@ -445,7 +445,7 @@ function configure_mail() {
 
 function configure_calendar() {
     defaults write com.apple.iCal "TimeZone support enabled" -bool true
-    defaults write com.apple.iCal "last calendar view description" -string "Weekly"
+    defaults write com.apple.iCal "last calendar view description" -string "7-day"
 }
 
 function configure_music() {
