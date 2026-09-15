@@ -448,6 +448,16 @@ function configure_calendar() {
     defaults write com.apple.iCal "last calendar view description" -string "Weekly"
 }
 
+function configure_music() {
+    # Disable crossfade / song transitions
+    defaults write com.apple.Music TransitionsEnabled -bool false
+
+    # Disable notifications when the song changes
+    defaults write com.apple.Music userWantsPlaybackNotifications -bool false
+
+    kill_process "Music"
+}
+
 function configure_app_store() {
     # Enable the WebKit Developer Tools in the Mac App Store
     defaults write com.apple.appstore WebKitDeveloperExtras -bool true
@@ -559,7 +569,7 @@ function configure_linearmouse() {
 }
 
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "rectangle" "fork" "meetingbar" "linearmouse")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "music" "rectangle" "fork" "meetingbar" "linearmouse")
 
 # First-party
 
@@ -597,6 +607,12 @@ element_exists_in_array "safari" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_safari
+fi
+
+element_exists_in_array "music" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_music
 fi
 
 element_exists_in_array "app store" ${apps[*]}
