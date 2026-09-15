@@ -538,8 +538,22 @@ function configure_meetingbar() {
     defaults write leits.MeetingBar nonAllDayEvents -string "hide_without_meeting_link"
 }
 
+function configure_linearmouse() {
+    # Ensure onboarding has been completed before writing defaults
+    ensure_onboarding_completed com.lujjjh.LinearMouse LinearMouse /Applications/LinearMouse.app
+    if [ $? == 1 ]
+    then
+        return 1
+    fi
+
+    kill_process "LinearMouse"
+
+    # Hide the menu bar icon
+    defaults write com.lujjjh.LinearMouse showInMenuBar -bool false
+}
+
 echo "🤔 Which of these apps do you want to configure?"
-apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "rectangle" "fork" "meetingbar")
+apps=$(gum choose --no-limit "macos" "finder" "dock" "mail" "calendar" "safari" "app store" "rectangle" "fork" "meetingbar" "linearmouse")
 
 # First-party
 
@@ -605,4 +619,10 @@ element_exists_in_array "meetingbar" ${apps[*]}
 if [ $? -eq 0 ]
 then
     configure_meetingbar
+fi
+
+element_exists_in_array "linearmouse" ${apps[*]}
+if [ $? -eq 0 ]
+then
+    configure_linearmouse
 fi
