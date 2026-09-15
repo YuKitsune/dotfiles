@@ -64,8 +64,6 @@ brew "node"
 brew "jandedobbeleer/oh-my-posh/oh-my-posh", trusted: true
 # OpenBSD freely-licensed SSH connectivity tools
 brew "openssh"
-# Pretty system information tool written in POSIX sh
-brew "pfetch"
 # CLI for the Pkl programming language
 brew "pkl"
 # Interpreted, interactive, object-oriented programming language
