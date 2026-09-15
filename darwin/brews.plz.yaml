@@ -6,7 +6,11 @@ cmds:
       - echo "Applying brews"
       - brew bundle --file ./Brewfile
       - ./post-brew.sh
+      # `cleanup` uninstalls anything not in ./Brewfile, so apply-work must
+      # run after it - otherwise work-only brews would be removed again
+      # immediately by the same cleanup pass.
       - plz brews cleanup
+      - sh: '[ "$DOTFILES_PROFILE" = "work" ] && plz brews apply-work || true'
 
   apply-work:
     desc: Downloads and installs brews specifically used for work.
