@@ -42,6 +42,18 @@ else
     echo "Xcode Command Line Tools are already installed."
 fi
 
+# Update the Command Line Tools if they're behind the OS. A stale version can
+# fail to link against a newer SDK (e.g. `ld: tapi error: malformed file` / `unknown architecture`),
+# which breaks `cargo install` further down.
+echo "Checking for Command Line Tools updates..."
+CLT_LABEL=$(softwareupdate --list 2>/dev/null | awk -F': ' '/Label: Command Line Tools/{print $2}' | tail -n1)
+if [ -n "$CLT_LABEL" ]; then
+    echo "Installing update: $CLT_LABEL"
+    sudo softwareupdate --install "$CLT_LABEL"
+else
+    echo "Command Line Tools are up to date."
+fi
+
 # Install Rosetta 2 for macOS on Apple Silicon
 if [[ "$(uname -m)" == "arm64" ]]; then
     echo "Checking and installing Rosetta 2..."
@@ -65,11 +77,17 @@ if ! command -v brew &> /dev/null; then
     if ! grep -qF "$BREW_SHELLENV_LINE" "$HOME/.zprofile" 2>/dev/null; then
         echo "$BREW_SHELLENV_LINE" >> "$HOME/.zprofile"
     fi
-
-    eval "$(/opt/homebrew/bin/brew shellenv)"
 else
     echo "Homebrew is already installed."
 fi
+
+# Load brew and cargo onto PATH unconditionally, regardless of whether they
+# were just installed or already present. Without this, re-running this
+# script in a shell that hasn't picked up the updated .zprofile yet would
+# make every `command -v` check below fail and re-install/re-compile
+# everything from scratch, even though it's already on disk.
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Check if gum is installed
 if ! command -v gum &> /dev/null; then
