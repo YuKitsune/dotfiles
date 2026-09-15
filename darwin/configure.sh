@@ -550,8 +550,12 @@ function configure_meetingbar() {
         return 1
     fi
 
+    kill_process "MeetingBar"
+    
     defaults write leits.MeetingBar eventTitleIconFormat -string "iconCalendar"
     defaults write leits.MeetingBar nonAllDayEvents -string "hide_without_meeting_link"
+    defaults write leits.MeetingBar fullscreenNotification -bool true
+    defaults write leits.MeetingBar fullscreenNotificationTime -int 5 # When event starts
 }
 
 function configure_linearmouse() {
