@@ -15,3 +15,5 @@ Thumbs.db
 
 # Claude Code config
 **/.claude/settings.local.json
+
+**/.claude/.cc-writes/

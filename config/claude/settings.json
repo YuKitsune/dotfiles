@@ -33,5 +33,6 @@
   },
   "effortLevel": "medium",
   "tui": "fullscreen",
-  "theme": "dark"
+  "theme": "dark",
+  "disableRemoteControl": true
 }
