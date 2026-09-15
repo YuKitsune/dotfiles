@@ -47,8 +47,18 @@ function import_from_bitwarden() {
         exit 1
     fi
 
+    if [ "$(bw status | jq -r '.status')" = "unauthenticated" ]; then
+        echo "🔑 Logging in to Bitwarden..."
+        bw login
+    fi
+
     echo "🔑 Unlocking Bitwarden..."
     export BW_SESSION=$(bw unlock --raw)
+
+    if [ -z "$BW_SESSION" ]; then
+        echo "❌ Failed to unlock Bitwarden"
+        exit 1
+    fi
 
     echo "🔑 Fetching SSH keys from Bitwarden..."
     # Item type 5 is "SSH Key"
