@@ -18,8 +18,6 @@ brew "container"
 brew "container-compose"
 # Debugger for the Go programming language
 brew "delve"
-# Good-lookin' diffs with diff-highlight and more
-brew "diff-so-fancy"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Isolated development environments using Docker

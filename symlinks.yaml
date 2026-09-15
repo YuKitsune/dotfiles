@@ -34,10 +34,6 @@ links:
   - source: ./nvim
     destination: $HOME/.config/nvim/lua/custom
 
-  # LazyGit
-  - source: ./config/lazygit.yaml
-    destination: $HOME/.config/lazygit/config.yml
-
   # Claude Code
   - source: ./config/claude/CLAUDE.md
     destination: $HOME/.claude/CLAUDE.md

@@ -88,15 +88,6 @@ function install_gh() {
     sudo apt-get install -y gh
 }
 
-function install_npm_packages() {
-    if ! command -v npm &> /dev/null; then
-        echo "npm is not installed. Please install 'cli tools' first."
-        return 1
-    fi
-
-    sudo npm install -g diff-so-fancy
-}
-
 function install_cargo_packages() {
     if ! command -v cargo &> /dev/null; then
         echo "cargo is not installed. Please install 'rust' first."
@@ -208,11 +199,6 @@ fi
 element_exists_in_array "gh" ${groups[*]}
 if [ $? -eq 0 ]; then
     install_gh
-fi
-
-element_exists_in_array "npm packages" ${groups[*]}
-if [ $? -eq 0 ]; then
-    install_npm_packages
 fi
 
 element_exists_in_array "cargo packages" ${groups[*]}
