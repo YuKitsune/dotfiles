@@ -1,7 +1,7 @@
 # Environment Variables
 export REPOS=$HOME/Code
 export DOTFILES=$REPOS/github.com/YuKitsune/dotfiles
-export DOTFILES_PROFILE=$(env $DOTFILES/.env PROFILE)
+export DOTFILES_PROFILE=$(grep '^PROFILE=' "$DOTFILES/.env" | cut -d= -f2)
 export XDG_CONFIG_HOME="$HOME/.config/"
 
 # Local Environment Variables (not synced)

@@ -82,6 +82,8 @@ brew "ripgrep"
 brew "rust"
 # Terminal multiplexer
 brew "tmux"
+# Smart session manager for the terminal
+brew "sesh"
 # Executes a program periodically, showing output fullscreen
 brew "watch"
 # Internet file retriever

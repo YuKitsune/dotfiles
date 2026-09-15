@@ -43,7 +43,7 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
 fi
 
 if [ "$TMUX" = "" ] && [ "$TERM_PROGRAM" = "ghostty" ]; then
-  tmux new-session -A -s ghostty
+  sesh picker
 fi
 
 if [ "$TMUX" = "" ] && [ -n "$WT_SESSION" ]; then
