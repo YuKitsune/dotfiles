@@ -272,7 +272,11 @@ function configure_dock() {
     echo "📝 Clearing dock" > /dev/tty
     dockutil --remove all --no-restart
 
-    add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    if [[ $DOTFILES_PROFILE = 'work' ]]; then
+        add_dock_item /Applications/Zen.app
+    else
+        add_dock_item /System/Cryptexes/App/System/Applications/Safari.app
+    fi
     add_dock_item /System/Applications/Mail.app
     add_dock_item /System/Applications/Calendar.app
     add_dock_item /Applications/Obsidian.app
