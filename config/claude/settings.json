@@ -12,11 +12,10 @@
       "Bash(curl:*)",
       "Bash(git pull:*)",
       "Bash(gh release create:*)"
-    ]
+    ],
+    "blockReadsOutsideWorkingDirectories": true
   },
-  "model": "opus",
   "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
     "code-review@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true
@@ -32,7 +31,7 @@
       "allowLocalBinding": true
     }
   },
-  "effortLevel": "high",
-  "skipAutoPermissionPrompt": true,
+  "effortLevel": "medium",
+  "tui": "fullscreen",
   "theme": "dark"
 }

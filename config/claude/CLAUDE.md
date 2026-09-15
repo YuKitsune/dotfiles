@@ -6,19 +6,17 @@
 
 ## 2. Git and GitHub
 
-- 2.1 Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) only if the repository uses them already.
-- 2.2 Commit to a branch. Ask first if you must commit to the trunk (main or master).
-- 2.3 Use the `gh` CLI for GitHub operations.
-- 2.4 Keep commit messages, pull requests, issues, and review comments short. Give a high-level summary. Give the details only if the user asks for them.
-- 2.5 Use a pull request template or an issue template only for a complex change. For other changes, write one or two short paragraphs.
+- 2.1 Commit to a branch. Ask first if you must commit to the trunk (main or master).
+- 2.2 Use the `gh` CLI for GitHub operations.
+- 2.3 Keep commit messages, pull requests, issues, and review comments short. Give a high-level summary. Give the details only if the user asks for them.
+- 2.4 Use a pull request template or an issue template only for a complex change. For other changes, write one or two short sentences.
 
 ## 3. Workflow
 
 - 3.1 After you write code, do not run builds, tests, or linters. Wait for instructions.
-- 3.2 If the requirements are ambiguous, ask the user for clarification.
-- 3.3 At the end of each plan, make a list of the open questions.
-- 3.4 Write only what the user asks for. If you find a possible improvement, or a problem with performance, security, usability, or maintainability, tell the user. Make the change only if the user approves.
-- 3.5 If there are important trade-offs, give two or more solutions. Give the advantages and the disadvantages of each solution.
+- 3.2 At the end of each plan, make a list of the open questions.
+- 3.3 Write only what the user asks for. If you find a possible improvement, or a problem with performance, security, usability, or maintainability, tell the user. Make the change only if the user approves.
+- 3.4 If there are important trade-offs, give two or more solutions. Give the advantages and the disadvantages of each solution.
 
 ## 4. Code
 
