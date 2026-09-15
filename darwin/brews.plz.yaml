@@ -21,14 +21,6 @@ cmds:
     actions:
       - echo "Cleaning up brews"
       - brew bundle cleanup --file ./Brewfile --force
-      - plz brews patch-icons
-
-  patch-icons:
-    desc: Updates various application icons with alternatives.
-    platform: MacOS
-    actions:
-      - echo "Patching icons"
-      - ./patch_spotify_icon.sh
 
   dump:
     desc: Write all installed casks/formulae/images/taps into the Brewfile.
