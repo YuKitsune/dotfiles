@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # Set the profile.
 # This runs first, and without gum, because plz reads .env on every
 # invocation. Nothing later in this script should depend on it existing yet.
@@ -43,7 +45,9 @@ fi
 # Install Rosetta 2 for macOS on Apple Silicon
 if [[ "$(uname -m)" == "arm64" ]]; then
     echo "Checking and installing Rosetta 2..."
-    softwareupdate --install-rosetta --agree-to-license
+    # Not fatal: this can exit non-zero even when there's nothing to do
+    # (e.g. Rosetta is already installed), and shouldn't abort the script.
+    softwareupdate --install-rosetta --agree-to-license || true
 else
     echo "Not an Apple Silicon system. Skipping Rosetta 2 installation."
 fi
