@@ -1,6 +1,7 @@
 # General
 alias reload="source ~/.zprofile && source ~/.zshrc"
 alias c="clear"
+alias x="exit"
 alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 alias reset_bluetooth="sudo pkill bluetoothd"
 
