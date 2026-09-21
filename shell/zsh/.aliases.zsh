@@ -8,6 +8,9 @@ alias reset_bluetooth="sudo pkill bluetoothd"
 # plz
 alias t="plz"
 
+# sesh
+alias sp="sesh picker"
+
 # nvim
 alias vi="nvim"
 alias vim="nvim"
