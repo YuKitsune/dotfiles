@@ -1,5 +1,6 @@
 # TODOs
 
+- [ ] Install `nvm`
 - [ ] Improved idempotency checks for each step
 - [ ] Show a list of steps "Docker" style, with a small summary of what's executing under each step line.
 - [ ] --force mode to skip idempotency checks
