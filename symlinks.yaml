@@ -33,6 +33,10 @@ links:
   - source: ./config/tmux.conf
     destination: $HOME/.config/tmux/tmux.conf
 
+  # Sesh
+  - source: ./config/sesh.toml
+    destination: $HOME/.config/sesh/sesh.toml
+
   # Claude Code
   - source: ./config/claude/CLAUDE.md
     destination: $HOME/.claude/CLAUDE.md
