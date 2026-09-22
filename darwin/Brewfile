@@ -108,7 +108,7 @@ cask "font-sf-pro"
 # GIT client
 cask "fork"
 # Terminal emulator that uses platform-native UI and GPU acceleration
-cask "ghostty@tip"
+cask "ghostty"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Open-source keystroke visualiser

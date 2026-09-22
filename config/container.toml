@@ -8,12 +8,6 @@ rosetta = true
 cpus = 4
 memory = "4gb"
 
-[dns]
-
-[kernel]
-binaryPath = "opt/kata/share/kata-containers/vmlinux-6.18.15-186"
-url = "https://github.com/kata-containers/kata-containers/releases/download/3.28.0/kata-static-3.28.0-arm64.tar.zst"
-
 [machine]
 cpus = 7
 homeMount = "rw"
