@@ -95,7 +95,7 @@ cask "caffeine"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # GUI for Apple's container CLI
 cask "wouterdebie/tap/davit", trusted: true
 # Voice and text chat software
