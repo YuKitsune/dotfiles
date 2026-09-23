@@ -15,7 +15,6 @@
     ],
     "blockReadsOutsideWorkingDirectories": true
   },
-  "model": "opus[1m]",
   "disableRemoteControl": true,
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
