@@ -77,7 +77,7 @@ function import_from_bitwarden() {
         item=$(echo "$items" | jq -c '.[0]')
     fi
     name=$(echo "$item" | jq -r '.name')
-    local_name=$(echo "$name" | tr -c 'A-Za-z0-9_-' '_')
+    local_name=$(printf '%s' "$name" | tr -c 'A-Za-z0-9_-' '_')
     private_key=$(echo "$item" | jq -r '.sshKey.privateKey')
     public_key=$(echo "$item" | jq -r '.sshKey.publicKey')
     write_key "$local_name" "$private_key" "$public_key"
