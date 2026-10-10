@@ -40,12 +40,15 @@ else
     echo "Xcode Command Line Tools are already installed."
 fi
 
-# Accept the Xcode license unconditionally, not just when the Command Line
-# Tools were freshly installed above. CLT can be present with the license
-# still unaccepted (e.g. after an OS update, or on a machine that already
-# had CLT before this script ever ran), and brew/cargo/go builds fail
-# without it.
-sudo xcodebuild -license accept
+# Accept the Xcode license if the full Xcode app is the active developer
+# directory. Xcode can be present with the license not accepted (for example,
+# after an update), and brew/cargo/go builds fail without it.
+# `xcodebuild` is part of Xcode, not the Command Line Tools. If only the
+# Command Line Tools are installed, it fails and stops this script. The
+# Command Line Tools installer asks you to accept its own license.
+if [[ "$(xcode-select -p)" == *.app/* ]]; then
+    sudo xcodebuild -license accept
+fi
 
 # Update the Command Line Tools if they're behind the OS. A stale version can
 # fail to link against a newer SDK (e.g. `ld: tapi error: malformed file` / `unknown architecture`),
