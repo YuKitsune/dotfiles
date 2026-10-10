@@ -141,10 +141,6 @@ cask "yubico-authenticator"
 cask "zen"
 mas "Bitwarden", id: 1352778147
 mas "Focused Work", id: 1523968394
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "SocialFocus", id: 1661093205
 mas "UnTrap", id: 1637438059
 mas "Xcode", id: 497799835
